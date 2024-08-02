@@ -153,7 +153,13 @@ tasks.withType(ProcessResources).configureEach {
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description        : mod_description,
+            libmod_id                 : libmod_id,
+            libmod_name               : libmod_name,
+            libmod_license            : libmod_license,
+            libmod_version            : libmod_version,
+            libmod_authors            : libmod_authors,
+            libmod_description        : libmod_description
     ]
     inputs.properties replaceProperties
 
