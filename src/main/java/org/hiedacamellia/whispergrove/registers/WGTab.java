@@ -5,7 +5,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
@@ -19,6 +18,9 @@ public class WGTab {
             .icon(WGItem.TEST_ITEM::toStack)
             .displayItems((parameters, tab) -> {
                 for(DeferredHolder<Item, ? extends Item> item:WGItem.ITEMS.getEntries()){
+                    tab.accept(item.get());
+                }
+                for(DeferredHolder<Item, ? extends Item> item:WGBlockItem.ITEMS.getEntries()){
                     tab.accept(item.get());
                 }
             }).build());

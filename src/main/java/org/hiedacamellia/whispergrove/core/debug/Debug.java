@@ -1,12 +1,10 @@
 package org.hiedacamellia.whispergrove.core.debug;
 
-import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.loading.FMLEnvironment;
-import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,6 +89,7 @@ public class Debug {
         return Component.translatable(s).getString();
     }
 
+    //客户端调试信息
     public void send(String string) {
         if (FMLEnvironment.dist.isClient()) {
             Minecraft mc = Minecraft.getInstance();
@@ -100,6 +99,7 @@ public class Debug {
         }
     }
 
+    //服务端调试信息
     public void send(String string, Player player) {
         Level level = player.level();
         if(!level.isClientSide && debugConfig) {

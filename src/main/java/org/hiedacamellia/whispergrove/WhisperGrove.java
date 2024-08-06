@@ -1,8 +1,8 @@
 package org.hiedacamellia.whispergrove;
 
-import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -16,10 +16,11 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
+import org.hiedacamellia.whispergrove.core.data.Data;
 import org.hiedacamellia.whispergrove.registers.WGBlock;
+import org.hiedacamellia.whispergrove.registers.WGBlockItem;
 import org.hiedacamellia.whispergrove.registers.WGItem;
 import org.hiedacamellia.whispergrove.registers.WGTab;
-import org.slf4j.Logger;
 
 
 @Mod(WhisperGrove.MODID)
@@ -27,7 +28,7 @@ public class WhisperGrove {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "whispergrove";
 
-    public static Debug DEBUG = new Debug("[浅草轻语]",true);
+    public static Debug DEBUG = new Debug("["+ Component.translatable("mod.whispergrove") +"]",Config.debug);
 
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -35,9 +36,10 @@ public class WhisperGrove {
     public WhisperGrove(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
-
+        modEventBus.addListener(Data::onGatherData);
 
         WGBlock.BLOCKS.register(modEventBus);
+        WGBlockItem.ITEMS.register(modEventBus);
         WGItem.ITEMS.register(modEventBus);
         WGTab.TABS.register(modEventBus);
 
@@ -56,12 +58,6 @@ public class WhisperGrove {
         // Some common setup code
         Debug.info("HELLO FROM COMMON SETUP");
 
-        if (Config.logDirtBlock)
-            Debug.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-
-        Debug.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> Debug.info("ITEM >> {}", item.toString()));
     }
 
 
