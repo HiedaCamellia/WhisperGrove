@@ -12,6 +12,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
 
         @Override
         protected void addTranslations() {
+            add("tooltip.whispergrove.press_shift","按住Shift键以显示更多信息");
             add("mod.whispergrove", "浅草轻语");
             add("itemGroup.whispergrove", "浅草轻语");
             add("item.whispergrove.test_item", "Test Item");

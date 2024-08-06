@@ -2,12 +2,9 @@ package org.hiedacamellia.whispergrove.core.entry;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 
@@ -18,11 +15,6 @@ public class BaseItem extends Item {
     public BaseItem(Properties properties, String regname) {
         super(properties);
         this.regname = regname;
-    }
-
-    @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack, world, entity, slot, selected);
     }
 
     @Override
@@ -37,12 +29,6 @@ public class BaseItem extends Item {
                 list.add(Component.literal(line));
             }
         }
-    }
-
-    @Override
-    public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-        super.finishUsingItem(itemstack, world, entity);
-        return itemstack;
     }
 
 }

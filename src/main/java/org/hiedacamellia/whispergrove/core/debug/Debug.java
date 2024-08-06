@@ -15,10 +15,10 @@ public class Debug {
     private static Logger logger;
     
 
-    public Debug(String prefix,Boolean debug){
+    public Debug(String modid,String prefix,Boolean debug){
         this.prefix = prefix;
         this.debugConfig = debug;
-        logger = LoggerFactory.getLogger(prefix);
+        logger = LoggerFactory.getLogger(modid);
     }
 
     public static void info(String message){

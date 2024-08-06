@@ -12,6 +12,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("tooltip.whispergrove.press_shift","Press Shift to display more information");
         add("mod.whispergrove", "Whisper Grove");
         add("itemGroup.whispergrove", "Whisper Grove");
         add("item.whispergrove.test_item", "Test Item");

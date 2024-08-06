@@ -28,7 +28,7 @@ public class WhisperGrove {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "whispergrove";
 
-    public static Debug DEBUG = new Debug("["+ Component.translatable("mod.whispergrove") +"]",Config.debug);
+    public static Debug DEBUG = new Debug(MODID,"["+ Component.translatable("mod.whispergrove") +"]",Config.debug);
 
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
