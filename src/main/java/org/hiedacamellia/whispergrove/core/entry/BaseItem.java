@@ -14,24 +14,16 @@ import java.util.List;
 
 public class BaseItem extends Item {
 
-    private final UseAnim useAnimation;
     private final String regname;
 
-    public BaseItem(int stacks,Rarity rarity,UseAnim useAnimation,String regname) {
-        super(new Item.Properties().stacksTo(stacks).rarity(rarity)
-                .food((new FoodProperties.Builder()).build()));
-        this.useAnimation = useAnimation;
+    public BaseItem(Properties properties, String regname) {
+        super(properties);
         this.regname = regname;
     }
 
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack itemstack) {
-        return useAnimation;
     }
 
     @Override
