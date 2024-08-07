@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.content.blocks;
+package org.hiedacamellia.whispergrove.content.common.blocks;
 
 import net.minecraft.world.level.material.MapColor;
 import org.hiedacamellia.whispergrove.core.entry.BaseBlock;

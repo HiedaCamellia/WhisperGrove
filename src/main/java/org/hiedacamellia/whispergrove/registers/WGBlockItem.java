@@ -4,7 +4,7 @@ import net.minecraft.world.item.BlockItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
-import org.hiedacamellia.whispergrove.content.blockitems.TestBlockItem;
+import org.hiedacamellia.whispergrove.content.common.blockitems.TestBlockItem;
 
 public class WGBlockItem {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(WhisperGrove.MODID);

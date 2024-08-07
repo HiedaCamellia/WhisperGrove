@@ -3,6 +3,9 @@ package org.hiedacamellia.whispergrove.core.data;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.data.gen.DescGen;
+
+import java.util.Map;
 
 public class ChineseLanguageProvider extends LanguageProvider {
 
@@ -21,5 +24,10 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("cmd.whispergrove.set.failed","设置值失败：%s");
             add("cmd.whispergrove.get.success","获取值成功：%f");
             add("cmd.whispergrove.get.failed","获取值失败：%s");
+
+            Map<String,String> desc = new DescGen().gendesc_zh();
+            for (Map.Entry<String, String> entry : desc.entrySet()) {
+                add(entry.getKey(),entry.getValue());
+            }
         }
 }

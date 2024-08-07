@@ -3,6 +3,9 @@ package org.hiedacamellia.whispergrove.core.data;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.data.gen.DescGen;
+
+import java.util.Map;
 
 public class EnglishLanguageProvider extends LanguageProvider {
 
@@ -25,6 +28,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("cmd.whispergrove.set.failed","Set Value failed: %s");
         add("cmd.whispergrove.get.success","Get Value success: %f");
         add("cmd.whispergrove.get.failed","Get Value failed: %s");
+
+        Map<String,String> desc = new DescGen().gendesc_en();
+        for (Map.Entry<String, String> entry : desc.entrySet()) {
+            add(entry.getKey(),entry.getValue());
+        }
 
     }
 }

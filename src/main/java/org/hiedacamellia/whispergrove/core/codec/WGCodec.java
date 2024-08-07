@@ -68,4 +68,14 @@ public class WGCodec {
             ByteBufCodecs.DOUBLE, Spleen::yang,
             Spleen::new
     );
+
+    public static final Codec<Refresh> REFRESH_CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.INT.fieldOf("tick").forGetter(Refresh::tick)
+            ).apply(instance, Refresh::new)
+    );
+    public static final StreamCodec<ByteBuf, Refresh> REFRESH_STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, Refresh::tick,
+            Refresh::new
+    );
 }

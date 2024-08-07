@@ -49,4 +49,7 @@ public class WGAttachment {
             "spleen", () -> AttachmentType.builder(() -> new Spleen(100.0, 100.0)).serialize(WGCodec.SPLEEN_CODEC).build()
     );
 
+    public static final Supplier<AttachmentType<Refresh>> REFRESH = ATTACHMENTS.register(
+            "refresh", () -> AttachmentType.builder(() -> new Refresh(0)).serialize(WGCodec.REFRESH_CODEC).build()
+    );
 }

@@ -1,6 +1,5 @@
-package org.hiedacamellia.whispergrove.content.blockitems;
+package org.hiedacamellia.whispergrove.content.common.blockitems;
 
-import net.minecraft.world.item.BlockItem;
 import org.hiedacamellia.whispergrove.core.entry.BaseBlockItem;
 import org.hiedacamellia.whispergrove.registers.WGBlock;
 

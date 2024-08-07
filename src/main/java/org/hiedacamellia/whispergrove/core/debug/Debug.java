@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class Debug {
 
-    private static String prefix = "[浅草轻语]";
+    private static String prefix = "[§a浅草轻语§r]";
     private static Boolean debugConfig = Config.debug;
     private static Logger logger = LoggerFactory.getLogger(WhisperGrove.MODID);
     
