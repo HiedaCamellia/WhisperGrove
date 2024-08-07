@@ -17,10 +17,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.core.data.Data;
-import org.hiedacamellia.whispergrove.registers.WGBlock;
-import org.hiedacamellia.whispergrove.registers.WGBlockItem;
-import org.hiedacamellia.whispergrove.registers.WGItem;
-import org.hiedacamellia.whispergrove.registers.WGTab;
+import org.hiedacamellia.whispergrove.registers.*;
 
 
 @Mod(WhisperGrove.MODID)
@@ -42,6 +39,7 @@ public class WhisperGrove {
         WGBlockItem.ITEMS.register(modEventBus);
         WGItem.ITEMS.register(modEventBus);
         WGTab.TABS.register(modEventBus);
+        WGAttachment.ATTACHMENTS.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.

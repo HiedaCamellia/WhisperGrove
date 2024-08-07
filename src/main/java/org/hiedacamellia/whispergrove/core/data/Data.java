@@ -9,6 +9,7 @@ public class Data {
         var helper = event.getExistingFileHelper();
         gen.addProvider(event.includeClient(), new EnglishLanguageProvider(packOutput));
         gen.addProvider(event.includeClient(), new ChineseLanguageProvider(packOutput));
+        gen.addProvider(event.includeClient(), new ClassicalChineseLanguageProvider(packOutput));
         gen.addProvider(event.includeClient(), new ModelProvider(packOutput, helper));
         gen.addProvider(event.includeClient(), new StateProvider(packOutput, helper));
     }
