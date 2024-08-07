@@ -102,8 +102,8 @@ public class Debug {
     //服务端调试信息
     public void send(String string, Player player) {
         Level level = player.level();
-        if(!level.isClientSide && debugConfig) {
+      //  if(!level.isClientSide && debugConfig) {
             player.sendSystemMessage(Component.literal(prefix  + string));
-        }
+       // }
     }
 }
