@@ -1,9 +1,11 @@
 package org.hiedacamellia.whispergrove.content.viscera;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import org.hiedacamellia.whispergrove.core.codec.record.Kidney;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
+import org.hiedacamellia.whispergrove.registers.WGEffect;
 
 public class KidneyEvent {
 
@@ -14,28 +16,32 @@ public class KidneyEvent {
 
         Kidney kidney = player.getData(WGAttachment.KIDNEY);
         double diff = kidney.yang() - kidney.yin();
-        if (diff >= 100.0) {
 
+        player.removeEffect(WGEffect.KIDNEY_HYPERACTIVITY);
+        player.removeEffect(WGEffect.KIDNEY_DETERIORATED);
+
+        if (diff >= 100.0) {
+            player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_HYPERACTIVITY, 300 , 2));
             return;
         }
         if (diff >= 60.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_HYPERACTIVITY, 300 , 1));
             return;
         }
         if (diff >= 30.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_HYPERACTIVITY, 300 , 0));
             return;
         }
         if (diff <= -100.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_DETERIORATED, 300 , 2));
             return;
         }
         if (diff <= -60.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_DETERIORATED, 300 , 1));
             return;
         }
         if (diff <= -30.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_DETERIORATED, 300 , 0));
             return;
         }
     }

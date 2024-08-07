@@ -1,9 +1,11 @@
 package org.hiedacamellia.whispergrove.content.viscera;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import org.hiedacamellia.whispergrove.core.codec.record.Spleen;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
+import org.hiedacamellia.whispergrove.registers.WGEffect;
 
 public class SpleenEvent {
 
@@ -14,28 +16,32 @@ public class SpleenEvent {
 
         Spleen spleen = player.getData(WGAttachment.SPLEEN);
         double diff = spleen.yang() - spleen.yin();
-        if (diff >= 100.0) {
 
+        player.removeEffect(WGEffect.SPLEEN_HYPERACTIVITY);
+        player.removeEffect(WGEffect.SPLEEN_DETERIORATED);
+
+        if (diff >= 100.0) {
+            player.addEffect(new MobEffectInstance(WGEffect.SPLEEN_HYPERACTIVITY, 300 , 2));
             return;
         }
         if (diff >= 60.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.SPLEEN_HYPERACTIVITY, 300 , 1));
             return;
         }
         if (diff >= 30.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.SPLEEN_HYPERACTIVITY, 300 , 0));
             return;
         }
         if (diff <= -100.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.SPLEEN_DETERIORATED, 300 , 2));
             return;
         }
         if (diff <= -60.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.SPLEEN_DETERIORATED, 300 , 1));
             return;
         }
         if (diff <= -30.0) {
-
+            player.addEffect(new MobEffectInstance(WGEffect.SPLEEN_DETERIORATED, 300 , 0));
             return;
         }
     }
