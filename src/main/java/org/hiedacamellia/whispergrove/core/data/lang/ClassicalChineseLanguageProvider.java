@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.data;
+package org.hiedacamellia.whispergrove.core.data.lang;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;

@@ -1,9 +1,10 @@
-package org.hiedacamellia.whispergrove.core.data;
+package org.hiedacamellia.whispergrove.core.data.lang;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.hiedacamellia.whispergrove.WhisperGrove;
-import org.hiedacamellia.whispergrove.core.data.gen.DescGen;
+import org.hiedacamellia.whispergrove.core.data.lang.gen.DescGen;
+import org.hiedacamellia.whispergrove.core.data.lang.gen.EffectGen;
 
 import java.util.Map;
 
@@ -31,6 +32,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
 
         Map<String,String> desc = new DescGen().gendesc_en();
         for (Map.Entry<String, String> entry : desc.entrySet()) {
+            add(entry.getKey(),entry.getValue());
+        }
+
+        Map<String,String> eff = new EffectGen().geneffect_en();
+        for (Map.Entry<String, String> entry : eff.entrySet()) {
             add(entry.getKey(),entry.getValue());
         }
 

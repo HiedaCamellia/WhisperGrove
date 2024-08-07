@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.data.gen;
+package org.hiedacamellia.whispergrove.core.data.lang.gen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class DescGen {
     private final String normal_desc_en = "Normal";
 
     private final String[] viscera_desc_zh = new String[]{"心","肝","肺","脾","肾"};
-    private final String[] diseases_desc_zh = new String[]{"亢奋","衰退"};
+    private final String[] diseases_desc_zh = new String[]{"亢","衰"};
     private final String[] levels_desc_zh = new String[]{"轻度","中度","重度"};
     private final String normal_desc_zh = "正常";
 
@@ -48,7 +48,7 @@ public class DescGen {
         for (String vis : viscera_desc_zh) {
             for (String dis : diseases_desc_zh) {
                 for (String level : levels_desc_zh) {
-                    values.add(vis + " " + dis + " " + level);
+                    values.add(vis + dis + " " + level);
                 }
             }
             values.add(vis + " " + normal_desc_zh);

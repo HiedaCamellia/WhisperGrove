@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.data;
+package org.hiedacamellia.whispergrove.core.data.provider;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
