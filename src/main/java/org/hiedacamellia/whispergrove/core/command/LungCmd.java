@@ -1,7 +1,6 @@
 package org.hiedacamellia.whispergrove.core.command;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
@@ -32,9 +31,9 @@ public class LungCmd {
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(lung.yin() + change, lung.yang()));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.modify.success",lung.yin() + change));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",lung.yin() + change).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",lung.yin() + change).getString());
                                                                     } catch (Exception e) {
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -48,9 +47,9 @@ public class LungCmd {
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(set, lung.yang()));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.set.success",set));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success",set).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success",set).getString());
                                                                     }catch (Exception e){
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -61,9 +60,9 @@ public class LungCmd {
                                                                 Player player = arguments.getSource().getPlayer();
                                                                 Lung lung = player.getData(WGAttachment.LUNG);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success",lung.yin()));
-                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success",lung.yin()).toString());
+                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success",lung.yin()).getString());
                                                             }catch (Exception e){
-                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).toString());
+                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).getString());
                                                             }
                                                             return 0;
                                                         }))))
@@ -78,9 +77,9 @@ public class LungCmd {
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(lung.yin(), lung.yang() + change));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.modify.success",lung.yang() + change));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",lung.yang() + change).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",lung.yang() + change).getString());
                                                                     }catch (Exception e){
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -94,9 +93,9 @@ public class LungCmd {
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(lung.yin(), set));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.set.success", set));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success", set).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success", set).getString());
                                                                     }catch (Exception e){
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -107,9 +106,9 @@ public class LungCmd {
                                                                 Player player = arguments.getSource().getPlayer();
                                                                 Lung lung = player.getData(WGAttachment.LUNG);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success", lung.yang()));
-                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success").toString());
+                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success").getString());
                                                             }catch (Exception e){
-                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).toString());
+                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).getString());
                                                             }
                                                             return 0;
                                                         })))

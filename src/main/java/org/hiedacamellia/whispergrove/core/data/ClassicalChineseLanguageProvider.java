@@ -13,11 +13,6 @@ public class ClassicalChineseLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("tooltip.whispergrove.press_shift","按住變鍵以示詳情。");
-        add("mod.whispergrove", "淺草輕語");
         add("itemGroup.whispergrove", "淺草輕語");
-        add("item.whispergrove.test_item", "Test Item");
-        add("tooltip.whispergrove.test_item", "This is a test item");
-        add("block.whispergrove.test_block", "Example Block");
-        add("tooltip.whispergrove.test_block", "This is an example block");
     }
 }

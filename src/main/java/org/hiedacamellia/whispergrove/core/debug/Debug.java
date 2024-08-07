@@ -5,20 +5,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.loading.FMLEnvironment;
+import org.hiedacamellia.whispergrove.Config;
+import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Debug {
 
-    private final String prefix;
-    private static Boolean debugConfig;
-    private static Logger logger;
+    private static String prefix = "[浅草轻语]";
+    private static Boolean debugConfig = Config.debug;
+    private static Logger logger = LoggerFactory.getLogger(WhisperGrove.MODID);
     
 
-    public Debug(String modid,String prefix,Boolean debug){
-        this.prefix = prefix;
-        debugConfig = debug;
-        logger = LoggerFactory.getLogger(modid);
+    public Debug(){
     }
 
     public static void info(String message){
@@ -88,12 +87,8 @@ public class Debug {
         return logger;
     }
 
-    public static String translateable(String s){
-        return Component.translatable(s).getString();
-    }
-
     //客户端调试信息
-    public void send(String string) {
+    public static void send(String string) {
         if (FMLEnvironment.dist.isClient()) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player != null && debugConfig) {
@@ -103,10 +98,10 @@ public class Debug {
     }
 
     //服务端调试信息
-    public void send(String string, Player player) {
+    public static void send(String string, Player player) {
         Level level = player.level();
-      //  if(!level.isClientSide && debugConfig) {
+        if(!level.isClientSide && debugConfig) {
             player.sendSystemMessage(Component.literal(prefix  + string));
-       // }
+        }
     }
 }

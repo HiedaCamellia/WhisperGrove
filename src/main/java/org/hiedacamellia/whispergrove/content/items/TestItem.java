@@ -7,6 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.core.entry.BaseItem;
 
 public class TestItem extends BaseItem {
@@ -19,7 +20,7 @@ public class TestItem extends BaseItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        WhisperGrove.DEBUG.send("TestItem#use");
+        Debug.send("TestItem#use");
         return super.use(level, player, hand);
     }
 }

@@ -1,7 +1,6 @@
 package org.hiedacamellia.whispergrove.core.command;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
@@ -32,9 +31,9 @@ public class SpleenCmd {
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(spleen.yin() + change, spleen.yang()));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.modify.success",spleen.yin() + change));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",spleen.yin() + change).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",spleen.yin() + change).getString());
                                                                     } catch (Exception e) {
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -48,9 +47,9 @@ public class SpleenCmd {
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(set, spleen.yang()));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.set.success",set));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success",set).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success",set).getString());
                                                                     }catch (Exception e){
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -61,9 +60,9 @@ public class SpleenCmd {
                                                                 Player player = arguments.getSource().getPlayer();
                                                                 Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success",spleen.yin()));
-                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success",spleen.yin()).toString());
+                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success",spleen.yin()).getString());
                                                             }catch (Exception e){
-                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).toString());
+                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).getString());
                                                             }
                                                             return 0;
                                                         }))))
@@ -78,9 +77,9 @@ public class SpleenCmd {
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(spleen.yin(), spleen.yang() + change));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.modify.success",spleen.yang() + change));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",spleen.yang() + change).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.modify.success",spleen.yang() + change).getString());
                                                                     }catch (Exception e){
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.modify.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -94,9 +93,9 @@ public class SpleenCmd {
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(spleen.yin(), set));
                                                                         player.sendSystemMessage(Component.translatable("cmd.whispergrove.set.success", set));
-                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success", set).toString());
+                                                                        Debug.debug(Component.translatable("cmd.whispergrove.set.success", set).getString());
                                                                     }catch (Exception e){
-                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).toString());
+                                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).getString());
                                                                     }
                                                                     return 0;
                                                                 }))))
@@ -107,9 +106,9 @@ public class SpleenCmd {
                                                                 Player player = arguments.getSource().getPlayer();
                                                                 Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success", spleen.yang()));
-                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success").toString());
+                                                                Debug.debug(Component.translatable("cmd.whispergrove.get.success").getString());
                                                             }catch (Exception e){
-                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).toString());
+                                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).getString());
                                                             }
                                                             return 0;
                                                         })))
