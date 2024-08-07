@@ -11,13 +11,13 @@ import org.slf4j.LoggerFactory;
 public class Debug {
 
     private final String prefix;
-    private final Boolean debugConfig;
+    private static Boolean debugConfig;
     private static Logger logger;
     
 
     public Debug(String modid,String prefix,Boolean debug){
         this.prefix = prefix;
-        this.debugConfig = debug;
+        debugConfig = debug;
         logger = LoggerFactory.getLogger(modid);
     }
 
@@ -34,15 +34,18 @@ public class Debug {
     }
 
     public static void debug(String message){
-        logger.debug(message);
+        if(debugConfig)
+            logger.debug(message);
     }
 
     public static void debug(String message, Throwable t){
-        logger.debug(message,t);
+        if(debugConfig)
+            logger.debug(message,t);
     }
 
     public static void debug(String format, Object arg) {
-        logger.debug(format, arg);
+        if(debugConfig)
+            logger.debug(format, arg);
     }
 
     public static void error(String message){
@@ -81,7 +84,7 @@ public class Debug {
         logger.trace(format, arg);
     }
 
-    public Logger getLogger(){
+    public static Logger getLogger(){
         return logger;
     }
 

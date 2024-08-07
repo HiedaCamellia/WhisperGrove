@@ -20,5 +20,12 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("block.whispergrove.test_block", "Example Block");
         add("tooltip.whispergrove.test_block", "This is an example block");
         add("network.whispergrove.failed","Failed to handle network data: %s");
+        add("cmd.whispergrove.modify.success","Modify Value success: %f");
+        add("cmd.whispergrove.modify.failed","Modify Value failed: %s");
+        add("cmd.whispergrove.set.success","Set Value success: %f");
+        add("cmd.whispergrove.set.failed","Set Value failed: %s");
+        add("cmd.whispergrove.get.success","Get Value success: %f");
+        add("cmd.whispergrove.get.failed","Get Value failed: %s");
+
     }
 }
