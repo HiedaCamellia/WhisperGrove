@@ -19,5 +19,6 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("tooltip.whispergrove.test_item", "This is a test item");
             add("block.whispergrove.test_block", "Example Block");
             add("tooltip.whispergrove.test_block", "This is an example block");
+            add("network.whispergrove.failed","无法处理网络数据: %s");
         }
 }

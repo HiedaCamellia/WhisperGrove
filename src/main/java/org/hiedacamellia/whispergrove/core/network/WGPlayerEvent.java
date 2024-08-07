@@ -11,37 +11,9 @@ public class WGPlayerEvent {
 
     @EventBusSubscriber
     public static class EventBusVariableHandlers {
-        @SubscribeEvent
-        public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
-            if (event.getEntity() instanceof ServerPlayer player) {
-                player.getData(WGAttachment.HEART).sync(event.getEntity());
-                player.getData(WGAttachment.KIDNEY).sync(event.getEntity());
-                player.getData(WGAttachment.LUNG).sync(event.getEntity());
-                player.getData(WGAttachment.LIVER).sync(event.getEntity());
-                player.getData(WGAttachment.SPLEEN).sync(event.getEntity());
-            }
-        }
 
         @SubscribeEvent
-        public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
-            if (event.getEntity() instanceof ServerPlayer player) {
-                player.getData(WGAttachment.HEART).sync(event.getEntity());
-                player.getData(WGAttachment.KIDNEY).sync(event.getEntity());
-                player.getData(WGAttachment.LUNG).sync(event.getEntity());
-                player.getData(WGAttachment.LIVER).sync(event.getEntity());
-                player.getData(WGAttachment.SPLEEN).sync(event.getEntity());
-            }
-        }
-
-        @SubscribeEvent
-        public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
-            if (event.getEntity() instanceof ServerPlayer player) {
-                player.getData(WGAttachment.HEART).sync(event.getEntity());
-                player.getData(WGAttachment.KIDNEY).sync(event.getEntity());
-                player.getData(WGAttachment.LUNG).sync(event.getEntity());
-                player.getData(WGAttachment.LIVER).sync(event.getEntity());
-                player.getData(WGAttachment.SPLEEN).sync(event.getEntity());
-            }
+        public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
         }
 
         @SubscribeEvent
