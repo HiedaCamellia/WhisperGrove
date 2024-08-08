@@ -108,8 +108,8 @@ public class WGItem {
 
     //人参 Panax ginseng
     //ren shen
-    public static final DeferredItem<BaseItem> REN_SHEN = ITEMS.register("wu_wei_zi",
-            () -> new BaseItemBuilder().regname("wu_wei_zi").properties(
+    public static final DeferredItem<BaseItem> REN_SHEN = ITEMS.register("ren_shen",
+            () -> new BaseItemBuilder().regname("ren_shen").properties(
                     new Item.Properties().rarity(Rarity.COMMON).food(
                             new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).alwaysEdible().build()
                     )
@@ -119,7 +119,7 @@ public class WGItem {
     //茯苓 Poria
     //fu ling
     public static final DeferredItem<BaseItem> FU_LING = ITEMS.register("fu_ling",
-            () -> new BaseItemBuilder().regname("Fu_ling").properties(
+            () -> new BaseItemBuilder().regname("fu_ling").properties(
                     new Item.Properties().rarity(Rarity.UNCOMMON)
             ).build()
     );
