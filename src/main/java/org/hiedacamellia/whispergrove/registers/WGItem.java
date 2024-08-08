@@ -10,6 +10,7 @@ import org.hiedacamellia.whispergrove.content.common.items.TestItem;
 import org.hiedacamellia.whispergrove.core.codec.record.Heart;
 import org.hiedacamellia.whispergrove.core.codec.record.Kidney;
 import org.hiedacamellia.whispergrove.core.entry.BaseItem;
+import org.hiedacamellia.whispergrove.core.entry.builder.BaseItemBuilder;
 
 
 public class WGItem {
@@ -19,7 +20,7 @@ public class WGItem {
     //public static final DeferredItem<BaseItem> TEST_ITEM = ITEMS.register("test_item",() -> new TestItem("test_item"));
 
     public static final DeferredItem<BaseItem> LIQUORICE = ITEMS.register("liquorice",
-            () -> BaseItem.builder().regname("liquorice").properties(
+            () -> new BaseItemBuilder().regname("liquorice").properties(
                     new Item.Properties().rarity(Rarity.COMMON).food(
                             new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).alwaysEdible().build()
                     )

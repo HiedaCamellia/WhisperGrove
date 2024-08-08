@@ -2,11 +2,17 @@ package org.hiedacamellia.whispergrove.core.entry;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import org.hiedacamellia.whispergrove.api.viscera.Updater;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
 import org.hiedacamellia.whispergrove.core.entry.builder.BaseItemBuilder;
+import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 import java.util.List;
@@ -34,8 +40,17 @@ public class BaseItem extends Item {
         }
     }
 
-    public static BaseItemBuilder builder(){
-        return new BaseItemBuilder();
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+        FoodProperties foodproperties = stack.getFoodProperties(livingEntity);
+        if (livingEntity instanceof Player player){
+            Updater.updateHeart(stack, player);
+            Updater.updateKidney(stack, player);
+            Updater.updateLiver(stack, player);
+            Updater.updateLung(stack, player);
+            Updater.updateSpleen(stack, player);
+        }
+        return foodproperties != null ? livingEntity.eat(level, stack, foodproperties) : stack;
     }
 
     public Heart getHeart(){
@@ -58,6 +73,9 @@ public class BaseItem extends Item {
         return this.components().get(WGDataComponent.SPLEEN.get());
     }
 
+    public String getReg() {
+        return regname;
+    }
 }
 
 
