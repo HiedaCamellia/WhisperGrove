@@ -5,6 +5,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import org.hiedacamellia.whispergrove.core.codec.record.*;
+import org.hiedacamellia.whispergrove.core.entry.builder.BaseItemBuilder;
+import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 import java.util.List;
 
@@ -29,6 +32,30 @@ public class BaseItem extends Item {
                 list.add(Component.literal(line));
             }
         }
+    }
+
+    public static BaseItemBuilder builder(){
+        return new BaseItemBuilder();
+    }
+
+    public Heart getHeart(){
+        return this.components().get(WGDataComponent.HEART.get());
+    }
+
+    public Kidney getKidney(){
+        return this.components().get(WGDataComponent.KIDNEY.get());
+    }
+
+    public Liver getLiver(){
+        return this.components().get(WGDataComponent.LIVER.get());
+    }
+
+    public Lung getLung(){
+        return this.components().get(WGDataComponent.LUNG.get());
+    }
+
+    public Spleen getSpleen(){
+        return this.components().get(WGDataComponent.SPLEEN.get());
     }
 
 }
