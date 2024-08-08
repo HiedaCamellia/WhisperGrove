@@ -15,7 +15,7 @@ public class WGTab {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WG_TAB = TABS.register("whispergrove", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.whispergrove")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(WGItem.TEST_ITEM::toStack)
+            .icon(WGItem.LIQUORICE::toStack)
             .displayItems((parameters, tab) -> {
                 for(DeferredHolder<Item, ? extends Item> item:WGItem.ITEMS.getEntries()){
                     tab.accept(item.get());
