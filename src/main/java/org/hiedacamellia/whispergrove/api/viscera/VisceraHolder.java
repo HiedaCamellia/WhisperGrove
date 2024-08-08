@@ -67,20 +67,45 @@ public record VisceraHolder(double yin, double yang) {
         player.setData(WGAttachment.HEART, toHeart());
     }
 
+    public ItemStack setHeart(ItemStack itemStack){
+        itemStack.set(WGDataComponent.HEART.get(), toHeart());
+        return itemStack;
+    }
+
     public void setKidney(Player player){
         player.setData(WGAttachment.KIDNEY, toKidney());
+    }
+
+    public ItemStack setKidney(ItemStack itemStack){
+        itemStack.set(WGDataComponent.KIDNEY.get(), toKidney());
+        return itemStack;
     }
 
     public void setLiver(Player player){
         player.setData(WGAttachment.LIVER, toLiver());
     }
 
+    public ItemStack setLiver(ItemStack itemStack){
+        itemStack.set(WGDataComponent.LIVER.get(), toLiver());
+        return itemStack;
+    }
+
     public void setLung(Player player){
         player.setData(WGAttachment.LUNG, toLung());
     }
 
+    public ItemStack setLung(ItemStack itemStack){
+        itemStack.set(WGDataComponent.LUNG.get(), toLung());
+        return itemStack;
+    }
+
     public void setSpleen(Player player){
         player.setData(WGAttachment.SPLEEN, toSpleen());
+    }
+
+    public ItemStack setSpleen(ItemStack itemStack){
+        itemStack.set(WGDataComponent.SPLEEN.get(), toSpleen());
+        return itemStack;
     }
 
     private VisceraHolder fromHeart(Heart heart){
