@@ -16,7 +16,7 @@ public class SpleenEvent {
         }
 
         Spleen spleen = player.getData(WGAttachment.SPLEEN);
-        double diff = spleen.yang() - spleen.yin();
+        double diff = spleen.yang() / spleen.yin();
 
         player.removeEffect(WGEffect.SPLEEN_HYPERACTIVITY);
         player.removeEffect(WGEffect.SPLEEN_DETERIORATED);
