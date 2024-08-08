@@ -13,7 +13,7 @@ public class DescGen {
 
     private final String[] viscera_desc_en = new String[]{"Heart","Liver","Lung","Spleen","Kidney"};
     private final String[] diseases_desc_en = new String[]{"Hyperactivity","Deteriorated"};
-    private final String[] levels_desc_en = new String[]{"Weak","Moderate","Critical"};
+    private final String[] levels_desc_en = new String[]{"Mild","Moderate","Critical"};
     private final String normal_desc_en = "Normal";
 
     private final String[] viscera_desc_zh = new String[]{"心","肝","肺","脾","肾"};

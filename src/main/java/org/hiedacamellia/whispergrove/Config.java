@@ -21,15 +21,30 @@ public class Config
 
     private static final ModConfigSpec.BooleanValue DEBUG = BUILDER
             .comment("Set to true to enable debug info")
+            .comment("设置为true以启用调试信息")
             .define("debug", true);
 
+    private static final ModConfigSpec.DoubleValue DISEASE_MILD = BUILDER
+            .comment("Get the ratio of yin and yang points of mild disease")
+            .comment("获得轻度疾病的阴阳点数比例")
+            .defineInRange("disease_mild", 1.3,1.0,Double.MAX_VALUE);
+
+    private static final ModConfigSpec.DoubleValue DISEASE_MODERATE = BUILDER
+            .comment("Get the ratio of yin and yang points of moderate disease")
+            .comment("获得中度疾病的阴阳点数比例")
+            .defineInRange("disease_moderate", 1.6,1.0,Double.MAX_VALUE);
+
+    private static final ModConfigSpec.DoubleValue DISEASE_CRITICAL = BUILDER
+            .comment("Get the ratio of yin and yang points of Critical disease")
+            .comment("获得重度疾病的阴阳点数比例")
+            .defineInRange("disease_Critical", 2.0,1.0,Double.MAX_VALUE);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean debug;
-//    public static int magicNumber;
-//    public static String magicNumberIntroduction;
-//    public static Set<Item> items;
+    public static double diseaseMild;
+    public static double diseaseModerate;
+    public static double diseaseCritical;
 
 //    private static boolean validateItemName(final Object obj)
 //    {
@@ -40,12 +55,8 @@ public class Config
     static void onLoad(final ModConfigEvent event)
     {
         debug = DEBUG.get();
-//        magicNumber = MAGIC_NUMBER.get();
-//        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
-//
-//        // convert the list of strings into a set of items
-//        items = ITEM_STRINGS.get().stream()
-//                .map(itemName -> BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemName)))
-//                .collect(Collectors.toSet());
+        diseaseMild = DISEASE_MILD.get();
+        diseaseModerate = DISEASE_MODERATE.get();
+        diseaseCritical = DISEASE_CRITICAL.get();
     }
 }

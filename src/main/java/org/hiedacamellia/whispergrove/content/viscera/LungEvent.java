@@ -3,6 +3,7 @@ package org.hiedacamellia.whispergrove.content.viscera;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
+import org.hiedacamellia.whispergrove.Config;
 import org.hiedacamellia.whispergrove.core.codec.record.Lung;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
@@ -15,32 +16,32 @@ public class LungEvent {
         }
 
         Lung lung = player.getData(WGAttachment.LUNG);
-        double diff = lung.yang() - lung.yin();
+        double diff = lung.yang() / lung.yin();
 
         player.removeEffect(WGEffect.LUNG_HYPERACTIVITY);
         player.removeEffect(WGEffect.LUNG_DETERIORATED);
 
-        if (diff >= 100.0) {
+        if (diff >= Config.diseaseCritical) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_HYPERACTIVITY, 300 , 2));
             return;
         }
-        if (diff >= 60.0) {
+        if (diff >= Config.diseaseModerate) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_HYPERACTIVITY, 300 , 1));
             return;
         }
-        if (diff >= 30.0) {
+        if (diff >= Config.diseaseMild) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_HYPERACTIVITY, 300 , 0));
             return;
         }
-        if (diff <= -100.0) {
+        if (diff <= 1/ Config.diseaseCritical) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_DETERIORATED, 300 , 2));
             return;
         }
-        if (diff <= -60.0) {
+        if (diff <= 1/Config.diseaseModerate) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_DETERIORATED, 300 , 1));
             return;
         }
-        if (diff <= -30.0) {
+        if (diff <= 1/Config.diseaseMild) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_DETERIORATED, 300 , 0));
             return;
         }
