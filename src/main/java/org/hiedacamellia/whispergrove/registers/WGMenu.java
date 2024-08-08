@@ -1,13 +1,11 @@
 package org.hiedacamellia.whispergrove.registers;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.client.menu.VisceraMenu;
-import org.hiedacamellia.whispergrove.content.client.screen.VisceraScreen;
 
 import java.util.function.Supplier;
 

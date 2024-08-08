@@ -1,6 +1,5 @@
 package org.hiedacamellia.whispergrove.core.entry;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;

@@ -7,7 +7,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.hiedacamellia.whispergrove.content.viscera.*;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
-import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 
 @EventBusSubscriber

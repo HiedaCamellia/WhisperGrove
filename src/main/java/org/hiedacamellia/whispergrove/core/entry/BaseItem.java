@@ -11,8 +11,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.whispergrove.api.viscera.Updater;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
-import org.hiedacamellia.whispergrove.core.entry.builder.BaseItemBuilder;
-import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 import java.util.List;

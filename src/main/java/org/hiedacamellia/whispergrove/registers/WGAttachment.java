@@ -1,8 +1,6 @@
 package org.hiedacamellia.whispergrove.registers;
 
-import com.mojang.serialization.Codec;
 import net.neoforged.neoforge.attachment.AttachmentType;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.whispergrove.WhisperGrove;
