@@ -251,7 +251,7 @@ public class WGItem {
 
     //桂枝皮 Cassia Twig Bark
     //Gui zhi pi
-    public static final DeferredItem<BaseItem> GUI_ZHI_PI = ITEMS.register("gui_zhi-pi",
+    public static final DeferredItem<BaseItem> GUI_ZHI_PI = ITEMS.register("gui_zhi_pi",
             () -> new BaseItemBuilder().regname("gui_zhi_pi").properties(
                     new Item.Properties().rarity(Rarity.COMMON)
             ).build()
