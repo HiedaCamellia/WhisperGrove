@@ -15,4 +15,5 @@ public class ClassicalChineseLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.press_shift","按住變鍵以示詳情。");
         add("itemGroup.whispergrove", "淺草輕語");
     }
+
 }

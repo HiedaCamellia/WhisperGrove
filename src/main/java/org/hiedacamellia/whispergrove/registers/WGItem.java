@@ -14,7 +14,7 @@ public class WGItem {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(WhisperGrove.MODID);
 
-    //黄芪 Astragalus membranaceus
+    //黄芪 Radix Astragali
     //huang qi
     public static final DeferredItem<BaseItem> HUANG_QI = ITEMS.register("huang_qi",
             () -> new BaseItemBuilder().regname("huang_qi").properties(
@@ -40,7 +40,7 @@ public class WGItem {
             ).build()
     );
 
-    //桂枝 Cinnamomum cassia
+    //桂枝 Cassia Twig
     //gui zhi
     public static final DeferredItem<BaseItem> GUI_ZHI = ITEMS.register("gui_zhi",
             () -> new BaseItemBuilder().regname("gui_zhi").properties(
@@ -56,7 +56,7 @@ public class WGItem {
             ).build()
     );
 
-    //熟地黄 oasted Rehmannia
+    //熟地黄 Roasted Rehmannia
     //shu di huang
     public static final DeferredItem<BaseItem> SHU_DI_HUANG = ITEMS.register("shu_di_huang",
             () -> new BaseItemBuilder().regname("shu_di_huang").properties(
@@ -222,7 +222,7 @@ public class WGItem {
             ).build()
     );
 
-    //生甘草 Liquorice Root
+    //生甘草 Slender Licorice Root
     //sheng gan cao
     public static final DeferredItem<BaseItem> SHENG_GAN_CAO = ITEMS.register("sheng_gan_cao",
             () -> new BaseItemBuilder().regname("sheng_gan_cao").properties(

@@ -89,10 +89,5 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("item.whispergrove.sheng_gan_cao","生甘草");
             add("tooltip.whispergrove.sheng_gan_cao","");
 
-
-
-
-
-
         }
 }
