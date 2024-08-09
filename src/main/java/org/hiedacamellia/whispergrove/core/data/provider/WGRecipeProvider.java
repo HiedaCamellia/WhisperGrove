@@ -24,9 +24,9 @@ public class WGRecipeProvider extends RecipeProvider {
                 // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack(Items.DIAMOND),
                 Blocks.DIRT.defaultBlockState(),
-                Ingredient.of(Items.APPLE)
+                Ingredient.of(Items.IRON_INGOT)
         )
-                .unlockedBy("has_apple", has(Items.APPLE))
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
     }
 }

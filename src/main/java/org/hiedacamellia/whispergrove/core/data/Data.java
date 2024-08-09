@@ -6,6 +6,7 @@ import org.hiedacamellia.whispergrove.core.data.lang.ClassicalChineseLanguagePro
 import org.hiedacamellia.whispergrove.core.data.lang.EnglishLanguageProvider;
 import org.hiedacamellia.whispergrove.core.data.provider.ModelProvider;
 import org.hiedacamellia.whispergrove.core.data.provider.StateProvider;
+import org.hiedacamellia.whispergrove.core.data.provider.WGRecipeProvider;
 
 public class Data {
     public static void onGatherData(GatherDataEvent event) {
@@ -17,5 +18,6 @@ public class Data {
         gen.addProvider(event.includeClient(), new ClassicalChineseLanguageProvider(packOutput));
         gen.addProvider(event.includeClient(), new ModelProvider(packOutput, helper));
         gen.addProvider(event.includeClient(), new StateProvider(packOutput, helper));
+        gen.addProvider(event.includeServer(), new WGRecipeProvider(packOutput, event.getLookupProvider()));
     }
 }
