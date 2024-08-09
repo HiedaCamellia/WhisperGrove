@@ -9,6 +9,8 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.hiedacamellia.whispergrove.registers.WGRicipe;
+import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
 
 public class RightClickBlockRecipe implements Recipe<RightClickInput> {
     // An in-code representation of our recipe data. This can be basically anything you want.
@@ -36,12 +38,12 @@ public class RightClickBlockRecipe implements Recipe<RightClickInput> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return null;
+        return WGRicipeSerializer.RIGHT_CLICK_BLOCK.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return null;
+        return WGRicipe.RIGHT_CLICK_BLOCK.get();
     }
 
     // Grid-based recipes should return whether their recipe can fit in the given dimensions.
@@ -73,6 +75,22 @@ public class RightClickBlockRecipe implements Recipe<RightClickInput> {
         return this.result.copy();
     }
 
+
     // This example outlines the most important methods. There is a number of other methods to override.
     // Check the class definition of Recipe to view them all.
+
+
+    public Ingredient getInputItem() {
+        return inputItem;
+    }
+
+    public BlockState getInputState() {
+        return inputState;
+    }
+
+    public ItemStack getResult() {
+        return result;
+    }
+
+
 }

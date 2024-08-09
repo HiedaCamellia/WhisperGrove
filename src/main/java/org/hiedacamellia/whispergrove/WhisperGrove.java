@@ -35,6 +35,8 @@ public class WhisperGrove {
         WGDataComponent.DATA_COMPONENTS.register(modEventBus);
         WGEffect.EFFECTS.register(modEventBus);
         WGMenu.MENUS.register(modEventBus);
+        WGRicipe.RECIPE_TYPES.register(modEventBus);
+        WGRicipeSerializer.RECIPE_SERIALIZERS.register(modEventBus);
 
 
         NeoForge.EVENT_BUS.register(this);
