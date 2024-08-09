@@ -60,7 +60,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.ding_xiang","");
         add("item.whispergrove.wu_wei_zi","Schisandra chinensis");
         add("tooltip.whispergrove.wu_wei_zi","");
-        add("item.whispergrove.zhi_gan_cao","Liquorice Root");
+        add("item.whispergrove.zhi_gan_cao","Roasted Liquorice Root");
         add("tooltip.whispergrove.zhi_gan_cao","");
         add("item.whispergrove.ren_shen","Panax ginseng");
         add("tooltip.whispergrove.ren_shen","");
@@ -90,7 +90,22 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.gui_ban_jiao","");
         add("item.whispergrove.sheng_di_huang","Drying Rehmannia Root");
         add("tooltip.whispergrove.sheng_di_huang","");
-        add("item.whispergrove.sheng_gan_cao","Slender Licorice Root");
+        add("item.whispergrove.sheng_gan_cao","Drying Licorice Root");
         add("tooltip.whispergrove.sheng_gan_cao","");
+
+        add("item.whispergrove.sliced_huang_qi","Sliced Radix Astragali");
+        add("tooltip.whispergrove.sliced_huang_qi","");
+        add("item.whispergrove.sliced_gui_zhi","Sliced Cassia Twig");
+        add("tooltip.whispergrove.sliced_gui_zhi","");
+        add("item.whispergrove.gui_zhi_pi","Cassia Twig Bark");
+        add("tooltip.whispergrove.gui_zhi_pi","");
+        add("item.whispergrove.di_huang","Rehmannia Root");
+        add("tooltip.whispergrove.di_huang","");
+        add("item.whispergrove.gan_cao","Licorice Root");
+        add("tooltip.whispergrove.gan_cao","");
+        add("item.whispergrove.sliced_ren_shen","Sliced Panax ginseng");
+        add("tooltip.whispergrove.sliced_ren_shen","");
+        add("item.whispergrove.sliced_long_dan_cao","SLiced Gentian");
+        add("tooltip.whispergrove.sliced_long_dan_cao","");
     }
 }

@@ -89,5 +89,20 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("item.whispergrove.sheng_gan_cao","生甘草");
             add("tooltip.whispergrove.sheng_gan_cao","");
 
+            add("item.whispergrove.sliced_huang_qi","黄芪切片");
+            add("tooltip.whispergrove.sliced_huang_qi","");
+            add("item.whispergrove.sliced_gui_zhi","桂枝切片");
+            add("tooltip.whispergrove.sliced_gui_zhi","");
+            add("item.whispergrove.gui_zhi_pi","桂枝皮");
+            add("tooltip.whispergrove.gui_zhi_pi","");
+            add("item.whispergrove.di_huang","地黄");
+            add("tooltip.whispergrove.di_huang","");
+            add("item.whispergrove.gan_cao","甘草");
+            add("tooltip.whispergrove.gan_cao","");
+            add("item.whispergrove.sliced_ren_shen","人参切片");
+            add("tooltip.whispergrove.sliced_ren_shen","");
+            add("item.whispergrove.sliced_long_dan_cao","龙胆草切片");
+            add("tooltip.whispergrove.sliced_long_dan_cao","");
+
         }
 }

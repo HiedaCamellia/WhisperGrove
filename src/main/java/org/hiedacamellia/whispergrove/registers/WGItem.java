@@ -98,7 +98,7 @@ public class WGItem {
             ).build()
     );
 
-    //炙甘草 Liquorice Root
+    //炙甘草 Roasted Liquorice Root
     //zhi gan cao
     public static final DeferredItem<BaseItem> ZHI_GAN_CAO = ITEMS.register("zhi_gan_cao",
             () -> new BaseItemBuilder().regname("zhi_gan_cao").properties(
@@ -222,10 +222,70 @@ public class WGItem {
             ).build()
     );
 
-    //生甘草 Slender Licorice Root
+    //生甘草 Drying Licorice Root
     //sheng gan cao
     public static final DeferredItem<BaseItem> SHENG_GAN_CAO = ITEMS.register("sheng_gan_cao",
             () -> new BaseItemBuilder().regname("sheng_gan_cao").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+
+    //黄芪切片 Sliced Radix Astragali
+    //Sliced huang qi
+    public static final DeferredItem<BaseItem> SLICED_HUANG_QI = ITEMS.register("sliced_huang_qi",
+            () -> new BaseItemBuilder().regname("sliced_huang_qi").properties(
+                    new Item.Properties().rarity(Rarity.COMMON).food(
+                            new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).alwaysEdible().build()
+                    )
+            ).build()
+    );
+
+    //桂枝切片 Sliced Cassia Twig
+    //Sliced Gui Zhi
+    public static final DeferredItem<BaseItem> SLICED_GUI_ZHI = ITEMS.register("sliced_gui_zhi",
+            () -> new BaseItemBuilder().regname("sliced_gui_zhi").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //桂枝皮 Cassia Twig Bark
+    //Gui zhi pi
+    public static final DeferredItem<BaseItem> GUI_ZHI_PI = ITEMS.register("gui_zhi-pi",
+            () -> new BaseItemBuilder().regname("gui_zhi_pi").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //地黄 Rehmannia Root
+    //di huang
+    public static final DeferredItem<BaseItem> DI_HUANG = ITEMS.register("di_huang",
+            () -> new BaseItemBuilder().regname("di_huang").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //甘草 Licorice Root
+    public static final DeferredItem<BaseItem> GAN_CAO = ITEMS.register("gan_cao",
+            () -> new BaseItemBuilder().regname("gan_cao").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //人参切片 Sliced Panax ginseng
+    //Sliced ren shen
+    public static final DeferredItem<BaseItem> SLICED_REN_SHEN = ITEMS.register("sliced_ren_shen",
+            () -> new BaseItemBuilder().regname("sliced_ren_shen").properties(
+                    new Item.Properties().rarity(Rarity.COMMON).food(
+                            new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).alwaysEdible().build()
+                    )
+            ).build()
+    );
+
+    //龙胆草切片 SLiced Gentian
+    //sliced long dan cao
+    public static final DeferredItem<BaseItem> SLICED_LONG_DAN_CAO = ITEMS.register("sliced_long_dan_cao",
+            () -> new BaseItemBuilder().regname("sliced_long_dan_cao").properties(
                     new Item.Properties().rarity(Rarity.COMMON)
             ).build()
     );
