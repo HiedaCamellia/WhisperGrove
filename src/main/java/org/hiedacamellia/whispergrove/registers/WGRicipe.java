@@ -6,9 +6,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessRecipe;
 import org.hiedacamellia.whispergrove.core.recipe.RightClickBlockRecipe;
-
-import java.util.function.Supplier;
 
 public class WGRicipe {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES =
@@ -20,4 +19,11 @@ public class WGRicipe {
                     // We need the qualifying generic here due to generics being generics.
                     () -> RecipeType.<RightClickBlockRecipe>simple(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "right_click_block"))
             );
+
+    public static final DeferredHolder<RecipeType<?>,RecipeType<GeneralHerbProcessRecipe>> GENERAL_HERB_PROCESS =
+            RECIPE_TYPES.register(
+                    "general_herb_process",
+                    () -> RecipeType.<GeneralHerbProcessRecipe>simple(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "general_herb_process"))
+            );
+
 }
