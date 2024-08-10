@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput> {
@@ -61,12 +62,35 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     // We check our blockstate and our item stack, and only return true if both match.
     @Override
     public boolean matches(GeneralHerbProcessInput input, Level level) {
+
+        if (this.inputItems.size() != input.stack().size()) {
+            return false;
+        }
+
+        // 创建两个可修改的副本
+        List<Ingredient> ingredientsCopy = new ArrayList<>(this.inputItems);
+        List<ItemStack> itemStacksCopy = new ArrayList<>(input.stack());
+
+        // 外循环遍历 Ingredient 列表
         for (Ingredient ingredient : this.inputItems) {
-            if (!ingredient.test(input.stack())) {
-                return false;
+            boolean foundMatch = false;
+
+            // 内循环遍历 ItemStack 列表
+            for (ItemStack itemStack : itemStacksCopy) {
+                if (ingredient.test(itemStack)) {
+                    itemStacksCopy.remove(itemStack); // 找到匹配项后移除
+                    ingredientsCopy.remove(ingredient); // 找到匹配项后移除
+                    foundMatch = true;
+                    break; // 停止内循环，继续下一个 Ingredient
+                }
+            }
+            if (!foundMatch) {
+                return false; // 如果没有找到匹配项，则返回 false
             }
         }
-        return this.inputState == input.state();
+
+        // 检查两个列表是否为空，如果是，则表示所有元素匹配
+        return itemStacksCopy.isEmpty()&&ingredientsCopy.isEmpty();
     }
 
     // Return an UNMODIFIABLE version of your result here. The result of this method is mainly intended

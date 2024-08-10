@@ -5,11 +5,13 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
 
-public record GeneralHerbProcessInput(BlockState state, ItemStack stack)implements RecipeInput {
+import java.util.List;
+
+public record GeneralHerbProcessInput(BlockState state, List<ItemStack> stack)implements RecipeInput {
     @Override
     public ItemStack getItem(int slot) {
-        if (slot != 0) Debug.send("No item for index " + slot);
-        return this.stack();
+        if (slot >= size()) Debug.send("No item for index " + slot);
+        return this.stack().get(slot);
     }
 
     @Override

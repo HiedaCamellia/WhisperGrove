@@ -10,11 +10,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import org.hiedacamellia.whispergrove.core.recipe.RightClickRicipeBuilder;
 import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessRecipeBuilder;
-import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.IngredientHelper;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 public class WGRecipeProvider extends RecipeProvider {
@@ -35,11 +32,10 @@ public class WGRecipeProvider extends RecipeProvider {
                 .save(output);
 
         new GeneralHerbProcessRecipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
-                new ItemStack(Items.DIAMOND),
-                Blocks.DIRT.defaultBlockState(),
-                100,
-                IngredientHelper.add(Ingredient.of(Items.IRON_INGOT)).build()
+                new ItemStack(Items.DIAMOND),//产物
+                Blocks.DIRT.defaultBlockState(),//工作台方块
+                100,//运转时间
+                Arrays.asList(Ingredient.of(Items.IRON_INGOT),Ingredient.of(Items.APPLE))//输入物品
         )
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
