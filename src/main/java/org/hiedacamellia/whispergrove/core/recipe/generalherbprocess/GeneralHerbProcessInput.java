@@ -16,6 +16,6 @@ public record GeneralHerbProcessInput(BlockState state, List<ItemStack> stack)im
 
     @Override
     public int size() {
-        return 5;
+        return 10;
     }
 }

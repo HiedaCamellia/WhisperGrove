@@ -17,6 +17,7 @@ public class GeneralHerbProcessRecipeSerializer implements RecipeSerializer<Gene
             BlockState.CODEC.fieldOf("state").forGetter(GeneralHerbProcessRecipe::getInputState),
             Codec.list(Ingredient.CODEC).fieldOf("ingredient").forGetter(GeneralHerbProcessRecipe::getInputItems),
             Codec.INT.fieldOf("processtime").forGetter(GeneralHerbProcessRecipe::getProcesstime),
+            Codec.BOOL.fieldOf("ordered").forGetter(GeneralHerbProcessRecipe::isOrdered),
             ItemStack.CODEC.fieldOf("result").forGetter(GeneralHerbProcessRecipe::getResult)
     ).apply(inst, GeneralHerbProcessRecipe::new));
     public static final StreamCodec<RegistryFriendlyByteBuf, GeneralHerbProcessRecipe> STREAM_CODEC =
@@ -24,6 +25,7 @@ public class GeneralHerbProcessRecipeSerializer implements RecipeSerializer<Gene
                     ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY), GeneralHerbProcessRecipe::getInputState,
                     ByteBufCodecs.fromCodec(Codec.list(Ingredient.CODEC)), GeneralHerbProcessRecipe::getInputItems,
                     ByteBufCodecs.INT, GeneralHerbProcessRecipe::getProcesstime,
+                    ByteBufCodecs.BOOL, GeneralHerbProcessRecipe::isOrdered,
                     ItemStack.STREAM_CODEC, GeneralHerbProcessRecipe::getResult,
                     GeneralHerbProcessRecipe::new
             );

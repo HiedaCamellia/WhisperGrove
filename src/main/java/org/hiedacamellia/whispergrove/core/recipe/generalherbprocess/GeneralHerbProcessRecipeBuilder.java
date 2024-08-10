@@ -17,15 +17,17 @@ public class GeneralHerbProcessRecipeBuilder extends BaseRicipeBuilder {
     private BlockState inputState;
     private List<Ingredient> inputItems;
     private int processtime;
+    private final boolean ordered;
 
     // Since we have exactly one of each input, we pass them to the constructor.
     // Builders for recipe serializers that have ingredient lists of some sort would usually
     // initialize an empty list and have #addIngredient or similar methods instead.
-    public GeneralHerbProcessRecipeBuilder(ItemStack result, BlockState inputState,int processtime, List<Ingredient> inputItems) {
+    public GeneralHerbProcessRecipeBuilder(ItemStack result, BlockState inputState, int processtime, boolean ordered, List<Ingredient> inputItems) {
         super(result);
         this.inputState = inputState;
         this.inputItems = inputItems;
         this.processtime = processtime;
+        this.ordered = ordered;
     }
 
     // Saves a recipe using the given RecipeOutput and id. This method is defined in the RecipeBuilder interface.
@@ -38,7 +40,7 @@ public class GeneralHerbProcessRecipeBuilder extends BaseRicipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
         // Our factory parameters are the result, the block state, and the ingredient.
-        GeneralHerbProcessRecipe recipe = new GeneralHerbProcessRecipe(this.inputState, this.inputItems, this.processtime,this.result);
+        GeneralHerbProcessRecipe recipe = new GeneralHerbProcessRecipe(this.inputState, this.inputItems, this.processtime, this.ordered, this.result);
         // Pass the id, the recipe, and the recipe advancement into the RecipeOutput.
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));
     }

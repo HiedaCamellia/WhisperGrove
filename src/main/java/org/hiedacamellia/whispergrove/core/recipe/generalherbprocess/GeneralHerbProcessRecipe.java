@@ -22,13 +22,15 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     private final BlockState inputState;
     private final List<Ingredient> inputItems;
     private final int processtime;
+    private final boolean ordered;
     private final ItemStack result;
 
     // Add a constructor that sets all properties.
-    public GeneralHerbProcessRecipe(BlockState inputState, List<Ingredient> inputItems, int processtime, ItemStack result) {
+    public GeneralHerbProcessRecipe(BlockState inputState, List<Ingredient> inputItems, int processtime, boolean ordered, ItemStack result) {
         this.inputState = inputState;
         this.inputItems = inputItems;
         this.processtime = processtime;
+        this.ordered = ordered;
         this.result = result;
     }
 
@@ -62,35 +64,49 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     // We check our blockstate and our item stack, and only return true if both match.
     @Override
     public boolean matches(GeneralHerbProcessInput input, Level level) {
-
-        if (this.inputItems.size() != input.stack().size()) {
-            return false;
-        }
-
-        // 创建两个可修改的副本
-        List<Ingredient> ingredientsCopy = new ArrayList<>(this.inputItems);
-        List<ItemStack> itemStacksCopy = new ArrayList<>(input.stack());
-
-        // 外循环遍历 Ingredient 列表
-        for (Ingredient ingredient : this.inputItems) {
-            boolean foundMatch = false;
-
-            // 内循环遍历 ItemStack 列表
-            for (ItemStack itemStack : itemStacksCopy) {
-                if (ingredient.test(itemStack)) {
-                    itemStacksCopy.remove(itemStack); // 找到匹配项后移除
-                    ingredientsCopy.remove(ingredient); // 找到匹配项后移除
-                    foundMatch = true;
-                    break; // 停止内循环，继续下一个 Ingredient
+        if(ordered) {
+            
+            if (this.inputItems.size() != input.stack().size()) {
+                return false;
+            }
+            for (int i = 0; i < this.inputItems.size(); i++) {
+                if (this.inputItems.get(i).test(input.stack().get(i))) {
+                    return false;
                 }
             }
-            if (!foundMatch) {
-                return false; // 如果没有找到匹配项，则返回 false
+
+            return true;
+
+        }else {
+            if (this.inputItems.size() != input.stack().size()) {
+                return false;
             }
+
+            // 创建两个可修改的副本
+            List<Ingredient> ingredientsCopy = new ArrayList<>(this.inputItems);
+            List<ItemStack> itemStacksCopy = new ArrayList<>(input.stack());
+
+            // 外循环遍历 Ingredient 列表
+            for (Ingredient ingredient : this.inputItems) {
+                boolean foundMatch = false;
+
+                // 内循环遍历 ItemStack 列表
+                for (ItemStack itemStack : itemStacksCopy) {
+                    if (ingredient.test(itemStack)) {
+                        itemStacksCopy.remove(itemStack); // 找到匹配项后移除
+                        ingredientsCopy.remove(ingredient); // 找到匹配项后移除
+                        foundMatch = true;
+                        break; // 停止内循环，继续下一个 Ingredient
+                    }
+                }
+                if (!foundMatch) {
+                    return false; // 如果没有找到匹配项，则返回 false
+                }
+            }
+            // 检查两个列表是否为空，如果是，则表示所有元素匹配
+            return itemStacksCopy.isEmpty() && ingredientsCopy.isEmpty();
         }
 
-        // 检查两个列表是否为空，如果是，则表示所有元素匹配
-        return itemStacksCopy.isEmpty()&&ingredientsCopy.isEmpty();
     }
 
     // Return an UNMODIFIABLE version of your result here. The result of this method is mainly intended
@@ -127,6 +143,10 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
 
     public int getProcesstime() {
         return processtime;
+    }
+
+    public boolean isOrdered() {
+        return ordered;
     }
 
 

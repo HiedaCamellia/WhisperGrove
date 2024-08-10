@@ -35,6 +35,7 @@ public class WGRecipeProvider extends RecipeProvider {
                 new ItemStack(Items.DIAMOND),//产物
                 Blocks.DIRT.defaultBlockState(),//工作台方块
                 100,//运转时间
+                false,//是否有序
                 Arrays.asList(Ingredient.of(Items.IRON_INGOT),Ingredient.of(Items.APPLE))//输入物品
         )
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
