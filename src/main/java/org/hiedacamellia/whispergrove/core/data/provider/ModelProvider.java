@@ -43,123 +43,109 @@ public class ModelProvider extends ItemModelProvider {
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
                 ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "hai_piao_xiao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("fu_zi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "fu_zi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("ding_xiang",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "ding_xiang"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("wu_wei_zi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "wu_wei_zi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("zhi_gan_cao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "zhi_gan_cao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("ren_shen",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "ren_shen"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("fu_ling",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "fu_ling"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("mai_ya",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "mai_ya"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("e_jiao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "e_jiao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("duan_long_gu",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "duan_long_gu"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("he_huan_pi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "he_huan_pi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("zhu_ye",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "zhu_ye"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("long_dan_cao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "long_dan_cao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("pu_gong_ying",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "pu_gong_ying"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("zhu_gu",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "zhu_gu"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("kun_bu",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "kun_bu"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("han_shui_shi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "han_shui_shi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("gui_ban_jiao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "gui_ban_jiao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("sheng_di_huang",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sheng_di_huang"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("sheng_gan_cao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sheng_gan_cao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("sliced_huang_qi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sliced_huang_qi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("sliced_gui_zhi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sliced_gui_zhi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("gui_zhi_pi",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "gui_zhi_pi"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("di_huang",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "di_huang"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("gan_cao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "gan_cao"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("sliced_ren_shen",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sliced_ren_shen"));
 
-        this.singleTexture("huang_qi",
+        this.singleTexture("sliced_long_dan_cao",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
-
-        this.singleTexture("huang_qi",
-                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
-
-        this.singleTexture("huang_qi",
-                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
-
-        this.singleTexture("huang_qi",
-                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "huang_qi"));
-
-
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sliced_long_dan_cao"));
 
         //        singleTexture("yang_bian",
 //                ResourceLocation.withDefaultNamespace("item/generated"),
