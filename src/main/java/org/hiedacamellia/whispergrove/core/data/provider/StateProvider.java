@@ -22,8 +22,12 @@ public class StateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(WGBlock.RouGuiLeaves.get(), models().leaves("rou_gui_leaves", modLoc("block/rou_gui_leaves")));
 
-        simpleBlockWithItem(WGBlock.RouGuiBlanks.get(), cubeAll(WGBlock.RouGuiBlanks.get()));
+        simpleBlockWithItem(WGBlock.RouGuiPlanks.get(), cubeAll(WGBlock.RouGuiPlanks.get()));
 
+        slabBlock(WGBlock.RouGuiSlab.get(),modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks"));
+        simpleBlockItem(WGBlock.RouGuiSlab.get(),models().slab("rou_gui_slab",modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks")));
 
+        stairsBlock(WGBlock.RouGuiStair.get(),modLoc("block/rou_gui_planks"));
+        simpleBlockItem(WGBlock.RouGuiStair.get(),models().stairs("rou_gui_stair",modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks")));
     }
 }

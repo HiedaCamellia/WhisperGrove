@@ -117,5 +117,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.rou_gui_leaves","");
         add("block.whispergrove.rou_gui_planks","肉桂 Blank");
         add("tooltip.whispergrove.rou_gui_planks","");
+        add("block.whispergrove.rou_gui_slab","肉桂 Slab");
+        add("tooltip.whispergrove.rou_gui_slab","");
+        add("block.whispergrove.rou_gui_stair","肉桂 Stair");
+        add("tooltip.whispergrove.rou_gui_stair","");
     }
 }

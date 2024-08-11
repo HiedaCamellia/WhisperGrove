@@ -112,5 +112,9 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("tooltip.whispergrove.rou_gui_leaves","");
             add("block.whispergrove.rou_gui_planks","肉桂木板");
             add("tooltip.whispergrove.rou_gui_planks","");
+            add("block.whispergrove.rou_gui_slab","肉桂台阶");
+            add("tooltip.whispergrove.rou_gui_slab","");
+            add("block.whispergrove.rou_gui_stair","肉桂楼梯");
+            add("tooltip.whispergrove.rou_gui_stair","");
         }
 }
