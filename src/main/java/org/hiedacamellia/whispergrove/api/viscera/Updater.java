@@ -8,8 +8,8 @@ import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 public class Updater {
 
-    public static Heart updateHeart(Heart item, Heart player){
-        return new Heart(item.yin() + player.yin(), item.yang() + player.yang());
+    public static Heart updateHeart(Heart item, Heart item2){
+        return new Heart(item.yin() + item2.yin(), item.yang() + item2.yang());
     }
 
     public static void updateHeart(ItemStack itemStack, Player player){
@@ -20,8 +20,8 @@ public class Updater {
         }
     }
 
-    public static Kidney updateKidney(Kidney item, Kidney player){
-        return new Kidney(item.yin() + player.yin(), item.yang() + player.yang());
+    public static Kidney updateKidney(Kidney item, Kidney item2){
+        return new Kidney(item.yin() + item2.yin(), item.yang() + item2.yang());
     }
 
     public static void updateKidney(ItemStack itemStack, Player player){
@@ -32,8 +32,8 @@ public class Updater {
         }
     }
 
-    public static Liver updateLiver(Liver item, Liver player){
-        return new Liver(item.yin() + player.yin(), item.yang() + player.yang());
+    public static Liver updateLiver(Liver item, Liver item2){
+        return new Liver(item.yin() + item2.yin(), item.yang() + item2.yang());
     }
 
     public static void updateLiver(ItemStack itemStack, Player player){
@@ -44,8 +44,8 @@ public class Updater {
         }
     }
 
-    public static Lung updateLung(Lung item, Lung player){
-        return new Lung(item.yin() + player.yin(), item.yang() + player.yang());
+    public static Lung updateLung(Lung item, Lung item2){
+        return new Lung(item.yin() + item2.yin(), item.yang() + item2.yang());
     }
 
     public static void updateLung(ItemStack itemStack, Player player){
@@ -56,8 +56,8 @@ public class Updater {
         }
     }
 
-    public static Spleen updateSpleen(Spleen item, Spleen player){
-        return new Spleen(item.yin() + player.yin(), item.yang() + player.yang());
+    public static Spleen updateSpleen(Spleen item, Spleen item2){
+        return new Spleen(item.yin() + item2.yin(), item.yang() + item2.yang());
     }
 
     public static void updateSpleen(ItemStack itemStack, Player player){
@@ -68,8 +68,8 @@ public class Updater {
         }
     }
 
-    public static VisceraHolder updateViscera(VisceraHolder item, VisceraHolder player){
-        return new VisceraHolder(item.yin() + player.yin(), item.yang() + player.yang());
+    public static VisceraHolder updateViscera(VisceraHolder item, VisceraHolder item2){
+        return new VisceraHolder(item.yin() + item2.yin(), item.yang() + item2.yang());
     }
 
 }

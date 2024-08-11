@@ -15,7 +15,7 @@ public record VisceraHolder(double yin, double yang) {
         return new VisceraHolder(100, 100);
     }
 
-    public VisceraHolder getHeart(ItemStack itemStack){
+    public static VisceraHolder getHeart(ItemStack itemStack){
         return fromHeart(itemStack.getOrDefault(WGDataComponent.HEART.get(), new Heart(100.0, 100.0)));
     }
 
@@ -26,7 +26,7 @@ public record VisceraHolder(double yin, double yang) {
         return new VisceraHolder(100, 100);
     }
 
-    public VisceraHolder getKidney(ItemStack itemStack){
+    public static VisceraHolder getKidney(ItemStack itemStack){
         return fromKidney(itemStack.getOrDefault(WGDataComponent.KIDNEY.get(), new Kidney(100.0, 100.0)));
     }
 
@@ -37,7 +37,7 @@ public record VisceraHolder(double yin, double yang) {
         return new VisceraHolder(100, 100);
     }
 
-    public VisceraHolder getLiver(ItemStack itemStack){
+    public static VisceraHolder getLiver(ItemStack itemStack){
         return fromLiver(itemStack.getOrDefault(WGDataComponent.LIVER.get(), new Liver(100.0, 100.0)));
     }
 
@@ -48,7 +48,7 @@ public record VisceraHolder(double yin, double yang) {
         return new VisceraHolder(100, 100);
     }
 
-    public VisceraHolder getLung(ItemStack itemStack){
+    public static VisceraHolder getLung(ItemStack itemStack){
         return fromLung(itemStack.getOrDefault(WGDataComponent.LUNG.get(), new Lung(100.0, 100.0)));
     }
 
@@ -59,7 +59,7 @@ public record VisceraHolder(double yin, double yang) {
         return new VisceraHolder(100, 100);
     }
 
-    public VisceraHolder getSpleen(ItemStack itemStack){
+    public static VisceraHolder getSpleen(ItemStack itemStack){
         return fromSpleen(itemStack.getOrDefault(WGDataComponent.SPLEEN.get(), new Spleen(100.0, 100.0)));
     }
 
@@ -103,12 +103,11 @@ public record VisceraHolder(double yin, double yang) {
         player.setData(WGAttachment.SPLEEN, toSpleen());
     }
 
-    public ItemStack setSpleen(ItemStack itemStack){
-        itemStack.set(WGDataComponent.SPLEEN.get(), toSpleen());
-        return itemStack;
+    public ItemStack setSpleen(ItemStack itemStack) {
+        return null;
     }
 
-    private VisceraHolder fromHeart(Heart heart){
+    private static VisceraHolder fromHeart(Heart heart){
         return new VisceraHolder(heart.yin(), heart.yang());
     }
 
@@ -116,7 +115,7 @@ public record VisceraHolder(double yin, double yang) {
         return new Heart(yin, yang);
     }
 
-    private VisceraHolder fromKidney(Kidney kidney){
+    private static VisceraHolder fromKidney(Kidney kidney){
         return new VisceraHolder(kidney.yin(), kidney.yang());
     }
 
@@ -124,7 +123,7 @@ public record VisceraHolder(double yin, double yang) {
         return new Kidney(yin, yang);
     }
 
-    private VisceraHolder fromLiver(Liver liver){
+    private static VisceraHolder fromLiver(Liver liver){
         return new VisceraHolder(liver.yin(), liver.yang());
     }
 
@@ -132,7 +131,7 @@ public record VisceraHolder(double yin, double yang) {
         return new Liver(yin, yang);
     }
 
-    private VisceraHolder fromLung(Lung lung){
+    private static VisceraHolder fromLung(Lung lung){
         return new VisceraHolder(lung.yin(), lung.yang());
     }
 
@@ -140,7 +139,7 @@ public record VisceraHolder(double yin, double yang) {
         return new Lung(yin, yang);
     }
 
-    private VisceraHolder fromSpleen(Spleen spleen){
+    private static VisceraHolder fromSpleen(Spleen spleen){
         return new VisceraHolder(spleen.yin(), spleen.yang());
     }
 

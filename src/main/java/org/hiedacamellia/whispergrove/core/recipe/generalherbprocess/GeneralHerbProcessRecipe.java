@@ -9,6 +9,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.hiedacamellia.whispergrove.api.viscera.Updater;
+import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
+import org.hiedacamellia.whispergrove.core.codec.record.Heart;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
 
@@ -121,7 +124,19 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     // as the result exists once per recipe, but the assembled stack is created each time the recipe is crafted.
     @Override
     public ItemStack assemble(GeneralHerbProcessInput input, HolderLookup.Provider registries) {
-        return this.result.copy();
+
+        List<ItemStack> itemStacks = input.stack();
+        ItemStack result = this.result.copy();
+
+        for(ItemStack itemStack:itemStacks){
+            result = Updater.updateViscera(VisceraHolder.getHeart(itemStack), VisceraHolder.getHeart(result)).setHeart(result);
+            result = Updater.updateViscera(VisceraHolder.getKidney(itemStack), VisceraHolder.getKidney(result)).setKidney(result);
+            result = Updater.updateViscera(VisceraHolder.getLiver(itemStack), VisceraHolder.getLiver(result)).setLiver(result);
+            result = Updater.updateViscera(VisceraHolder.getLung(itemStack), VisceraHolder.getLung(result)).setLung(result);
+            result = Updater.updateViscera(VisceraHolder.getSpleen(itemStack), VisceraHolder.getSpleen(result)).setSpleen(result);
+        }
+
+        return result;
     }
 
 
