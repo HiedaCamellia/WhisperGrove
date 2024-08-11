@@ -9,5 +9,5 @@ import org.hiedacamellia.whispergrove.content.common.blocks.TestBlock;
 public class WGBlock {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(WhisperGrove.MODID);
 
-    public static final DeferredBlock<Block> TEST_BLOCK = BLOCKS.register("test_block",() -> new TestBlock("test_block"));
+    //public static final DeferredBlock<Block> TEST_BLOCK = BLOCKS.register("test_block",() -> new TestBlock("test_block"));
 }

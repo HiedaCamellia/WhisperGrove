@@ -9,6 +9,6 @@ import org.hiedacamellia.whispergrove.content.common.blockitems.TestBlockItem;
 public class WGBlockItem {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(WhisperGrove.MODID);
 
-    public static final DeferredItem<BlockItem> TEST_BLOCK_ITEM = ITEMS.register("test_block", TestBlockItem::new);
+    //public static final DeferredItem<BlockItem> TEST_BLOCK_ITEM = ITEMS.register("test_block", TestBlockItem::new);
 
 }
