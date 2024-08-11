@@ -45,12 +45,12 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return WGRicipeSerializer.RIGHT_CLICK_BLOCK.get();
+        return WGRicipeSerializer.GENERAL_HERB_PROCESS.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return WGRicipe.RIGHT_CLICK_BLOCK.get();
+        return WGRicipe.GENERAL_HERB_PROCESS.get();
     }
 
     // Grid-based recipes should return whether their recipe can fit in the given dimensions.

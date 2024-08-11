@@ -22,14 +22,14 @@ public class WGRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput output) {
         // Add your recipes here.
-        new RightClickRicipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
-                new ItemStack(Items.DIAMOND),
-                Blocks.DIRT.defaultBlockState(),
-                Ingredient.of(Items.IRON_INGOT)
-        )
-                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
-                .save(output);
+//        new RightClickRicipeBuilder(
+//                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
+//                new ItemStack(Items.DIAMOND),
+//                Blocks.DIRT.defaultBlockState(),
+//                Ingredient.of(Items.IRON_INGOT)
+//        )
+//                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+//                .save(output);
 
         new GeneralHerbProcessRecipeBuilder(
                 new ItemStack(Items.DIAMOND),//产物
