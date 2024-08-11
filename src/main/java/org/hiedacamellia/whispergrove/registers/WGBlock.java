@@ -1,6 +1,7 @@
 package org.hiedacamellia.whispergrove.registers;
 
 import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -19,7 +20,7 @@ public class WGBlock {
     public static final DeferredBlock<BaseLogBlock> RouGuiStrippedLog = BLOCKS.register("rou_gui_stripped_log",() -> new RouGuiStrippedLogBlock("rou_gui_stripped_log"));
     public static final DeferredBlock<BaseBlock> RouGuiPlanks = BLOCKS.register("rou_gui_planks",() -> new RouGuiPlanksBlock("rou_gui_planks"));
     public static final DeferredBlock<SlabBlock> RouGuiSlab = BLOCKS.register("rou_gui_slab",() -> new RouGuiSlabBlock("rou_gui_slab"));
-    public static final DeferredBlock<BaseBlock> RouGuiLeaves = BLOCKS.register("rou_gui_leaves",() -> new RouGuiLeavesBlock("rou_gui_leaves"));
+    public static final DeferredBlock<LeavesBlock> RouGuiLeaves = BLOCKS.register("rou_gui_leaves",() -> new RouGuiLeavesBlock("rou_gui_leaves"));
     public static final DeferredBlock<StairBlock> RouGuiStair = BLOCKS.register("rou_gui_stair",() -> new RouGuiStairsBlock("rou_gui_stair"));
 
 
