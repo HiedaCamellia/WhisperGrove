@@ -1,59 +1,44 @@
-package org.hiedacamellia.whispergrove.content.common.ricipes;
+package org.hiedacamellia.whispergrove.core.recipe.generalherbprocess;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
-import org.hiedacamellia.whispergrove.core.recipe.RightClickBlockRecipe;
 import org.hiedacamellia.whispergrove.core.recipe.RightClickInput;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 
-import java.util.Optional;
+import java.util.List;
 
-import static org.hiedacamellia.whispergrove.registers.WGRicipe.RIGHT_CLICK_BLOCK;
+public class GeneralHerbProcessApplier {
 
-@EventBusSubscriber
-public class TestRicipeEvent {
-    @SubscribeEvent
-    public static void TestRicipe(UseItemOnBlockEvent event) {
+    public static void apply(BlockState blockState, List<ItemStack> itemStacks,Level level, BlockPos pos) {
 
-        event.setCanceled(true);
-        //Debug.send("TestRicipe");
-        // Skip if we are not in the block-dictated phase of the event. See the event's javadocs for details.
-        if (event.getUsePhase() != UseItemOnBlockEvent.UsePhase.BLOCK) return;
-        // Get the parameters we need.
-        UseOnContext context = event.getUseOnContext();
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
+
         RecipeManager recipes = level.getRecipeManager();
-        BlockState blockState = context.getLevel().getBlockState(pos);
-        ItemStack itemStack = context.getItemInHand();
-        // If the level is not a server level, return.
+
         if (level.isClientSide()) return;
         // Create an input and query the recipe.
-        RightClickInput input = new RightClickInput(blockState, itemStack);
+        GeneralHerbProcessInput input = new GeneralHerbProcessInput(blockState, itemStacks);
 
         var optional = recipes.getRecipeFor(
                 // The recipe type to get the recipe for. In our case, we use the crafting type.
-                WGRicipe.RIGHT_CLICK_BLOCK.get(),
+                WGRicipe.GENERAL_HERB_PROCESS.get(),
                 // Our recipe input.
                 input,
                 // Our level context.
                 level
         );
+
         Debug.send("gettingresult");
+
         ItemStack result = optional
                 .map(RecipeHolder::value)
                 .map(e -> e.assemble(input, level.registryAccess()))
@@ -61,15 +46,13 @@ public class TestRicipeEvent {
         // If there is a result, break the block and drop the result in the world.
         if (!result.isEmpty()) {
             Debug.send("getresult");
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+            //level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
             ItemEntity entity = new ItemEntity(level,
                     // Center of pos.
                     pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                     result);
             level.addFreshEntity(entity);
-            // Cancel the event to stop the interaction pipeline.
-            event.setCanceled(true);
+
         }
-        Debug.send("failgetresult");
     }
 }

@@ -17,10 +17,10 @@ public class WGTab {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(WGItem.ZHU_YE::toStack)
             .displayItems((parameters, tab) -> {
-                for(DeferredHolder<Item, ? extends Item> item:WGItem.ITEMS.getEntries()){
+                for(DeferredHolder<Item, ? extends Item> item:WGBlockItem.ITEMS.getEntries()){
                     tab.accept(item.get());
                 }
-                for(DeferredHolder<Item, ? extends Item> item:WGBlockItem.ITEMS.getEntries()){
+                for(DeferredHolder<Item, ? extends Item> item:WGItem.ITEMS.getEntries()){
                     tab.accept(item.get());
                 }
             }).build());

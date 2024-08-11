@@ -104,5 +104,13 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("item.whispergrove.sliced_long_dan_cao","龙胆草切片");
             add("tooltip.whispergrove.sliced_long_dan_cao","");
 
+            add("block.whispergrove.rou_gui_log","肉桂原木");
+            add("tooltip.whispergrove.rou_gui_log","");
+            add("block.whispergrove.rou_gui_stripped_log","去皮肉桂原木");
+            add("tooltip.whispergrove.rou_gui_stripped_log","");
+            add("block.whispergrove.rou_gui_leaves","肉桂树叶");
+            add("tooltip.whispergrove.rou_gui_leaves","");
+            add("block.whispergrove.rou_gui_planks","肉桂木板");
+            add("tooltip.whispergrove.rou_gui_planks","");
         }
 }

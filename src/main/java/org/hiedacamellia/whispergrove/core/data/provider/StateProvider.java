@@ -13,7 +13,17 @@ public class StateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(WGBlock.TEST_BLOCK.get(), cubeAll(WGBlock.TEST_BLOCK.get()));
-        simpleBlockItem(WGBlock.TEST_BLOCK.get(), cubeAll(WGBlock.TEST_BLOCK.get()));
+
+        logBlock(WGBlock.RouGuiLog.get());
+        simpleBlockItem(WGBlock.RouGuiLog.get(),cubeAll(WGBlock.RouGuiLog.get()));
+
+        logBlock(WGBlock.RouGuiStrippedLog.get());
+        simpleBlockItem(WGBlock.RouGuiStrippedLog.get(),cubeAll(WGBlock.RouGuiStrippedLog.get()));
+
+        simpleBlockWithItem(WGBlock.RouGuiLeaves.get(), models().leaves("rou_gui_leaves", modLoc("block/rou_gui_leaves")));
+
+        simpleBlockWithItem(WGBlock.RouGuiBlanks.get(), cubeAll(WGBlock.RouGuiBlanks.get()));
+
+
     }
 }

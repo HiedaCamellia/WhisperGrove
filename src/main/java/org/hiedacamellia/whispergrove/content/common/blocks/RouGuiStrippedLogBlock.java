@@ -6,8 +6,8 @@ import net.minecraft.world.level.material.MapColor;
 import org.hiedacamellia.whispergrove.core.entry.BaseBlock;
 import org.hiedacamellia.whispergrove.core.entry.BaseLogBlock;
 
-public class RouGuiLogBlock extends BaseLogBlock {
-    public RouGuiLogBlock(String regname) {
-        super(Properties.of().mapColor(MapColor.WOOD).sound(SoundType.WOOD), regname);
+public class RouGuiStrippedLogBlock extends BaseLogBlock {
+    public RouGuiStrippedLogBlock(String regname) {
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).sound(SoundType.WOOD), regname);
     }
 }

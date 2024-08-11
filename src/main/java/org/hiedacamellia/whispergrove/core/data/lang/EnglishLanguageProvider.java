@@ -107,5 +107,15 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.sliced_ren_shen","");
         add("item.whispergrove.sliced_long_dan_cao","SLiced Gentian");
         add("tooltip.whispergrove.sliced_long_dan_cao","");
+
+
+        add("block.whispergrove.rou_gui_log","肉桂 Log");
+        add("tooltip.whispergrove.rou_gui_log","");
+        add("block.whispergrove.rou_gui_stripped_log","Stripped 肉桂 Log");
+        add("tooltip.whispergrove.rou_gui_stripped_log","");
+        add("block.whispergrove.rou_gui_leaves","肉桂 Leaves");
+        add("tooltip.whispergrove.rou_gui_leaves","");
+        add("block.whispergrove.rou_gui_planks","肉桂 Blank");
+        add("tooltip.whispergrove.rou_gui_planks","");
     }
 }
