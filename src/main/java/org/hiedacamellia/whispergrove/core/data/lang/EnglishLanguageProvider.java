@@ -54,7 +54,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.gan_mei_gui","");
         add("item.whispergrove.shu_di_huang","Roasted Rehmannia");
         add("tooltip.whispergrove.shu_di_huang","");
-        add("item.whispergrove.hai_piao_xiao","Cuttleflsh Bone");
+        add("item.whispergrove.hai_piao_xiao","Roasted Cuttleflsh Bone");
         add("tooltip.whispergrove.hai_piao_xiao","");
         add("item.whispergrove.fu_zi","Prepared Common Monkshood Daughter Root");
         add("tooltip.whispergrove.fu_zi","");
@@ -109,6 +109,8 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.sliced_ren_shen","");
         add("item.whispergrove.sliced_long_dan_cao","SLiced Gentian");
         add("tooltip.whispergrove.sliced_long_dan_cao","");
+        add("item.whispergrove.mo_yu_gu","Cuttleflsh Bone");
+        add("tooltip.whispergrove.mo_yu_gu","");
 
 
         add("block.whispergrove.rou_gui_log","肉桂 Log");

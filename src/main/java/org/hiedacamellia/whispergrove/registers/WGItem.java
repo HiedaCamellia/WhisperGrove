@@ -64,7 +64,7 @@ public class WGItem {
                     ).build()
     );
 
-    //海螵蛸 Cuttleflsh Bone
+    //海螵蛸 Roasted Cuttleflsh Bone
     //hai piao xiao
     public static final DeferredItem<BaseItem> HAI_PIAO_XIAO = ITEMS.register("hai_piao_xiao",
             () -> new BaseItemBuilder().regname("hai_piao_xiao").properties(
@@ -286,6 +286,14 @@ public class WGItem {
     //sliced long dan cao
     public static final DeferredItem<BaseItem> SLICED_LONG_DAN_CAO = ITEMS.register("sliced_long_dan_cao",
             () -> new BaseItemBuilder().regname("sliced_long_dan_cao").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //墨鱼骨 Cuttleflsh Bone
+    //mo yu gu
+    public static final DeferredItem<BaseItem> MO_YU_GU = ITEMS.register("mo_yu_gu",
+            () -> new BaseItemBuilder().regname("mo_yu_gu").properties(
                     new Item.Properties().rarity(Rarity.COMMON)
             ).build()
     );

@@ -2,8 +2,10 @@ package org.hiedacamellia.whispergrove.core.data.provider;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -39,5 +41,15 @@ public class WGRecipeProvider extends RecipeProvider {
         )
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(Items.KELP),//输入
+                        RecipeCategory.FOOD,//配方类型
+                        Items.DIAMOND,//产物，也可以是ItemStack
+                        0.1f,//经验值
+                        200//烹饪时间
+                )
+                .unlockedBy("has_kelp", has(Blocks.KELP))
+                .save(output, "dried_kelp_smelting");
     }
 }
