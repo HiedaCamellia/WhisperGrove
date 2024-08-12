@@ -31,29 +31,29 @@ public class ModelProvider extends ItemModelProvider {
 //                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
 //                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "zi_shi_ying"));
 //
-//        this.singleTexture("mei_gui_hua",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "mei_gui_hua"));
+        this.singleTexture("gan_mei_gui",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "gan_mei_gui"));
 
         this.singleTexture("shu_di_huang",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
                 ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "shu_di_huang"));
 
-//        this.singleTexture("hai_piao_xiao",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "hai_piao_xiao"));
+        this.singleTexture("hai_piao_xiao",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "hai_piao_xiao"));
 
-//        this.singleTexture("fu_zi",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "fu_zi"));
+        this.singleTexture("fu_zi",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "fu_zi"));
 
-//        this.singleTexture("ding_xiang",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "ding_xiang"));
+        this.singleTexture("chao_ding_xiang",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "chao_ding_xiang"));
 
-//        this.singleTexture("wu_wei_zi",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "wu_wei_zi"));
+        this.singleTexture("wu_wei_zi",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "wu_wei_zi"));
 
 //        this.singleTexture("zhi_gan_cao",
 //                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
@@ -63,17 +63,17 @@ public class ModelProvider extends ItemModelProvider {
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
                 ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "ren_shen"));
 
-//        this.singleTexture("fu_ling",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "fu_ling"));
+        this.singleTexture("fu_ling",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "fu_ling"));
 
-//        this.singleTexture("mai_ya",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "mai_ya"));
+        this.singleTexture("mai_ya",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "mai_ya"));
 
-//        this.singleTexture("e_jiao",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "e_jiao"));
+        this.singleTexture("e_jiao",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "e_jiao"));
 
 //        this.singleTexture("duan_long_gu",
 //                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
@@ -107,9 +107,9 @@ public class ModelProvider extends ItemModelProvider {
 //                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
 //                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "han_shui_shi"));
 
-//        this.singleTexture("gui_ban_jiao",
-//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "gui_ban_jiao"));
+        this.singleTexture("gui_ban_jiao",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "gui_ban_jiao"));
 
 //        this.singleTexture("sheng_di_huang",
 //                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",

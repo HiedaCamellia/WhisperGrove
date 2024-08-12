@@ -50,8 +50,8 @@ public class WGItem {
 
     //玫瑰花 Rose
     //mei gui hua
-    public static final DeferredItem<BaseItem> MEI_GUI_HUA = ITEMS.register("mei_gui_hua",
-            () -> new BaseItemBuilder().regname("mei_gui_hua").properties(
+    public static final DeferredItem<BaseItem> GAN_MEI_GUI = ITEMS.register("gan_mei_gui",
+            () -> new BaseItemBuilder().regname("gan_mei_gui").properties(
                     new Item.Properties().rarity(Rarity.COMMON)
             ).build()
     );
@@ -82,8 +82,8 @@ public class WGItem {
 
     //丁香 Clove
     //ding xiang
-    public static final DeferredItem<BaseItem> DING_XIANG = ITEMS.register("ding_xiang",
-            () -> new BaseItemBuilder().regname("ding_xiang").properties(
+    public static final DeferredItem<BaseItem> CHAO_DING_XIANG = ITEMS.register("chao_ding_xiang",
+            () -> new BaseItemBuilder().regname("chao_ding_xiang").properties(
                     new Item.Properties().rarity(Rarity.COMMON)
             ).build()
     );

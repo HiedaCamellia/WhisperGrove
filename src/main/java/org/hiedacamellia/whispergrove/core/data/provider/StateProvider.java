@@ -14,11 +14,11 @@ public class StateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-        logBlock(WGBlock.RouGuiLog.get());
-        simpleBlockItem(WGBlock.RouGuiLog.get(),cubeAll(WGBlock.RouGuiLog.get()));
+        axisBlock(WGBlock.RouGuiLog.get(),modLoc("block/rou_gui_log"),modLoc("block/rou_gui_log_top"));
+        simpleBlockItem(WGBlock.RouGuiLog.get(),models().cubeTop("rou_gui_log",modLoc("block/rou_gui_log"),modLoc("block/rou_gui_log_top")));
 
-        logBlock(WGBlock.RouGuiStrippedLog.get());
-        simpleBlockItem(WGBlock.RouGuiStrippedLog.get(),cubeAll(WGBlock.RouGuiStrippedLog.get()));
+        axisBlock(WGBlock.RouGuiStrippedLog.get(),modLoc("block/rou_gui_stripped_log"),modLoc("block/rou_gui_log_top"));
+        simpleBlockItem(WGBlock.RouGuiStrippedLog.get(),models().cubeTop("rou_gui_stripped_log",modLoc("block/rou_gui_stripped_log"),modLoc("block/rou_gui_log_top")));
 
         simpleBlockWithItem(WGBlock.RouGuiLeaves.get(), models().leaves("rou_gui_leaves", modLoc("block/rou_gui_leaves")));
 
