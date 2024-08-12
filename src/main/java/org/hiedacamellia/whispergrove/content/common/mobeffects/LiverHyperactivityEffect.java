@@ -5,6 +5,6 @@ import org.hiedacamellia.whispergrove.core.entry.BaseEffect;
 
 public class LiverHyperactivityEffect extends BaseEffect {
     public LiverHyperactivityEffect() {
-        super(MobEffectCategory.HARMFUL, 0x00FF00, "effect.whispergrove.liver.hyperactivity");
+        super(MobEffectCategory.HARMFUL, 0x00FF00, "effect.whispergrove.liver_hyperactivity");
     }
 }

@@ -65,10 +65,10 @@ public class DescGen {
         for (String vis : viscera) {
             for (String dis : diseases) {
                 for (int level : levels) {
-                    keys.add("desc.whispergrove." + vis + "." + dis + ".level." + level);
+                    keys.add("desc.whispergrove." + vis + "_" + dis + ".level." + level);
                 }
             }
-            keys.add("desc.whispergrove." + vis + ".normal");
+            keys.add("desc.whispergrove." + vis + "_normal");
         }
         return keys;
     }

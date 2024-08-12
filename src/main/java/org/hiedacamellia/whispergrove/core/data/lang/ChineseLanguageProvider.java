@@ -25,6 +25,8 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("cmd.whispergrove.set.failed","设置值失败：%s");
             add("cmd.whispergrove.get.success","获取值成功：%f");
             add("cmd.whispergrove.get.failed","获取值失败：%s");
+            add("cmd.whispergrove.reset.success","重设值成功");
+            add("cmd.whispergrove.reset.failed","重设值失败");
 
             Map<String,String> desc = new DescGen().gendesc_zh();
             for (Map.Entry<String, String> entry : desc.entrySet()) {

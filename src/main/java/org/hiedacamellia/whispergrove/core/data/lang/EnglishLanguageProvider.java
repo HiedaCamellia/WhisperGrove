@@ -29,6 +29,8 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("cmd.whispergrove.set.failed","Set Value failed: %s");
         add("cmd.whispergrove.get.success","Get Value success: %f");
         add("cmd.whispergrove.get.failed","Get Value failed: %s");
+        add("cmd.whispergrove.reset.success","Reset Value success");
+        add("cmd.whispergrove.reset.failed","Reset Value failed");
 
         Map<String,String> desc = new DescGen().gendesc_en();
         for (Map.Entry<String, String> entry : desc.entrySet()) {

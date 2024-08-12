@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import org.hiedacamellia.whispergrove.core.codec.record.Kidney;
 import org.hiedacamellia.whispergrove.core.codec.record.Lung;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
@@ -26,7 +27,7 @@ public class LungCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double change = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(lung.yin() + change, lung.yang()));
@@ -42,7 +43,7 @@ public class LungCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try{
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double set = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(set, lung.yang()));
@@ -57,7 +58,7 @@ public class LungCmd {
                                                 .then(Commands.argument("player", EntityArgument.player())
                                                         .executes(arguments -> {
                                                             try{
-                                                                Player player = arguments.getSource().getPlayer();
+                                                                Player player = EntityArgument.getPlayer(arguments, "player");
                                                                 Lung lung = player.getData(WGAttachment.LUNG);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success",lung.yin()));
                                                                 Debug.debug(Component.translatable("cmd.whispergrove.get.success",lung.yin()).getString());
@@ -72,7 +73,7 @@ public class LungCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double change = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(lung.yin(), lung.yang() + change));
@@ -88,7 +89,7 @@ public class LungCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double set = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Lung lung = player.getData(WGAttachment.LUNG);
                                                                         player.setData(WGAttachment.LUNG, new Lung(lung.yin(), set));
@@ -103,7 +104,7 @@ public class LungCmd {
                                                 .then(Commands.argument("player", EntityArgument.player())
                                                         .executes(arguments -> {
                                                             try {
-                                                                Player player = arguments.getSource().getPlayer();
+                                                                Player player = EntityArgument.getPlayer(arguments, "player");
                                                                 Lung lung = player.getData(WGAttachment.LUNG);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success", lung.yang()));
                                                                 Debug.debug(Component.translatable("cmd.whispergrove.get.success").getString());
@@ -112,7 +113,19 @@ public class LungCmd {
                                                             }
                                                             return 0;
                                                         })))
-                                ))));
+                                ).then(Commands.literal("reset")
+                                        .then(Commands.argument("player", EntityArgument.player()).executes(arguments -> {
+                                                    try {
+                                                        Player player = EntityArgument.getPlayer(arguments, "player");
+                                                        player.setData(WGAttachment.LUNG, new Lung(100.0, 100.0));
+                                                        player.sendSystemMessage(Component.translatable("cmd.whispergrove.reset.success"));
+                                                        Debug.debug(Component.translatable("cmd.whispergrove.reset.success").getString());
+                                                    } catch (Exception e) {
+                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.reset.failed", e.getMessage()).getString());
+                                                    }
+                                                    return 0;
+                                                }
+                                        ))))));
 
     }
 }

@@ -26,7 +26,7 @@ public class HeartCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double change = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Heart heart = player.getData(WGAttachment.HEART);
                                                                         player.setData(WGAttachment.HEART, new Heart(heart.yin() + change, heart.yang()));
@@ -42,7 +42,7 @@ public class HeartCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try{
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double set = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Heart heart = player.getData(WGAttachment.HEART);
                                                                         player.setData(WGAttachment.HEART, new Heart(set, heart.yang()));
@@ -57,7 +57,7 @@ public class HeartCmd {
                                                 .then(Commands.argument("player", EntityArgument.player())
                                                         .executes(arguments -> {
                                                             try{
-                                                                Player player = arguments.getSource().getPlayer();
+                                                                Player player = EntityArgument.getPlayer(arguments, "player");
                                                                 Heart heart = player.getData(WGAttachment.HEART);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success",heart.yin()));
                                                                 Debug.debug(Component.translatable("cmd.whispergrove.get.success",heart.yin()).getString());
@@ -72,7 +72,7 @@ public class HeartCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double change = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Heart heart = player.getData(WGAttachment.HEART);
                                                                         player.setData(WGAttachment.HEART, new Heart(heart.yin(), heart.yang() + change));
@@ -88,7 +88,7 @@ public class HeartCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double set = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Heart heart = player.getData(WGAttachment.HEART);
                                                                         player.setData(WGAttachment.HEART, new Heart(heart.yin(), set));
@@ -103,16 +103,28 @@ public class HeartCmd {
                                                 .then(Commands.argument("player", EntityArgument.player())
                                                         .executes(arguments -> {
                                                             try {
-                                                                Player player = arguments.getSource().getPlayer();
+                                                                Player player = EntityArgument.getPlayer(arguments, "player");
                                                                 Heart heart = player.getData(WGAttachment.HEART);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success", heart.yang()));
                                                                 Debug.debug(Component.translatable("cmd.whispergrove.get.success").getString());
-                                                            }catch (Exception e){
+                                                            } catch (Exception e) {
                                                                 Debug.getLogger().error(Component.translatable("cmd.whispergrove.get.failed", e.getMessage()).getString());
                                                             }
                                                             return 0;
                                                         })))
-                                ))));
+                                ).then(Commands.literal("reset")
+                                        .then(Commands.argument("player", EntityArgument.player()).executes(arguments -> {
+                                                    try {
+                                                        Player player = EntityArgument.getPlayer(arguments, "player");
+                                                        player.setData(WGAttachment.HEART, new Heart(100.0, 100.0));
+                                                        player.sendSystemMessage(Component.translatable("cmd.whispergrove.reset.success"));
+                                                        Debug.debug(Component.translatable("cmd.whispergrove.reset.success").getString());
+                                                    } catch (Exception e) {
+                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.reset.failed", e.getMessage()).getString());
+                                                    }
+                                                    return 0;
+                                                }
+                                        ))))));
 
     }
 }

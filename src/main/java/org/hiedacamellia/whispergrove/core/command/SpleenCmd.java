@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import org.hiedacamellia.whispergrove.core.codec.record.Kidney;
 import org.hiedacamellia.whispergrove.core.codec.record.Spleen;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
@@ -26,7 +27,7 @@ public class SpleenCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double change = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(spleen.yin() + change, spleen.yang()));
@@ -42,7 +43,7 @@ public class SpleenCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try{
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double set = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(set, spleen.yang()));
@@ -57,7 +58,7 @@ public class SpleenCmd {
                                                 .then(Commands.argument("player", EntityArgument.player())
                                                         .executes(arguments -> {
                                                             try{
-                                                                Player player = arguments.getSource().getPlayer();
+                                                                Player player = EntityArgument.getPlayer(arguments, "player");
                                                                 Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success",spleen.yin()));
                                                                 Debug.debug(Component.translatable("cmd.whispergrove.get.success",spleen.yin()).getString());
@@ -72,7 +73,7 @@ public class SpleenCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double change = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(spleen.yin(), spleen.yang() + change));
@@ -88,7 +89,7 @@ public class SpleenCmd {
                                                         .then(Commands.argument("number", DoubleArgumentType.doubleArg())
                                                                 .executes(arguments -> {
                                                                     try {
-                                                                        Player player = arguments.getSource().getPlayer();
+                                                                        Player player = EntityArgument.getPlayer(arguments, "player");
                                                                         double set = DoubleArgumentType.getDouble(arguments, "number");
                                                                         Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                         player.setData(WGAttachment.SPLEEN, new Spleen(spleen.yin(), set));
@@ -103,7 +104,7 @@ public class SpleenCmd {
                                                 .then(Commands.argument("player", EntityArgument.player())
                                                         .executes(arguments -> {
                                                             try {
-                                                                Player player = arguments.getSource().getPlayer();
+                                                                Player player = EntityArgument.getPlayer(arguments, "player");
                                                                 Spleen spleen = player.getData(WGAttachment.SPLEEN);
                                                                 player.sendSystemMessage(Component.translatable("cmd.whispergrove.get.success", spleen.yang()));
                                                                 Debug.debug(Component.translatable("cmd.whispergrove.get.success").getString());
@@ -112,7 +113,19 @@ public class SpleenCmd {
                                                             }
                                                             return 0;
                                                         })))
-                                ))));
+                                ).then(Commands.literal("reset")
+                                        .then(Commands.argument("player", EntityArgument.player()).executes(arguments -> {
+                                                    try {
+                                                        Player player = EntityArgument.getPlayer(arguments, "player");
+                                                        player.setData(WGAttachment.SPLEEN, new Spleen(100.0, 100.0));
+                                                        player.sendSystemMessage(Component.translatable("cmd.whispergrove.reset.success"));
+                                                        Debug.debug(Component.translatable("cmd.whispergrove.reset.success").getString());
+                                                    } catch (Exception e) {
+                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.reset.failed", e.getMessage()).getString());
+                                                    }
+                                                    return 0;
+                                                }
+                                        ))))));
 
     }
 }

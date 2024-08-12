@@ -50,7 +50,7 @@ public class EffectGen {
         List<String> keys = new ArrayList<>();
         for (String vis : viscera) {
             for (String dis : diseases) {
-                    keys.add("effect.whispergrove." + vis + "." + dis);
+                    keys.add("effect.whispergrove." + vis + "_" + dis);
 
             }
         }
