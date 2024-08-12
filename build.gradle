@@ -20,6 +20,15 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+
+    maven { // Registrate
+        url "https://maven.ithundxr.dev/snapshots"
+    }
+    // ./lib
+    flatDir {
+        dirs 'libs'
+    }
+
 }
 
 base {
@@ -28,6 +37,7 @@ base {
 
 // Mojang ships Java 21 to end users starting in 1.20.5, so mods should target Java 21.
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
 
 neoForge {
     // Specify the version of NeoForge to use.
@@ -125,6 +135,12 @@ dependencies {
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+
+    implementation files("libs/EclipticSeasons-1.21-neoforge-0.4.1-beta.jar")
+
+    //implementation "com.tterrag.registrate:Registrate:MC1.21-1.3.0+50"
+
+    //jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.21,MC1.22)")
 
     // Example mod dependency using a file as dependency
     // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")

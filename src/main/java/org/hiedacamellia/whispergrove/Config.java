@@ -32,12 +32,19 @@ public class Config
             .comment("获得重度疾病的阴阳点数比例")
             .defineInRange("disease_Critical", 2.0,1.0,Double.MAX_VALUE);
 
+    private static final ModConfigSpec.BooleanValue ECLIPTIC_COMPACT = BUILDER
+            .comment("Set to true to enable the compact of the solar term")
+            .comment("设置为true以启用节气的联动")
+            .define("ecliptic_compact", true);
+
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean debug;
     public static double diseaseMild;
     public static double diseaseModerate;
     public static double diseaseCritical;
+    public static boolean eclipticCompact;
 
     public static void setDebug(boolean debug){
         DEBUG.set(debug);
@@ -56,5 +63,6 @@ public class Config
         diseaseMild = DISEASE_MILD.get();
         diseaseModerate = DISEASE_MODERATE.get();
         diseaseCritical = DISEASE_CRITICAL.get();
+        eclipticCompact = ECLIPTIC_COMPACT.get();
     }
 }
