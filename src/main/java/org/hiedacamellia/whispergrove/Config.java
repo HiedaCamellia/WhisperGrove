@@ -39,6 +39,11 @@ public class Config
     public static double diseaseModerate;
     public static double diseaseCritical;
 
+    public static void setDebug(boolean debug){
+        DEBUG.set(debug);
+    }
+
+
 //    private static boolean validateItemName(final Object obj)
 //    {
 //        return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(itemName));

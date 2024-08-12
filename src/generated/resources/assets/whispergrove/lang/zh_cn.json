@@ -9,6 +9,8 @@
   "cmd.whispergrove.get.success": "获取值成功：%f",
   "cmd.whispergrove.modify.failed": "修改值失败：%s",
   "cmd.whispergrove.modify.success": "修改值成功：%f",
+  "cmd.whispergrove.reset.failed": "重设值失败",
+  "cmd.whispergrove.reset.success": "重设值成功",
   "cmd.whispergrove.set.failed": "设置值失败：%s",
   "cmd.whispergrove.set.success": "设置值成功：%f",
   "desc.whispergrove.heart_deteriorated.level.1": "心衰 轻度",

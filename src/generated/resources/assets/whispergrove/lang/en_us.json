@@ -10,6 +10,8 @@
   "cmd.whispergrove.get.success": "Get Value success: %f",
   "cmd.whispergrove.modify.failed": "Modify Value failed: %s",
   "cmd.whispergrove.modify.success": "Modify Value success: %f",
+  "cmd.whispergrove.reset.failed": "Reset Value failed",
+  "cmd.whispergrove.reset.success": "Reset Value success",
   "cmd.whispergrove.set.failed": "Set Value failed: %s",
   "cmd.whispergrove.set.success": "Set Value success: %f",
   "desc.whispergrove.heart_deteriorated.level.1": "Heart Deteriorated Mild",

@@ -113,19 +113,19 @@ public class LungCmd {
                                                             }
                                                             return 0;
                                                         })))
-                                ).then(Commands.literal("reset"))
-                                .then(Commands.argument("player", EntityArgument.player()).executes(arguments -> {
-                                            try {
-                                                Player player = EntityArgument.getPlayer(arguments, "player");
-                                                player.setData(WGAttachment.LUNG, new Lung(100.0, 100.0));
-                                                player.sendSystemMessage(Component.translatable("cmd.whispergrove.set.success"));
-                                                Debug.debug(Component.translatable("cmd.whispergrove.set.success").getString());
-                                            } catch (Exception e) {
-                                                Debug.getLogger().error(Component.translatable("cmd.whispergrove.set.failed", e.getMessage()).getString());
-                                            }
-                                            return 0;
-                                        }
-                                )))));
+                                ).then(Commands.literal("reset")
+                                        .then(Commands.argument("player", EntityArgument.player()).executes(arguments -> {
+                                                    try {
+                                                        Player player = EntityArgument.getPlayer(arguments, "player");
+                                                        player.setData(WGAttachment.LUNG, new Lung(100.0, 100.0));
+                                                        player.sendSystemMessage(Component.translatable("cmd.whispergrove.reset.success"));
+                                                        Debug.debug(Component.translatable("cmd.whispergrove.reset.success").getString());
+                                                    } catch (Exception e) {
+                                                        Debug.getLogger().error(Component.translatable("cmd.whispergrove.reset.failed", e.getMessage()).getString());
+                                                    }
+                                                    return 0;
+                                                }
+                                        ))))));
 
     }
 }
