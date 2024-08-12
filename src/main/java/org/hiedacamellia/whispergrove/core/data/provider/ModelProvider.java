@@ -147,5 +147,9 @@ public class ModelProvider extends ItemModelProvider {
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
                 ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "sliced_long_dan_cao"));
 
+//        this.singleTexture("mo_yu_gu",
+//                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+//                ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "item/" + "mo_yu_gu"));
+
     }
 }
