@@ -1,12 +1,15 @@
 package org.hiedacamellia.whispergrove.core.data.provider;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackLinkedSet;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -14,6 +17,9 @@ import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerb
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
+
+import static org.hiedacamellia.whispergrove.registers.WGItem.HAI_PIAO_XIAO;
+import static org.hiedacamellia.whispergrove.registers.WGItem.MO_YU_GU;
 
 public class WGRecipeProvider extends RecipeProvider {
     public WGRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
@@ -42,14 +48,25 @@ public class WGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
 
+//        SimpleCookingRecipeBuilder.smelting(
+//                        Ingredient.of(Items.KELP),//输入
+//                        RecipeCategory.FOOD,//配方类型
+//                        Items.DIAMOND,//产物，也可以是ItemStack
+//                        0.1f,//经验值
+//                        200//烹饪时间
+//                )
+//                .unlockedBy("has_kelp", has(Blocks.KELP))
+//                .save(output, "dried_kelp_smelting");
+
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(Items.KELP),//输入
-                        RecipeCategory.FOOD,//配方类型
-                        Items.DIAMOND,//产物，也可以是ItemStack
+                        Ingredient.of(MO_YU_GU),//输入
+                        RecipeCategory.MISC,//配方类型
+                        new ItemStack((Holder<Item>) HAI_PIAO_XIAO),//产物，也可以是ItemStack
                         0.1f,//经验值
                         200//烹饪时间
                 )
                 .unlockedBy("has_kelp", has(Blocks.KELP))
                 .save(output, "dried_kelp_smelting");
+
     }
 }
