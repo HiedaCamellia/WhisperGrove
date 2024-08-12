@@ -58,7 +58,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.hai_piao_xiao","");
         add("item.whispergrove.fu_zi","Prepared Common Monkshood Daughter Root");
         add("tooltip.whispergrove.fu_zi","");
-        add("item.whispergrove.chao_ding_xiang","Dried Clove");
+        add("item.whispergrove.chao_ding_xiang","Dried Lilac");
         add("tooltip.whispergrove.chao_ding_xiang","");
         add("item.whispergrove.wu_wei_zi","Schisandra chinensis");
         add("tooltip.whispergrove.wu_wei_zi","");

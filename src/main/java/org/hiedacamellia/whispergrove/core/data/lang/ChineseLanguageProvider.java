@@ -54,7 +54,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("tooltip.whispergrove.hai_piao_xiao","");
             add("item.whispergrove.fu_zi","附子");
             add("tooltip.whispergrove.fu_zi","");
-            add("item.whispergrove.chao_ding_xiang","丁香");
+            add("item.whispergrove.chao_ding_xiang","炒丁香");
             add("tooltip.whispergrove.chao_ding_xiang","");
             add("item.whispergrove.wu_wei_zi","五味子");
             add("tooltip.whispergrove.wu_wei_zi","");

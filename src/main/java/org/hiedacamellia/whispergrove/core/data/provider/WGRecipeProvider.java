@@ -9,7 +9,6 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackLinkedSet;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -18,8 +17,7 @@ import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerb
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
-import static org.hiedacamellia.whispergrove.registers.WGItem.HAI_PIAO_XIAO;
-import static org.hiedacamellia.whispergrove.registers.WGItem.MO_YU_GU;
+import static org.hiedacamellia.whispergrove.registers.WGItem.*;
 
 public class WGRecipeProvider extends RecipeProvider {
     public WGRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
@@ -66,7 +64,17 @@ public class WGRecipeProvider extends RecipeProvider {
                         200//烹饪时间
                 )
                 .unlockedBy("has_kelp", has(Blocks.KELP))
-                .save(output, "dried_kelp_smelting");
+                .save(output, "mo_yu_smelting");
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(Items.LILAC),//输入
+                        RecipeCategory.MISC,//配方类型
+                        new ItemStack((Holder<Item>) CHAO_DING_XIANG),//产物，也可以是ItemStack
+                        0.1f,//经验值
+                        100//烹饪时间
+                )
+                .unlockedBy("has_lilac", has(Blocks.LILAC))
+                .save(output, "dried_lilac_smelting");
 
     }
 }
