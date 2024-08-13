@@ -75,6 +75,5 @@ public class WGRecipeProvider extends RecipeProvider {
                 )
                 .unlockedBy("has_lilac", has(Blocks.LILAC))
                 .save(output, "dried_lilac_smelting");
-
     }
 }

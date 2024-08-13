@@ -23,5 +23,7 @@ public class WGBlock {
     public static final DeferredBlock<LeavesBlock> RouGuiLeaves = BLOCKS.register("rou_gui_leaves",() -> new RouGuiLeavesBlock("rou_gui_leaves"));
     public static final DeferredBlock<StairBlock> RouGuiStair = BLOCKS.register("rou_gui_stair",() -> new RouGuiStairsBlock("rou_gui_stair"));
 
+    public static final DeferredBlock<RollerBlock> Roller = BLOCKS.register("roller",() -> new RollerBlock("roller"));
+
 
 }

@@ -17,4 +17,5 @@ public class WGBlockItem {
     public static final DeferredItem<BlockItem> RouGuiPlanks = ITEMS.register("rou_gui_planks", RouGuiPlanksBlockItem::new);
     public static final DeferredItem<BlockItem> RouGuiSlab = ITEMS.register("rou_gui_slab", RouGuiSlabBlockItem::new);
     public static final DeferredItem<BlockItem> RouGuiButton = ITEMS.register("rou_gui_stair", RouGuiStairsBlockItem::new);
+    public static final DeferredItem<BlockItem> Roller = ITEMS.register("roller",RollerBlockItem::new);
 }

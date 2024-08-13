@@ -1,6 +1,7 @@
 package org.hiedacamellia.whispergrove.core.data.provider;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.hiedacamellia.whispergrove.WhisperGrove;
@@ -29,5 +30,8 @@ public class StateProvider extends BlockStateProvider {
 
         stairsBlock(WGBlock.RouGuiStair.get(),modLoc("block/rou_gui_planks"));
         simpleBlockItem(WGBlock.RouGuiStair.get(),models().stairs("rou_gui_stair",modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks"),modLoc("block/rou_gui_planks")));
+
+        simpleBlock(WGBlock.Roller.get(),this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "roller")));
+        simpleBlockItem(WGBlock.Roller.get(), this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "roller")));
     }
 }
