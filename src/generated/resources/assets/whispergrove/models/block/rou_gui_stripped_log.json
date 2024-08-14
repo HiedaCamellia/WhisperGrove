@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_top",
-  "textures": {
-    "end": "whispergrove:block/rou_gui_log_top",
-    "side": "whispergrove:block/rou_gui_stripped_log",
-    "top": "whispergrove:block/rou_gui_log_top"
-  }
-}
