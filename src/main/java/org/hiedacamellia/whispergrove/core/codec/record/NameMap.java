@@ -68,4 +68,12 @@ public record NameMap(List<Map<List<String>, String>> nameMap) implements Custom
             }
         }
     }
+
+    public NameMap getNameMap(Player player) {
+        return player.getData(WGAttachment.NAMEMAP);
+    }
+
+    public void setNameMap(Player player) {
+        player.setData(WGAttachment.NAMEMAP, new NameMap(nameMap()));
+    }
 }
