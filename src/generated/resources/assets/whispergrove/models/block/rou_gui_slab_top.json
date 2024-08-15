@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "whispergrove:block/rou_gui_planks",
-    "side": "whispergrove:block/rou_gui_planks",
-    "top": "whispergrove:block/rou_gui_planks"
-  }
-}
