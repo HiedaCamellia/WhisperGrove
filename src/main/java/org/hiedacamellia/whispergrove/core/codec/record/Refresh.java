@@ -21,13 +21,6 @@ public record Refresh(int tick) implements CustomPacketPayload{
 
     public static final CustomPacketPayload.Type<Refresh> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "refresh"));
 
-    public static final StreamCodec<ByteBuf, Refresh> STREAM_CODEC = StreamCodec.of((ByteBuf buffer, Refresh message) -> {
-        buffer.writeDouble(message.tick);
-    }, (ByteBuf buffer) -> {
-        int tick = buffer.readInt();
-        return new Refresh(tick);
-    });
-
     @Override
     public CustomPacketPayload.@NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;

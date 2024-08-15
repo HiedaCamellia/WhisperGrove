@@ -42,7 +42,7 @@ public class RollerBlock extends BaseBlock {
     @Override
     public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         GeneralHerbProcessApplier.apply(state, List.of(stack), level, pos);
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return ItemInteractionResult.SUCCESS;
     }
 
 }

@@ -50,4 +50,8 @@ public class WGAttachment {
     public static final Supplier<AttachmentType<Refresh>> REFRESH = ATTACHMENTS.register(
             "refresh", () -> AttachmentType.builder(() -> new Refresh(0)).serialize(WGCodec.REFRESH_CODEC).build()
     );
+
+    public static final Supplier<AttachmentType<NameMap>> NAMEMAP = ATTACHMENTS.register(
+            "namemap", () -> AttachmentType.builder(() -> new NameMap(null)).serialize(WGCodec.NAMEMAP_CODEC).build()
+    );
 }

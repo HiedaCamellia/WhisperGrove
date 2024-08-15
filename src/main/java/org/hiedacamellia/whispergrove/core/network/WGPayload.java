@@ -50,5 +50,13 @@ public class WGPayload {
                         Spleen::handleData
                 )
         );
+        registrar.playBidirectional(
+                NameMap.TYPE,
+                NameMap.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        NameMap::handleData,
+                        NameMap::handleData
+                )
+        );
     }
 }

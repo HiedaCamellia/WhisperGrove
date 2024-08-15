@@ -78,4 +78,15 @@ public class WGCodec {
             ByteBufCodecs.INT, Refresh::tick,
             Refresh::new
     );
+
+    public static final Codec<NameMap> NAMEMAP_CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.list(Codec.unboundedMap(Codec.list(Codec.STRING), Codec.STRING)).fieldOf("nameMap").forGetter(NameMap::nameMap)
+            ).apply(instance, NameMap::new)
+    );
+    public static final StreamCodec<ByteBuf, NameMap> NAMEMAP_STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.fromCodec(Codec.list(Codec.unboundedMap(Codec.list(Codec.STRING), Codec.STRING))),
+            NameMap::nameMap,
+            NameMap::new
+    );
 }
