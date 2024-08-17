@@ -35,33 +35,6 @@ public class SpringingBlockEntity extends RandomizableContainerBlockEntity imple
     }
 
     @Override
-    public void loadAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
-        super.loadAdditional(compound, lookupProvider);
-        if (!this.tryLoadLootTable(compound))
-            this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(compound, this.stacks, lookupProvider);
-    }
-
-    @Override
-    public void saveAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
-        super.saveAdditional(compound, lookupProvider);
-        if (!this.trySaveLootTable(compound)) {
-            ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
-        }
-    }
-
-
-    @Override
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) {
-        return this.saveWithFullMetadata(lookupProvider);
-    }
-
-    @Override
     public int @NotNull [] getSlotsForFace(@NotNull Direction direction) {
         return IntStream.range(0, this.getContainerSize()).toArray();
     }
@@ -87,7 +60,7 @@ public class SpringingBlockEntity extends RandomizableContainerBlockEntity imple
     }
 
     @Override
-    protected void setItems(@NotNull NonNullList<ItemStack> nonNullList) {
+    protected void setItems(@NotNull NonNullList<ItemStack> stacks) {
         this.stacks = stacks;
     }
 

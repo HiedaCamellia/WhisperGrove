@@ -5,7 +5,9 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -40,24 +42,42 @@ public class SpringingBlock extends BaseBlock implements EntityBlock {
 //    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 //        return Shapes.join(box(4, 0, 0, 12, 6, 16), box(7, 4, 10, 9, 10, 16).move(0,0,0), BooleanOp.OR);
 //    }
+//
+//    @Override
+//    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+//        //GeneralHerbProcessApplier.apply(state, List.of(stack), level, pos);
+//        player.openMenu(new MenuProvider() {
+//            @Override
+//            public @NotNull Component getDisplayName() {
+//                return Component.literal("springing");
+//            }
+//
+//            @Override
+//            public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+//                return new SpringingMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+//            }
+//        },pos);
+//        return ItemInteractionResult.SUCCESS;
+//    }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        //GeneralHerbProcessApplier.apply(state, List.of(stack), level, pos);
-        player.openMenu(new MenuProvider() {
-            @Override
-            public @NotNull Component getDisplayName() {
-                return Component.literal("springing");
-            }
+    public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
+        super.useWithoutItem(blockstate, world, pos, entity, hit);
+        if (entity instanceof ServerPlayer player) {
+            player.openMenu(new MenuProvider() {
+                @Override
+                public @NotNull Component getDisplayName() {
+                    return Component.literal("Cooking Range");
+                }
 
-            @Override
-            public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-                return new SpringingMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-            }
-        },pos);
-        return ItemInteractionResult.SUCCESS;
+                @Override
+                public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+                    return new SpringingMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+                }
+            }, pos);
+        }
+        return InteractionResult.SUCCESS;
     }
-
 
     @Override
     public MenuProvider getMenuProvider(@NotNull BlockState state, Level worldIn, @NotNull BlockPos pos) {
@@ -70,10 +90,4 @@ public class SpringingBlock extends BaseBlock implements EntityBlock {
         return new SpringingBlockEntity(pos, state);
     }
 
-    @Override
-    public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
-        super.triggerEvent(state, world, pos, eventID, eventParam);
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
-    }
 }
