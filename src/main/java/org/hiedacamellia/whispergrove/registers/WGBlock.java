@@ -41,4 +41,6 @@ public class WGBlock {
                     s -> s,
                     s -> BLOCKS.register(s, () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POTATOES), s))
             ));
+
+    public static final  DeferredBlock<BaseBlock> SPRINGING = BLOCKS.register("springing", () -> new SpringingBlock("springing"));
 }

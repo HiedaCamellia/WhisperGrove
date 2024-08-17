@@ -125,5 +125,8 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.rou_gui_slab","");
         add("block.whispergrove.rou_gui_stair","肉桂 Stair");
         add("tooltip.whispergrove.rou_gui_stair","");
+
+        add("block.whispergrove.springing","Springing");
+        add("tooltip.whispergrove.springing","");
     }
 }

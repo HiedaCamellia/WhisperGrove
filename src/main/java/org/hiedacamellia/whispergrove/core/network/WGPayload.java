@@ -4,6 +4,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.hiedacamellia.whispergrove.core.codec.button.SpringingButton;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
 
 public class WGPayload {
@@ -56,6 +57,14 @@ public class WGPayload {
                 new DirectionalPayloadHandler<>(
                         NameMap::handleData,
                         NameMap::handleData
+                )
+        );
+        registrar.playBidirectional(
+                SpringingButton.TYPE,
+                SpringingButton.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        SpringingButton::handleData,
+                        SpringingButton::handleData
                 )
         );
     }
