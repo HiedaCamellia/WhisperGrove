@@ -1,6 +1,7 @@
 package org.hiedacamellia.whispergrove.core.entry;
 
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,21 +18,17 @@ import java.util.List;
 
 public class BaseItem extends Item {
 
-    private final String regname;
-
-    public BaseItem(Properties properties, String regname) {
+    public BaseItem(Properties properties) {
         super(properties);
-        this.regname = regname;
     }
 
     @Override
     public void appendHoverText(ItemStack itemstack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, ctx, list, flag);
         if (!Screen.hasShiftDown()) {
-            list.add(Component.literal(
-                    "§7§o" + Component.translatable("tooltip.whispergrove.press_shift").getString() + "§r"));
+            list.add(Component.literal("§7§o" + Component.translatable("tooltip.whispergrove.press_shift").getString() + "§r"));
         } else {
-            String[] description = Component.translatable("tooltip.whispergrove."+this.regname).getString().split("§n");
+            String regName = BuiltInRegistries.ITEM.getKey(this).getPath();
+            String[] description = Component.translatable("tooltip.whispergrove." + regName).getString().split("§n");
             for (String line : description) {
                 list.add(Component.literal(line));
             }
@@ -48,6 +45,7 @@ public class BaseItem extends Item {
             Updater.updateLung(stack, player);
             Updater.updateSpleen(stack, player);
         }
+
         return foodproperties != null ? livingEntity.eat(level, stack, foodproperties) : stack;
     }
 
@@ -71,9 +69,4 @@ public class BaseItem extends Item {
         return this.components().get(WGDataComponent.SPLEEN.get());
     }
 
-    public String getReg() {
-        return regname;
-    }
 }
-
-

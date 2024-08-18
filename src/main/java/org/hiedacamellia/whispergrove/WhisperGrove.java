@@ -13,7 +13,6 @@ public class WhisperGrove {
 
     public WhisperGrove(IEventBus modEventBus, ModContainer modContainer) {
         WGBlock.BLOCKS.register(modEventBus);
-        WGBlockItem.ITEMS.register(modEventBus);
         WGItem.ITEMS.register(modEventBus);
         WGTab.TABS.register(modEventBus);
         WGAttachment.ATTACHMENTS.register(modEventBus);

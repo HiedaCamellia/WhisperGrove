@@ -27,7 +27,7 @@ import java.util.stream.IntStream;
 
 public class SpringingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 
-    private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(10, ItemStack.EMPTY);
+    private NonNullList<ItemStack> stacks = NonNullList.withSize(10, ItemStack.EMPTY);
     private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
     public SpringingBlockEntity(BlockPos position, BlockState state) {
