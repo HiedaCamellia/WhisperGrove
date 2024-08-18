@@ -1,80 +1,127 @@
 package org.hiedacamellia.whispergrove.content.common.blockentities;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
 import org.hiedacamellia.whispergrove.registers.WGBlockEntity;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.IntStream;
 
 public class SpringingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 
-    private NonNullList<ItemStack> stacks = NonNullList.withSize(10, ItemStack.EMPTY);
-    private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
+    private final Handler handler = new Handler(10);
+    private final ContainerData containerData = new Data();
 
     public SpringingBlockEntity(BlockPos position, BlockState state) {
         super(WGBlockEntity.SPRINGING.get(), position, state);
     }
 
     @Override
-    public int @NotNull [] getSlotsForFace(@NotNull Direction direction) {
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        this.handler.deserializeNBT(registries, tag);
+        ContainerHelper.loadAllItems(tag, this.handler.getStacks(), registries);
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        tag.put("inventory", this.handler.serializeNBT(registries));
+        ContainerHelper.saveAllItems(tag, this.handler.getStacks(), registries);
+    }
+
+    @Override
+    public int [] getSlotsForFace(Direction direction) {
         return IntStream.range(0, this.getContainerSize()).toArray();
     }
 
     @Override
-    public boolean canPlaceItemThroughFace(int i, @NotNull ItemStack itemStack, @Nullable Direction direction) {
+    public boolean canPlaceItemThroughFace(int i, ItemStack itemStack, @Nullable Direction direction) {
         return true;
     }
 
     @Override
-    public boolean canTakeItemThroughFace(int i, @NotNull ItemStack itemStack, @NotNull Direction direction) {
+    public boolean canTakeItemThroughFace(int i, ItemStack itemStack, Direction direction) {
         return true;
     }
 
     @Override
-    protected @NotNull Component getDefaultName() {
+    protected Component getDefaultName() {
         return Component.literal("springing");
     }
 
     @Override
-    protected @NotNull NonNullList<ItemStack> getItems() {
-        return this.stacks;
+    protected NonNullList<ItemStack> getItems() {
+        return this.handler.getStacks();
     }
 
     @Override
-    protected void setItems(@NotNull NonNullList<ItemStack> stacks) {
-        this.stacks = stacks;
+    protected void setItems(NonNullList<ItemStack> stacks) {
+        this.handler.setStacks(stacks);
     }
 
     @Override
     protected AbstractContainerMenu createMenu(int i, Inventory inventory) {
-        return new SpringingMenu(i, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+        ContainerLevelAccess access = ContainerLevelAccess.create(this.level, this.worldPosition);
+        return new SpringingMenu(i, inventory, access, this.handler, this.containerData);
     }
 
     @Override
     public int getContainerSize() {
-        return stacks.size();
+        return this.handler.getSlots();
     }
 
-    public SidedInvWrapper getItemHandler() {
-        return handler;
+    protected class Handler extends ItemStackHandler {
+
+        public Handler(int size) {
+            super(size);
+        }
+
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+        }
+
+        public NonNullList<ItemStack> getStacks() {
+            return this.stacks;
+        }
+
+        public void setStacks(NonNullList<ItemStack> items) {
+            this.stacks = items;
+        }
+
     }
+
+    private class Data implements ContainerData {
+
+        @Override
+        public int get(int index) {
+            return 0;
+        }
+
+        @Override
+        public void set(int index, int value) {}
+
+        @Override
+        public int getCount() {
+            return 0;
+        }
+
+    }
+
 }

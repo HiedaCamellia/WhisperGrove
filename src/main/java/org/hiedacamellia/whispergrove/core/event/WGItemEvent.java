@@ -12,7 +12,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 
-import java.util.Arrays;
 import java.util.List;
 
 @EventBusSubscriber(modid = WhisperGrove.MODID)
@@ -28,9 +27,7 @@ public class WGItemEvent {
                 MutableComponent component = Component.translatable("tooltip.whispergrove.press_shift");
                 toolTip.add(component.withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
             } else {
-                MutableComponent description = Component.translatable("tooltip.whispergrove." + key.getPath());
-                String[] descriptions = description.getString().split(ChatFormatting.UNDERLINE.toString());
-                Arrays.stream(descriptions).toList().forEach(s -> toolTip.add(Component.literal(s)));
+                toolTip.add(Component.translatable("tooltip.whispergrove." + key.getPath()));
             }
         }
     }

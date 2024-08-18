@@ -13,12 +13,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
 
 import java.util.HashMap;
 
+@OnlyIn(Dist.CLIENT)
 public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
 
     private static final HashMap<String, Object> guistate = SpringingMenu.guistate;
@@ -52,12 +55,10 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
-        RenderSystem.setShaderColor(1, 1, 1, 1);
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth,
-                this.imageHeight);
-        RenderSystem.disableBlend();
+        PoseStack poseStack = guiGraphics.pose();
+        poseStack.pushPose();
+        guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+        poseStack.popPose();
     }
 
     @Override
@@ -100,8 +101,6 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
                     super.renderWidget(guiGraphics, gx, gy, ticks);
             }
         };
-
-
 
         guistate.put("button:button_confirm", button_confirm);
         this.addRenderableWidget(button_confirm);
