@@ -10,9 +10,10 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.registers.WGBlock;
 
-public class StateProvider extends BlockStateProvider {
-    public StateProvider(PackOutput gen, ExistingFileHelper helper) {
-        super(gen, WhisperGrove.MODID, helper);
+public class WGBlockStateProvider extends BlockStateProvider {
+
+    public WGBlockStateProvider(PackOutput output, ExistingFileHelper helper) {
+        super(output, WhisperGrove.MODID, helper);
     }
 
     @Override
@@ -63,4 +64,5 @@ public class StateProvider extends BlockStateProvider {
             default -> throw new IllegalArgumentException("Invalid age: " + age);
         };
     }
+
 }
