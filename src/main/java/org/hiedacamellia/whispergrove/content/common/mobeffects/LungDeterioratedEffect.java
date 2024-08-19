@@ -5,6 +5,6 @@ import org.hiedacamellia.whispergrove.core.entry.BaseEffect;
 
 public class LungDeterioratedEffect extends BaseEffect {
     public LungDeterioratedEffect() {
-        super(MobEffectCategory.HARMFUL, 0x00FF00, "effect.whispergrove.lung_deteriorated");
+        super(MobEffectCategory.HARMFUL, 0x00FF00);
     }
 }

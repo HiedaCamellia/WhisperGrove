@@ -5,6 +5,6 @@ import org.hiedacamellia.whispergrove.core.entry.BaseEffect;
 
 public class SpleenHyperactivityEffect extends BaseEffect {
     public SpleenHyperactivityEffect() {
-        super(MobEffectCategory.HARMFUL, 0x00FF00, "effect.whispergrove.spleen_hyperactivity");
+        super(MobEffectCategory.HARMFUL, 0x00FF00);
     }
 }
