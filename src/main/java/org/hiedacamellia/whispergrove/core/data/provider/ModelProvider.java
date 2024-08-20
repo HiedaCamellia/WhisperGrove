@@ -48,7 +48,7 @@ public class ModelProvider extends ItemModelProvider {
                 "sliced_ren_shen",
                 "sliced_long_dan_cao"
                 ,"mo_yu_gu",
-                //"shu_fu_pian",
+                "shu_fu_pian",
                 "bone_fragment"
         ).forEach(s -> this.singleTexture(s,
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",

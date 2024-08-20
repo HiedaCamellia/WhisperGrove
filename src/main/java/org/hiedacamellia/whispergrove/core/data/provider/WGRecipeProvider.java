@@ -46,6 +46,7 @@ public class WGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
 
+        //熔炉配方
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(MO_YU_GU),//输入
                         RecipeCategory.MISC,//配方类型
@@ -65,5 +66,6 @@ public class WGRecipeProvider extends RecipeProvider {
                 )
                 .unlockedBy("has_lilac", has(Items.BONE))
                 .save(output, "duan_long_gu_smelting");
+
     }
 }
