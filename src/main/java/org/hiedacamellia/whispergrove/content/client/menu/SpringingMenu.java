@@ -19,7 +19,6 @@ import java.util.function.Supplier;
 
 public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 
-    public final static HashMap<String, Object> guistate = new HashMap<>();
     public final Level world;
     public final Player entity;
     public int x, y, z;
@@ -46,19 +45,19 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         this.world = inventory.player.level();
         for (int ni = 0 ; ni < 3; ++ni) {
             for (int nj = 0; nj < 3; ++nj) {
-                this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 20 + nj * 18, 30 + ni * 18)));
+                this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 97 + nj * 18, 24 + ni * 18)));
             }
         }
 
-        this.customSlots.put(9, this.addSlot(new SlotItemHandler(itemHandler, 9,  132, 41)));
+        this.customSlots.put(9, this.addSlot(new SlotItemHandler(itemHandler, 9,  209, 42)));
         for (int si = 0; si < 3; ++si) {
             for (int sj = 0; sj < 9; ++sj) {
-                this.addSlot(new Slot(inventory, sj + (si + 1) * 9, 7 + sj * 18, 99 + si * 18));
+                this.addSlot(new Slot(inventory, sj + (si + 1) * 9, 84 + sj * 18, 100 + si * 18));
             }
         }
 
         for (int si = 0; si < 9; ++si) {
-            this.addSlot(new Slot(inventory, si, 7 + si * 18, 158));
+            this.addSlot(new Slot(inventory, si, 84 + si * 18, 159));
         }
 
         this.addDataSlots(containerData);
