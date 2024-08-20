@@ -174,13 +174,13 @@ public class WGItem {
             ).build()
     );
 
-    //蒲公英 Dandelion
-    //pu gong ying
-    public static final DeferredItem<BaseItem> PU_GONG_YING = ITEMS.register("pu_gong_ying",
-            () -> new BaseItemBuilder().regname("pu_gong_ying").properties(
-                    new Item.Properties().rarity(Rarity.COMMON)
-            ).build()
-    );
+//    //蒲公英 Dandelion
+//    //pu gong ying
+//    public static final DeferredItem<BaseItem> PU_GONG_YING = ITEMS.register("pu_gong_ying",
+//            () -> new BaseItemBuilder().regname("pu_gong_ying").properties(
+//                    new Item.Properties().rarity(Rarity.COMMON)
+//            ).build()
+//    );
 
     //竹茹 Bamboo Shavings
     //zhu gu
@@ -190,13 +190,13 @@ public class WGItem {
             ).build()
     );
 
-    //昆布 kelp
-    //kun bu
-    public static final DeferredItem<BaseItem> KUN_BU = ITEMS.register("kun_bu",
-            () -> new BaseItemBuilder().regname("kun_bu").properties(
-                    new Item.Properties().rarity(Rarity.COMMON)
-            ).build()
-    );
+//    //昆布 kelp
+//    //kun bu
+//    public static final DeferredItem<BaseItem> KUN_BU = ITEMS.register("kun_bu",
+//            () -> new BaseItemBuilder().regname("kun_bu").properties(
+//                    new Item.Properties().rarity(Rarity.COMMON)
+//            ).build()
+//    );
 
     //寒水石 Gypsum
     //han shui shi
@@ -294,6 +294,22 @@ public class WGItem {
     //mo yu gu
     public static final DeferredItem<BaseItem> MO_YU_GU = ITEMS.register("mo_yu_gu",
             () -> new BaseItemBuilder().regname("mo_yu_gu").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //熟附片 Roasted Prepared Common Monkshood Daughter Root
+    //shu fu pian
+    public static final DeferredItem<BaseItem> SHU_FU_PIAN = ITEMS.register("shu_fu_pian",
+            () -> new BaseItemBuilder().regname("shu_fu_pian").properties(
+                    new Item.Properties().rarity(Rarity.COMMON)
+            ).build()
+    );
+
+    //骨头碎片 bone fragment
+    //bone fragment
+    public static final DeferredItem<BaseItem> BONE_FRAGMENT = ITEMS.register("bone_fragment",
+            () -> new BaseItemBuilder().regname("bone_fragment").properties(
                     new Item.Properties().rarity(Rarity.COMMON)
             ).build()
     );
