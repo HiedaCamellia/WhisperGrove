@@ -3,14 +3,22 @@ package org.hiedacamellia.whispergrove.core.event;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.viscera.*;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
+import org.hiedacamellia.whispergrove.core.command.WGCommands;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = WhisperGrove.MODID)
 public class WGPlayerEvent {
+
+    @SubscribeEvent
+    public static void registerCommands(RegisterCommandsEvent event) {
+        new WGCommands(event.getDispatcher(), event.getBuildContext());
+    }
 
     @SubscribeEvent
     public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
