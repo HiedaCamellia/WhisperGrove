@@ -111,7 +111,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.sliced_long_dan_cao","");
         add("item.whispergrove.mo_yu_gu","Cuttleflsh Bone");
         add("tooltip.whispergrove.mo_yu_gu","");
-        add("item.whispergrove.shu_fu_pian","Roasted Prepared Common Monkshood Daughter Root,");
+        add("item.whispergrove.shu_fu_pian","Roasted Prepared Common Monkshood Daughter Root");
         add("tooltip.whispergrove.shu_fu_pian","");
         add("item.whispergrove.bone_fragment","Bone Fragment");
         add("tooltip.whispergrove.bone_fragment","");

@@ -46,16 +46,6 @@ public class WGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
 
-//        SimpleCookingRecipeBuilder.smelting(
-//                        Ingredient.of(Items.KELP),//输入
-//                        RecipeCategory.FOOD,//配方类型
-//                        Items.DIAMOND,//产物，也可以是ItemStack
-//                        0.1f,//经验值
-//                        200//烹饪时间
-//                )
-//                .unlockedBy("has_kelp", has(Blocks.KELP))
-//                .save(output, "dried_kelp_smelting");
-
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(MO_YU_GU),//输入
                         RecipeCategory.MISC,//配方类型
@@ -64,16 +54,16 @@ public class WGRecipeProvider extends RecipeProvider {
                         200//烹饪时间
                 )
                 .unlockedBy("has_kelp", has(Blocks.KELP))
-                .save(output, "mo_yu_smelting");
+                .save(output, "mo_yu_gu_smelting");
 
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(Items.LILAC),//输入
+                        Ingredient.of(Items.BONE),//输入
                         RecipeCategory.MISC,//配方类型
-                        new ItemStack((Holder<Item>) CHAO_DING_XIANG),//产物，也可以是ItemStack
+                        new ItemStack((Holder<Item>) DUAN_LONG_GU),//产物，也可以是ItemStack
                         0.1f,//经验值
                         100//烹饪时间
                 )
-                .unlockedBy("has_lilac", has(Blocks.LILAC))
-                .save(output, "dried_lilac_smelting");
+                .unlockedBy("has_lilac", has(Items.BONE))
+                .save(output, "duan_long_gu_smelting");
     }
 }
