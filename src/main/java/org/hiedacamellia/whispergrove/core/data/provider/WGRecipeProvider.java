@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessRecipeBuilder;
+import org.hiedacamellia.whispergrove.registers.WGItem;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
@@ -69,7 +70,7 @@ public class WGRecipeProvider extends RecipeProvider {
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(Items.LILAC),//输入
                         RecipeCategory.MISC,//配方类型
-                        new ItemStack((Holder<Item>) CHAO_DING_XIANG),//产物，也可以是ItemStack
+                        new ItemStack(CLOVE.asItem()),//产物，也可以是ItemStack
                         0.1f,//经验值
                         100//烹饪时间
                 )
