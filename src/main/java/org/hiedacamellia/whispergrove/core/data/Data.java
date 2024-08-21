@@ -1,6 +1,9 @@
 package org.hiedacamellia.whispergrove.core.data;
 
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.data.lang.ChineseLanguageProvider;
 import org.hiedacamellia.whispergrove.core.data.lang.ClassicalChineseLanguageProvider;
 import org.hiedacamellia.whispergrove.core.data.lang.EnglishLanguageProvider;
