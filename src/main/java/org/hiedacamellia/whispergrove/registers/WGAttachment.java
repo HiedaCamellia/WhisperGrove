@@ -15,8 +15,6 @@ public class WGAttachment {
     // Create the DeferredRegister for attachment types
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, WhisperGrove.MODID);
 
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Viscera>> HEART_ = registerViscera("heart");
-
     //Heart
     public static final Supplier<AttachmentType<Heart>> HEART = ATTACHMENTS.register(
             "heart", () -> AttachmentType.builder(() -> new Heart(100.0, 100.0)).serialize(WGCodec.HEART_CODEC).build()
