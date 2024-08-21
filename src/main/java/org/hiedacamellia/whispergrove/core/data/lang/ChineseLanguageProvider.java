@@ -108,6 +108,14 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("tooltip.whispergrove.sliced_long_dan_cao","");
             add("item.whispergrove.mo_yu_gu","墨鱼骨");
             add("tooltip.whispergrove.mo_yu_gu","");
+            add("item.whispergrove.shu_fu_pian","熟附片");
+            add("tooltip.whispergrove.shu_fu_pian","");
+            add("item.whispergrove.bone_fragment","骨头碎片");
+            add("tooltip.whispergrove.bone_fragment","");
+
+            add("item.whispergrove.roller","药碾");
+            add("tooltip.whispergrove.roller","");
+
 
             add("block.whispergrove.rou_gui_log","肉桂原木");
             add("tooltip.whispergrove.rou_gui_log","");

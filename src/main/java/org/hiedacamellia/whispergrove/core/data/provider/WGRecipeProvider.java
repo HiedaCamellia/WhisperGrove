@@ -69,7 +69,7 @@ public class WGRecipeProvider extends RecipeProvider {
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(Items.LILAC),//输入
                         RecipeCategory.MISC,//配方类型
-                        new ItemStack((Holder<Item>) CLOVE),//产物，也可以是ItemStack
+                        new ItemStack((Holder<Item>) CHAO_DING_XIANG),//产物，也可以是ItemStack
                         0.1f,//经验值
                         100//烹饪时间
                 )

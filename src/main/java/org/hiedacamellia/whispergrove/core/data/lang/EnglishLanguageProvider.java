@@ -111,19 +111,25 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.whispergrove.sliced_long_dan_cao","");
         add("item.whispergrove.mo_yu_gu","Cuttleflsh Bone");
         add("tooltip.whispergrove.mo_yu_gu","");
+        add("item.whispergrove.shu_fu_pian","Roasted Prepared Common Monkshood Daughter Root");
+        add("tooltip.whispergrove.shu_fu_pian","");
+        add("item.whispergrove.bone_fragment","Bone Fragment");
+        add("tooltip.whispergrove.bone_fragment","");
 
+        add("item.whispergrove.roller","roller");
+        add("tooltip.whispergrove.roller","");
 
-        add("block.whispergrove.rou_gui_log","肉桂 Log");
+        add("block.whispergrove.rou_gui_log","Cinnamon  Log");
         add("tooltip.whispergrove.rou_gui_log","");
-        add("block.whispergrove.rou_gui_stripped_log","Stripped 肉桂 Log");
+        add("block.whispergrove.rou_gui_stripped_log","Stripped Cinnamon Log");
         add("tooltip.whispergrove.rou_gui_stripped_log","");
-        add("block.whispergrove.rou_gui_leaves","肉桂 Leaves");
+        add("block.whispergrove.rou_gui_leaves","Cinnamon Leaves");
         add("tooltip.whispergrove.rou_gui_leaves","");
-        add("block.whispergrove.rou_gui_planks","肉桂 Blank");
+        add("block.whispergrove.rou_gui_planks","Cinnamon Blank");
         add("tooltip.whispergrove.rou_gui_planks","");
-        add("block.whispergrove.rou_gui_slab","肉桂 Slab");
+        add("block.whispergrove.rou_gui_slab","Cinnamon Slab");
         add("tooltip.whispergrove.rou_gui_slab","");
-        add("block.whispergrove.rou_gui_stair","肉桂 Stair");
+        add("block.whispergrove.rou_gui_stair","Cinnamon Stair");
         add("tooltip.whispergrove.rou_gui_stair","");
 
         add("block.whispergrove.springing","Springing");
