@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.data.lang.gen.DescGen;
 import org.hiedacamellia.whispergrove.core.data.lang.gen.EffectGen;
+import org.hiedacamellia.whispergrove.registers.WGItem;
 
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
                 add(entry.getKey(),entry.getValue());
             }
 
-            add("item.whispergrove.huang_qi","黄芪");
+            add(WGItem.MILKVETCH.get(),"黄芪");
             add("tooltip.whispergrove.huang_qi","");
             add("item.whispergrove.yang_qi_shi","阳起石");
             add("tooltip.whispergrove.yang_qi_shi","");

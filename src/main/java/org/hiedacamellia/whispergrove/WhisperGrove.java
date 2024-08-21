@@ -6,6 +6,8 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import org.hiedacamellia.whispergrove.registers.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Locale;
 
@@ -13,6 +15,7 @@ import java.util.Locale;
 public class WhisperGrove {
 
     public static final String MODID = "whispergrove";
+    public static final Logger LOGGER = LoggerFactory.getLogger(WhisperGrove.MODID);
 
     public WhisperGrove(IEventBus modEventBus, ModContainer modContainer) {
         WGBlock.BLOCKS.register(modEventBus);

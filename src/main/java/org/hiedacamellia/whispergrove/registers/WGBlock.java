@@ -7,7 +7,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.common.blocks.*;
-import org.hiedacamellia.whispergrove.core.entry.BaseCropBlock;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,8 +25,8 @@ public class WGBlock {
     public static final DeferredBlock<SpringingBlock> SPRINGING = BLOCKS.register("springing", SpringingBlock::new);
     public static final DeferredBlock<RollerBlock> ROLLER = BLOCKS.register("roller", RollerBlock::new);
 
-    public static final Map<String, DeferredBlock<BaseCropBlock>> CROP_BLOCKS = Stream.of(
+    public static final Map<String, DeferredBlock<CropBlock>> CROP_BLOCKS = Stream.of(
             "rehmannia", "licorice", "milkvetch", "gentian", "ginseng").collect(Collectors.toMap(s -> s,
-            s -> BLOCKS.register(s, () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POTATOES), s))));
+            s -> BLOCKS.register(s, () -> new CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POTATOES)))));
 
 }
