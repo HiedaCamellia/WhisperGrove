@@ -15,25 +15,9 @@ public class GeneralHerbProcessApplier {
 
     public static void apply(BlockState blockState, List<ItemStack> itemStacks,Level level, BlockPos pos) {
 
-        RecipeManager recipes = level.getRecipeManager();
-
         if (level.isClientSide()) return;
-        // Create an input and query the recipe.
-        GeneralHerbProcessInput input = new GeneralHerbProcessInput(blockState, itemStacks);
 
-        var optional = recipes.getRecipeFor(
-                // The recipe type to get the recipe for. In our case, we use the crafting type.
-                WGRicipe.GENERAL_HERB_PROCESS.get(),
-                // Our recipe input.
-                input,
-                // Our level context.
-                level
-        );
-
-        ItemStack result = optional
-                .map(RecipeHolder::value)
-                .map(e -> e.assemble(input, level.registryAccess()))
-                .orElse(ItemStack.EMPTY);
+        ItemStack result = result(blockState, itemStacks, level, pos);
         // If there is a result, break the block and drop the result in the world.
         if (!result.isEmpty()) {
             //level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
@@ -44,5 +28,29 @@ public class GeneralHerbProcessApplier {
             level.addFreshEntity(entity);
 
         }
+    }
+
+    public static ItemStack result(BlockState blockState, List<ItemStack> itemStacks,Level level, BlockPos pos){
+
+        RecipeManager recipes = level.getRecipeManager();
+
+        GeneralHerbProcessInput input = new GeneralHerbProcessInput(blockState, itemStacks);
+
+        var optional = recipes.getRecipeFor(
+                WGRicipe.GENERAL_HERB_PROCESS.get(),
+                input,
+                level
+        );
+
+        ItemStack result = optional
+                .map(RecipeHolder::value)
+                .map(e -> e.assemble(input, level.registryAccess()))
+                .orElse(ItemStack.EMPTY);
+        if (!result.isEmpty()) {
+            return result;
+        }else {
+            return ItemStack.EMPTY;
+        }
+
     }
 }
