@@ -1,9 +1,11 @@
 package org.hiedacamellia.whispergrove.registers;
 
 import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.content.common.viscera.Viscera;
 import org.hiedacamellia.whispergrove.core.codec.WGCodec;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
 
@@ -13,14 +15,7 @@ public class WGAttachment {
     // Create the DeferredRegister for attachment types
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, WhisperGrove.MODID);
 
-//    // Serialization via INBTSerializable
-//    private static final Supplier<AttachmentType<ItemStackHandler>> HANDLER = ATTACHMENTS.register(
-//            "handler", () -> AttachmentType.serializable(() -> new ItemStackHandler(1)).build()
-//    );
-//    // Serialization via codec
-//    private static final Supplier<AttachmentType<Integer>> MANA = ATTACHMENTS.register(
-//            "mana", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
-//    );
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Viscera>> HEART_ = registerViscera("heart");
 
     //Heart
     public static final Supplier<AttachmentType<Heart>> HEART = ATTACHMENTS.register(
@@ -54,4 +49,10 @@ public class WGAttachment {
     public static final Supplier<AttachmentType<NameMap>> NAMEMAP = ATTACHMENTS.register(
             "namemap", () -> AttachmentType.builder(() -> new NameMap(null)).serialize(WGCodec.NAMEMAP_CODEC).build()
     );
+
+    private static DeferredHolder<AttachmentType<?>, AttachmentType<Viscera>> registerViscera(String name) {
+        Viscera viscera = new Viscera(WhisperGrove.prefix(name), 100.0D, 100.0D);
+        return ATTACHMENTS.register(name, () -> AttachmentType.builder(() -> viscera).serialize(Viscera.CODEC).build());
+    }
+
 }
