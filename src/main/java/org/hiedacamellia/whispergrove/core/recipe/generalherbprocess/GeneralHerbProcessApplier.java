@@ -3,16 +3,10 @@ package org.hiedacamellia.whispergrove.core.recipe.generalherbprocess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
-import org.hiedacamellia.whispergrove.core.debug.Debug;
-import org.hiedacamellia.whispergrove.core.recipe.RightClickInput;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 
 import java.util.List;
@@ -20,7 +14,6 @@ import java.util.List;
 public class GeneralHerbProcessApplier {
 
     public static void apply(BlockState blockState, List<ItemStack> itemStacks,Level level, BlockPos pos) {
-
 
         RecipeManager recipes = level.getRecipeManager();
 
@@ -37,15 +30,12 @@ public class GeneralHerbProcessApplier {
                 level
         );
 
-        Debug.send("gettingresult");
-
         ItemStack result = optional
                 .map(RecipeHolder::value)
                 .map(e -> e.assemble(input, level.registryAccess()))
                 .orElse(ItemStack.EMPTY);
         // If there is a result, break the block and drop the result in the world.
         if (!result.isEmpty()) {
-            Debug.send("getresult");
             //level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
             ItemEntity entity = new ItemEntity(level,
                     // Center of pos.
