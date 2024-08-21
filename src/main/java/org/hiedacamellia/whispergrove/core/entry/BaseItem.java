@@ -1,38 +1,19 @@
 package org.hiedacamellia.whispergrove.core.entry;
 
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.whispergrove.api.viscera.Updater;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
 import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
-import java.util.List;
-
 public class BaseItem extends Item {
 
     public BaseItem(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemstack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
-        if (!Screen.hasShiftDown()) {
-            list.add(Component.literal("§7§o" + Component.translatable("tooltip.whispergrove.press_shift").getString() + "§r"));
-        } else {
-            String regName = BuiltInRegistries.ITEM.getKey(this).getPath();
-            String[] description = Component.translatable("tooltip.whispergrove." + regName).getString().split("§n");
-            for (String line : description) {
-                list.add(Component.literal(line));
-            }
-        }
     }
 
     @Override
