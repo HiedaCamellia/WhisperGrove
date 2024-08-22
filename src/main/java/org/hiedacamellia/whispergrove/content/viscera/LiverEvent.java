@@ -21,27 +21,27 @@ public class LiverEvent {
         player.removeEffect(WGEffect.LIVER_HYPERACTIVITY);
         player.removeEffect(WGEffect.LIVER_DETERIORATED);
 
-        if (diff >= Config.diseaseCritical) {
+        if (diff >= Config.DISEASE_CRITICAL.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LIVER_HYPERACTIVITY, 300 , 2));
             return;
         }
-        if (diff >= Config.diseaseModerate) {
+        if (diff >= Config.DISEASE_MODERATE.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LIVER_HYPERACTIVITY, 300 , 1));
             return;
         }
-        if (diff >= Config.diseaseMild) {
+        if (diff >= Config.DISEASE_MILD.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LIVER_HYPERACTIVITY, 300 , 0));
             return;
         }
-        if (diff <= 1/ Config.diseaseCritical) {
+        if (diff <= 1/ Config.DISEASE_CRITICAL.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LIVER_DETERIORATED, 300 , 2));
             return;
         }
-        if (diff <= 1/Config.diseaseModerate) {
+        if (diff <= 1/Config.DISEASE_MODERATE.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LIVER_DETERIORATED, 300 , 1));
             return;
         }
-        if (diff <= 1/Config.diseaseMild) {
+        if (diff <= 1/Config.DISEASE_MILD.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LIVER_DETERIORATED, 300 , 0));
             return;
         }

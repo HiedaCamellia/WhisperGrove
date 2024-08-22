@@ -10,55 +10,36 @@ public class Config {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.BooleanValue DEBUG = BUILDER
+    public static final ModConfigSpec.BooleanValue DEBUG = BUILDER
             .comment("Set to true to enable debug info")
             .comment("设置为true以启用调试信息")
-            .define("debug", false);
+            .define("debug", true);
 
-    private static final ModConfigSpec.DoubleValue DISEASE_MILD = BUILDER
+    public static final ModConfigSpec.DoubleValue DISEASE_MILD = BUILDER
             .comment("Get the ratio of yin and yang points of mild disease")
             .comment("获得轻度疾病的阴阳点数比例")
             .defineInRange("disease_mild", 1.3,1.0,Double.MAX_VALUE);
 
-    private static final ModConfigSpec.DoubleValue DISEASE_MODERATE = BUILDER
+    public static final ModConfigSpec.DoubleValue DISEASE_MODERATE = BUILDER
             .comment("Get the ratio of yin and yang points of moderate disease")
             .comment("获得中度疾病的阴阳点数比例")
             .defineInRange("disease_moderate", 1.6,1.0,Double.MAX_VALUE);
 
-    private static final ModConfigSpec.DoubleValue DISEASE_CRITICAL = BUILDER
+    public static final ModConfigSpec.DoubleValue DISEASE_CRITICAL = BUILDER
             .comment("Get the ratio of yin and yang points of Critical disease")
             .comment("获得重度疾病的阴阳点数比例")
             .defineInRange("disease_Critical", 2.0,1.0,Double.MAX_VALUE);
 
-    private static final ModConfigSpec.BooleanValue ECLIPTIC_COMPACT = BUILDER
+    public static final ModConfigSpec.DoubleValue VISCERA_CONSTANT = BUILDER
+            .comment("The multiply of changed points of viscera")
+            .comment("脏腑变化点数的倍数")
+            .defineInRange("viscera_constant", 1.0,0,Double.MAX_VALUE);
+
+    public static final ModConfigSpec.BooleanValue ECLIPTIC_COMPACT = BUILDER
             .comment("Set to true to enable the compact of the solar term")
             .comment("设置为true以启用节气的联动")
             .define("ecliptic_compact", true);
 
     static final ModConfigSpec SPEC = BUILDER.build();
-
-    public static boolean debug;
-    public static double diseaseMild;
-    public static double diseaseModerate;
-    public static double diseaseCritical;
-    public static boolean eclipticCompact;
-
-    public static void setDebug(boolean debug){
-        DEBUG.set(debug);
-    }
-
-//    private static boolean validateItemName(final Object obj)
-//    {
-//        return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(itemName));
-//    }
-
-    @SubscribeEvent
-    static void onLoad(final ModConfigEvent event) {
-        debug = DEBUG.get();
-        diseaseMild = DISEASE_MILD.get();
-        diseaseModerate = DISEASE_MODERATE.get();
-        diseaseCritical = DISEASE_CRITICAL.get();
-        eclipticCompact = ECLIPTIC_COMPACT.get();
-    }
 
 }
