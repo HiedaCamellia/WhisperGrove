@@ -9,7 +9,7 @@ import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 public class Updater {
 
     public static Heart updateHeart(Heart item, Heart item2){
-        return new Heart(item.yin() + item2.yin(), item.yang() + item2.yang());
+        return new Heart(item.yin() + item2.yin(), item.yang() + item2.yang(),item.ping() + item2.ping());
     }
 
     public static void updateHeart(ItemStack itemStack, Player player){
@@ -21,7 +21,7 @@ public class Updater {
     }
 
     public static Kidney updateKidney(Kidney item, Kidney item2){
-        return new Kidney(item.yin() + item2.yin(), item.yang() + item2.yang());
+        return new Kidney(item.yin() + item2.yin(), item.yang() + item2.yang(),item.ping() + item2.ping());
     }
 
     public static void updateKidney(ItemStack itemStack, Player player){
@@ -33,7 +33,7 @@ public class Updater {
     }
 
     public static Liver updateLiver(Liver item, Liver item2){
-        return new Liver(item.yin() + item2.yin(), item.yang() + item2.yang());
+        return new Liver(item.yin() + item2.yin(), item.yang() + item2.yang(),item.ping() + item2.ping());
     }
 
     public static void updateLiver(ItemStack itemStack, Player player){
@@ -45,7 +45,7 @@ public class Updater {
     }
 
     public static Lung updateLung(Lung item, Lung item2){
-        return new Lung(item.yin() + item2.yin(), item.yang() + item2.yang());
+        return new Lung(item.yin() + item2.yin(), item.yang() + item2.yang(),item.ping() + item2.ping());
     }
 
     public static void updateLung(ItemStack itemStack, Player player){
@@ -57,7 +57,7 @@ public class Updater {
     }
 
     public static Spleen updateSpleen(Spleen item, Spleen item2){
-        return new Spleen(item.yin() + item2.yin(), item.yang() + item2.yang());
+        return new Spleen(item.yin() + item2.yin(), item.yang() + item2.yang(),item.ping() + item2.ping());
     }
 
     public static void updateSpleen(ItemStack itemStack, Player player){
@@ -69,7 +69,7 @@ public class Updater {
     }
 
     public static VisceraHolder updateViscera(VisceraHolder item, VisceraHolder item2){
-        return new VisceraHolder(item.yin() + item2.yin(), item.yang() + item2.yang());
+        return new VisceraHolder(item.yin() + item2.yin(), item.yang() + item2.yang(),item.ping() + item2.ping());
     }
 
 }
