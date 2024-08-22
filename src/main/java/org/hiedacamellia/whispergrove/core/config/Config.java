@@ -1,11 +1,7 @@
-package org.hiedacamellia.whispergrove;
+package org.hiedacamellia.whispergrove.core.config;
 
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-@EventBusSubscriber(modid = WhisperGrove.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Config {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
@@ -28,7 +24,7 @@ public class Config {
     public static final ModConfigSpec.DoubleValue DISEASE_CRITICAL = BUILDER
             .comment("Get the ratio of yin and yang points of Critical disease")
             .comment("获得重度疾病的阴阳点数比例")
-            .defineInRange("disease_Critical", 2.0,1.0,Double.MAX_VALUE);
+            .defineInRange("disease_critical", 2.0,1.0,Double.MAX_VALUE);
 
     public static final ModConfigSpec.DoubleValue VISCERA_CONSTANT = BUILDER
             .comment("The multiply of changed points of viscera")
@@ -40,6 +36,6 @@ public class Config {
             .comment("设置为true以启用节气的联动")
             .define("ecliptic_compact", true);
 
-    static final ModConfigSpec SPEC = BUILDER.build();
+    public static final ModConfigSpec SPEC = BUILDER.build();
 
 }
