@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.content.common.viscera;
+package org.hiedacamellia.whispergrove.content.common.components;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -9,7 +9,7 @@ import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.whispergrove.WhisperGrove;
-import org.hiedacamellia.whispergrove.content.common.viscera.Viscera;
+import org.hiedacamellia.whispergrove.content.common.components.Viscera;
 
 public record PlayerVisceraS2CPacket(ResourceLocation name, Double yin, Double yang) implements CustomPacketPayload {
 

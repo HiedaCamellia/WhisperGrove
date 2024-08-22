@@ -5,7 +5,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.whispergrove.WhisperGrove;
-import org.hiedacamellia.whispergrove.content.common.viscera.Viscera;
+import org.hiedacamellia.whispergrove.content.common.components.Viscera;
 import org.hiedacamellia.whispergrove.core.codec.WGCodec;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
 
