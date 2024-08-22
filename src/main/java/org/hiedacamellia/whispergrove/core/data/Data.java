@@ -27,7 +27,7 @@ public class Data {
         gen.addProvider(event.includeClient(), new WGItemModelProvider(packOutput, helper));
         gen.addProvider(event.includeClient(), new WGBlockStateProvider(packOutput, helper));
         gen.addProvider(event.includeServer(), new WGRecipeProvider(packOutput, lookupProvider));
-        gen.addProvider(event.includeClient(), new WGLootTableProvider(packOutput, lookupProvider));
+        //gen.addProvider(event.includeClient(), new WGLootTableProvider(packOutput, lookupProvider));
     }
 
 }

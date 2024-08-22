@@ -14,15 +14,6 @@ public class WGItem {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(WhisperGrove.MODID);
 
-    public static final DeferredItem<BlockItem> ROU_GUI_LEAVES = ITEMS.register("rou_gui_leaves", () -> new BlockItem(WGBlock.CASSIA_LEAVES.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> ROU_GUI_LOG = ITEMS.register("rou_gui_log", () -> new BlockItem(WGBlock.CASSIA_LOG.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> ROU_GUI_STRIPPED_LOG = ITEMS.register("rou_gui_stripped_log", () -> new BlockItem(WGBlock.CASSIA_STRIPPED_LOG.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> ROU_GUI_PLANKS = ITEMS.register("rou_gui_planks", () -> new BlockItem(WGBlock.CASSIA_PLANKS.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> ROU_GUI_SLAB = ITEMS.register("rou_gui_slab", () -> new BlockItem(WGBlock.CASSIA_SLAB.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> ROU_GUI_STAIR = ITEMS.register("rou_gui_stair", () -> new BlockItem(WGBlock.CASSIA_STAIRS.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> ROLLER = ITEMS.register("roller", () -> new BlockItem(WGBlock.ROLLER.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> SPRINGING = ITEMS.register("springing", () -> new BlockItem(WGBlock.SPRINGING.get(), new Item.Properties()));
-
     //黄芪 Radix Astragali
     //huang qi
     public static final DeferredItem<BaseItem> MILKVETCH = ITEMS.register("milkvetch",
@@ -110,18 +101,18 @@ public class WGItem {
     //long dan cao
     public static final DeferredItem<BaseItem> GENTIAN = ITEMS.register("gentian", () -> new BaseItemBuilder().build());
 
-
-    //蒲公英 Dandelion
-    //pu gong ying
-    public static final DeferredItem<BaseItem> DANDELION = ITEMS.register("dandelion", () -> new BaseItemBuilder().build());
+//
+//    //蒲公英 Dandelion
+//    //pu gong ying
+//    public static final DeferredItem<BaseItem> DANDELION = ITEMS.register("dandelion", () -> new BaseItemBuilder().build());
 
     //竹茹 Bamboo Shavings
     //zhu gu
     public static final DeferredItem<BaseItem> BAMBOO_SHAVINGS = ITEMS.register("bamboo_shavings", () -> new BaseItemBuilder().build());
 
-    //昆布 kelp
-    //kun bu
-    public static final DeferredItem<BaseItem> SEA_TANGLE = ITEMS.register("sea_tangle", () -> new BaseItemBuilder().build());
+//    //昆布 kelp
+//    //kun bu
+//    public static final DeferredItem<BaseItem> SEA_TANGLE = ITEMS.register("sea_tangle", () -> new BaseItemBuilder().build());
 
     //寒水石 Gypsum
     //han shui shi

@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.hiedacamellia.whispergrove.Config;
+import org.hiedacamellia.whispergrove.core.config.Config;
 import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;

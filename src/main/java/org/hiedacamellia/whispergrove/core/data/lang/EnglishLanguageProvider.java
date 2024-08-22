@@ -134,5 +134,14 @@ public class EnglishLanguageProvider extends LanguageProvider {
 
         add("block.whispergrove.springing","Springing");
         add("tooltip.whispergrove.springing","");
+
+        add("config.whispergrove.title","Whisper Grove Config");
+        add("config.whispergrove.comfirm","Comfirm");
+        add("config.whispergrove.debug","Debug");
+        add("config.whispergrove.debug.desc","Set to true to enable debug info");
+        add("config.whispergrove.disease_mild","Get the ratio of yin and yang points of mild disease");
+        add("config.whispergrove.disease_moderate","Get the ratio of yin and yang points of moderate disease");
+        add("config.whispergrove.disease_critical","Get the ratio of yin and yang points of Critical disease");
+        add("config.whispergrove.viscera_constant","The multiply of changed points of viscera");
     }
 }

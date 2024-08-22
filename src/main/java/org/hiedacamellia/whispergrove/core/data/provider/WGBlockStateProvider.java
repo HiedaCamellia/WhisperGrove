@@ -20,21 +20,21 @@ public class WGBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-        axisBlock((RotatedPillarBlock) WGBlock.CASSIA_LOG.get(), modLoc("block/rou_gui_log"), modLoc("block/rou_gui_log_top"));
-        simpleBlockItem(WGBlock.CASSIA_LOG.get(), models().cubeTop("rou_gui_log", modLoc("block/rou_gui_log"), modLoc("block/rou_gui_log_top")));
+        axisBlock((RotatedPillarBlock) WGBlock.CASSIA_LOG.get(), modLoc("block/cassia_log"), modLoc("block/cassia_log_top"));
+        simpleBlockItem(WGBlock.CASSIA_LOG.get(), models().cubeTop("cassia_log", modLoc("block/cassia_log"), modLoc("block/cassia_log_top")));
 
-        axisBlock((RotatedPillarBlock) WGBlock.CASSIA_STRIPPED_LOG.get(), modLoc("block/rou_gui_stripped_log"), modLoc("block/rou_gui_log_top"));
-        simpleBlockItem(WGBlock.CASSIA_STRIPPED_LOG.get(), models().cubeTop("rou_gui_stripped_log", modLoc("block/rou_gui_stripped_log"), modLoc("block/rou_gui_log_top")));
+        axisBlock((RotatedPillarBlock) WGBlock.CASSIA_STRIPPED_LOG.get(), modLoc("block/cassia_stripped_log"), modLoc("block/cassia_log_top"));
+        simpleBlockItem(WGBlock.CASSIA_STRIPPED_LOG.get(), models().cubeTop("cassia_stripped_log", modLoc("block/cassia_stripped_log"), modLoc("block/cassia_log_top")));
 
-        simpleBlockWithItem(WGBlock.CASSIA_LEAVES.get(), models().leaves("rou_gui_leaves", modLoc("block/rou_gui_leaves")));
+        simpleBlockWithItem(WGBlock.CASSIA_LEAVES.get(), models().leaves("cassia_leaves", modLoc("block/cassia_leaves")));
 
         simpleBlockWithItem(WGBlock.CASSIA_PLANKS.get(), cubeAll(WGBlock.CASSIA_PLANKS.get()));
 
-        slabBlock(WGBlock.CASSIA_SLAB.get(), modLoc("block/rou_gui_planks"), modLoc("block/rou_gui_planks"));
-        simpleBlockItem(WGBlock.CASSIA_SLAB.get(), models().slab("rou_gui_slab", modLoc("block/rou_gui_planks"), modLoc("block/rou_gui_planks"), modLoc("block/rou_gui_planks")));
+        slabBlock(WGBlock.CASSIA_SLAB.get(), modLoc("block/cassia_planks"), modLoc("block/cassia_planks"));
+        simpleBlockItem(WGBlock.CASSIA_SLAB.get(), models().slab("cassia_slab", modLoc("block/cassia_planks"), modLoc("block/cassia_planks"), modLoc("block/cassia_planks")));
 
-        stairsBlock(WGBlock.CASSIA_STAIRS.get(), modLoc("block/rou_gui_planks"));
-        simpleBlockItem(WGBlock.CASSIA_STAIRS.get(), models().stairs("rou_gui_stair", modLoc("block/rou_gui_planks"), modLoc("block/rou_gui_planks"), modLoc("block/rou_gui_planks")));
+        stairsBlock(WGBlock.CASSIA_STAIRS.get(), modLoc("block/cassia_planks"));
+        simpleBlockItem(WGBlock.CASSIA_STAIRS.get(), models().stairs("cassia_stair", modLoc("block/cassia_planks"), modLoc("block/cassia_planks"), modLoc("block/cassia_planks")));
 
         simpleBlock(WGBlock.ROLLER.get(), this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "roller")));
         simpleBlockItem(WGBlock.ROLLER.get(), this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "roller")));

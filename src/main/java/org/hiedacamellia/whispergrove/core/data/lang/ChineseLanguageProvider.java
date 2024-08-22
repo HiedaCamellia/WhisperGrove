@@ -132,5 +132,15 @@ public class ChineseLanguageProvider extends LanguageProvider {
 
             add("block.whispergrove.springing","药壶");
             add("tooltip.whispergrove.springing","");
+
+
+            add("config.whispergrove.title","浅草轻语 配置");
+            add("config.whispergrove.comfirm","确认");
+            add("config.whispergrove.debug","调试");
+            add("config.whispergrove.debug.desc","是否开启调试模式");
+            add("config.whispergrove.disease_mild","轻度疾病的阴阳点数比例");
+            add("config.whispergrove.disease_moderate","中度疾病的阴阳点数比例");
+            add("config.whispergrove.disease_critical","重度疾病的阴阳点数比例");
+            add("config.whispergrove.viscera_constant","脏腑变化点数的倍数");
         }
 }

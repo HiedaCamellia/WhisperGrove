@@ -3,7 +3,7 @@ package org.hiedacamellia.whispergrove.content.viscera;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
-import org.hiedacamellia.whispergrove.Config;
+import org.hiedacamellia.whispergrove.core.config.Config;
 import org.hiedacamellia.whispergrove.core.codec.record.Lung;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
