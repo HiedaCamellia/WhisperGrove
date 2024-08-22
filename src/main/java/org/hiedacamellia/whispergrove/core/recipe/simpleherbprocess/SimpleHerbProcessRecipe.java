@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.recipe;
+package org.hiedacamellia.whispergrove.core.recipe.simpleherbprocess;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -12,19 +12,21 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
 
-public class RightClickBlockRecipe implements Recipe<RightClickInput> {
+public class SimpleHerbProcessRecipe implements Recipe<SimpleHerbProcessInput> {
     // An in-code representation of our recipe data. This can be basically anything you want.
     // Common things to have here is a processing time integer of some kind, or an experience reward.
     // Note that we now use an ingredient instead of an item stack for the input.
     private final BlockState inputState;
     private final Ingredient inputItem;
+    private final int processtime;
     private final ItemStack result;
 
     // Add a constructor that sets all properties.
-    public RightClickBlockRecipe(BlockState inputState, Ingredient inputItem, ItemStack result) {
+    public SimpleHerbProcessRecipe(BlockState inputState, Ingredient inputItem, int processtime, ItemStack result) {
         this.inputState = inputState;
         this.inputItem = inputItem;
         this.result = result;
+        this.processtime = processtime;
     }
 
     // A list of our ingredients. Does not need to be overridden if you have no ingredients
@@ -38,12 +40,12 @@ public class RightClickBlockRecipe implements Recipe<RightClickInput> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return WGRicipeSerializer.RIGHT_CLICK_BLOCK.get();
+        return WGRicipeSerializer.SIMPLE_HERB_PROCESS.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return WGRicipe.RIGHT_CLICK_BLOCK.get();
+        return WGRicipe.SIMPLE_HERB_PROCESS.get();
     }
 
     // Grid-based recipes should return whether their recipe can fit in the given dimensions.
@@ -56,7 +58,7 @@ public class RightClickBlockRecipe implements Recipe<RightClickInput> {
     // Check whether the given input matches this recipe. The first parameter matches the generic.
     // We check our blockstate and our item stack, and only return true if both match.
     @Override
-    public boolean matches(RightClickInput input, Level level) {
+    public boolean matches(SimpleHerbProcessInput input, Level level) {
         return this.inputState == input.state() && this.inputItem.test(input.stack());
     }
 
@@ -71,7 +73,7 @@ public class RightClickBlockRecipe implements Recipe<RightClickInput> {
     // IMPORTANT: Always call .copy() if you use an existing result! If you don't, things can and will break,
     // as the result exists once per recipe, but the assembled stack is created each time the recipe is crafted.
     @Override
-    public ItemStack assemble(RightClickInput input, HolderLookup.Provider registries) {
+    public ItemStack assemble(SimpleHerbProcessInput input, HolderLookup.Provider registries) {
         return this.result.copy();
     }
 
@@ -92,5 +94,8 @@ public class RightClickBlockRecipe implements Recipe<RightClickInput> {
         return result;
     }
 
+    public int getProcesstime() {
+        return processtime;
+    }
 
 }

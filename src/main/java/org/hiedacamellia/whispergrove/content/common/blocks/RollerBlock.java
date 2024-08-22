@@ -17,7 +17,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessApplier;
+import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessApplier;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class RollerBlock extends Block {
     public ItemInteractionResult useItemOn(
             ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        GeneralHerbProcessApplier.apply(state, List.of(stack), level, pos);
+        GeneralPrescriptProcessApplier.apply(state, List.of(stack), level, pos);
         return ItemInteractionResult.SUCCESS;
     }
 

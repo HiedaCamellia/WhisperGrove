@@ -8,6 +8,59 @@ import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 public record VisceraHolder(double yin, double yang,double ping) {
 
+    public VisceraHolder(){
+        this(0.0, 0.0,0.0);
+    }
+
+    public boolean isYang(){
+        return yang > yin;
+    }
+
+    public boolean isYin(){
+        return yin > yang;
+    }
+
+    public VisceraHolder getYang(){
+        return new VisceraHolder(0.0, yang - yin,0.0);
+    }
+
+
+    public VisceraHolder getYang(double mass){
+        return new VisceraHolder(0.0, (yang - yin)*mass,0.0);
+    }
+
+    public VisceraHolder getYin(){
+        return new VisceraHolder(yin - yang, 0.0,0.0);
+    }
+
+    public VisceraHolder getYin(double mass){
+        return new VisceraHolder((yin - yang)*mass, 0.0,0.0);
+    }
+
+    public VisceraHolder update(VisceraHolder holder){
+        return Updater.updateViscera(this, holder);
+    }
+
+    public VisceraHolder updateHeart(ItemStack itemStack){
+        return update(VisceraHolder.getHeart(itemStack));
+    }
+
+    public VisceraHolder updateKidney(ItemStack itemStack){
+        return update(VisceraHolder.getKidney(itemStack));
+    }
+
+    public VisceraHolder updateLiver(ItemStack itemStack){
+        return update(VisceraHolder.getLiver(itemStack));
+    }
+
+    public VisceraHolder updateLung(ItemStack itemStack){
+        return update(VisceraHolder.getLung(itemStack));
+    }
+
+    public VisceraHolder updateSpleen(ItemStack itemStack){
+        return update(VisceraHolder.getSpleen(itemStack));
+    }
+
     public VisceraHolder getHeart(Player player){
         if(player.hasData(WGAttachment.HEART)){
             return fromHeart(player.getData(WGAttachment.HEART));

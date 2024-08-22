@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.recipe.generalherbprocess;
+package org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -11,7 +11,7 @@ import org.hiedacamellia.whispergrove.registers.WGRicipe;
 
 import java.util.List;
 
-public class GeneralHerbProcessApplier {
+public class GeneralPrescriptProcessApplier {
 
     public static void apply(BlockState blockState, List<ItemStack> itemStacks,Level level, BlockPos pos) {
 
@@ -34,10 +34,10 @@ public class GeneralHerbProcessApplier {
 
         RecipeManager recipes = level.getRecipeManager();
 
-        GeneralHerbProcessInput input = new GeneralHerbProcessInput(blockState, itemStacks);
+        GeneralPrescriptProcessInput input = new GeneralPrescriptProcessInput(blockState, itemStacks);
 
         var optional = recipes.getRecipeFor(
-                WGRicipe.GENERAL_HERB_PROCESS.get(),
+                WGRicipe.GENERAL_PRESCRIPT_PROCESS.get(),
                 input,
                 level
         );

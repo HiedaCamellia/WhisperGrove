@@ -12,8 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
-import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessRecipeBuilder;
-import org.hiedacamellia.whispergrove.registers.WGItem;
+import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipeBuilder;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
@@ -37,7 +36,7 @@ public class WGRecipeProvider extends RecipeProvider {
 //                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
 //                .save(output);
 
-        new GeneralHerbProcessRecipeBuilder(
+        new GeneralPrescriptProcessRecipeBuilder(
                 new ItemStack(Items.DIAMOND),//产物
                 Blocks.DIRT.defaultBlockState(),//工作台方块
                 100,//运转时间

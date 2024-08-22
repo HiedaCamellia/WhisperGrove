@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.recipe.generalherbprocess;
+package org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -9,16 +9,15 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.hiedacamellia.whispergrove.api.viscera.Updater;
+import org.hiedacamellia.whispergrove.Config;
 import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
-import org.hiedacamellia.whispergrove.core.codec.record.Heart;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput> {
+public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptProcessInput> {
     // An in-code representation of our recipe data. This can be basically anything you want.
     // Common things to have here is a processing time integer of some kind, or an experience reward.
     // Note that we now use an ingredient instead of an item stack for the input.
@@ -29,7 +28,7 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     private final ItemStack result;
 
     // Add a constructor that sets all properties.
-    public GeneralHerbProcessRecipe(BlockState inputState, List<Ingredient> inputItems, int processtime, boolean ordered, ItemStack result) {
+    public GeneralPrescriptProcessRecipe(BlockState inputState, List<Ingredient> inputItems, int processtime, boolean ordered, ItemStack result) {
         this.inputState = inputState;
         this.inputItems = inputItems;
         this.processtime = processtime;
@@ -48,12 +47,12 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return WGRicipeSerializer.GENERAL_HERB_PROCESS.get();
+        return WGRicipeSerializer.GENERAL_PRESCRIPT_PROCESS.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return WGRicipe.GENERAL_HERB_PROCESS.get();
+        return WGRicipe.GENERAL_PRESCRIPT_PROCESS.get();
     }
 
     // Grid-based recipes should return whether their recipe can fit in the given dimensions.
@@ -66,7 +65,7 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     // Check whether the given input matches this recipe. The first parameter matches the generic.
     // We check our blockstate and our item stack, and only return true if both match.
     @Override
-    public boolean matches(GeneralHerbProcessInput input, Level level) {
+    public boolean matches(GeneralPrescriptProcessInput input, Level level) {
         if(ordered) {
             
             if (this.inputItems.size() != input.stack().size()) {
@@ -123,17 +122,61 @@ public class GeneralHerbProcessRecipe implements Recipe<GeneralHerbProcessInput>
     // IMPORTANT: Always call .copy() if you use an existing result! If you don't, things can and will break,
     // as the result exists once per recipe, but the assembled stack is created each time the recipe is crafted.
     @Override
-    public ItemStack assemble(GeneralHerbProcessInput input, HolderLookup.Provider registries) {
+    public ItemStack assemble(GeneralPrescriptProcessInput input, HolderLookup.Provider registries) {
 
         List<ItemStack> itemStacks = input.stack();
         ItemStack result = this.result.copy();
 
+        VisceraHolder heart = new VisceraHolder();
+        VisceraHolder kidney = new VisceraHolder();
+        VisceraHolder liver = new VisceraHolder();
+        VisceraHolder lung = new VisceraHolder();
+        VisceraHolder spleen = new VisceraHolder();
+
         for(ItemStack itemStack:itemStacks){
-            result = Updater.updateViscera(VisceraHolder.getHeart(itemStack), VisceraHolder.getHeart(result)).setHeart(result);
-            result = Updater.updateViscera(VisceraHolder.getKidney(itemStack), VisceraHolder.getKidney(result)).setKidney(result);
-            result = Updater.updateViscera(VisceraHolder.getLiver(itemStack), VisceraHolder.getLiver(result)).setLiver(result);
-            result = Updater.updateViscera(VisceraHolder.getLung(itemStack), VisceraHolder.getLung(result)).setLung(result);
-            result = Updater.updateViscera(VisceraHolder.getSpleen(itemStack), VisceraHolder.getSpleen(result)).setSpleen(result);
+            heart = heart.updateHeart(itemStack);
+            kidney = kidney.updateKidney(itemStack);
+            liver = liver.updateLiver(itemStack);
+            lung = lung.updateLung(itemStack);
+            spleen = spleen.updateSpleen(itemStack);
+        }
+        double heartmass = heart.yang()+heart.yin()+heart.ping();
+        double kidneymass = kidney.yang()+kidney.yin()+kidney.ping();
+        double livermass = liver.yang()+liver.yin()+liver.ping();
+        double lungmass = lung.yang()+lung.yin()+lung.ping();
+        double spleenmass = spleen.yang()+spleen.yin()+spleen.ping();
+        heartmass *= heartmass;
+        kidneymass *= kidneymass;
+        livermass *= livermass;
+        lungmass *= lungmass;
+        spleenmass *= spleenmass;
+
+        double visceramass = heartmass+kidneymass+livermass+lungmass+spleenmass;
+
+        if(heart.isYang()){
+            result = heart.getYang(heartmass/visceramass * Config.VISCERA_CONSTANT.get()).setHeart(result);
+        }else {
+            result =heart.getYin(heartmass/visceramass * Config.VISCERA_CONSTANT.get()).setHeart(result);
+        }
+        if(kidney.isYang()){
+            result =kidney.getYang(kidneymass/visceramass * Config.VISCERA_CONSTANT.get()).setKidney(result);
+        }else {
+            result =kidney.getYin(kidneymass/visceramass * Config.VISCERA_CONSTANT.get()).setKidney(result);
+        }
+        if(liver.isYang()){
+            result =liver.getYang(livermass/visceramass * Config.VISCERA_CONSTANT.get()).setLiver(result);
+        }else {
+            result =liver.getYin(livermass/visceramass * Config.VISCERA_CONSTANT.get()).setLiver(result);
+        }
+        if(lung.isYang()){
+            result =lung.getYang(lungmass/visceramass * Config.VISCERA_CONSTANT.get()).setLung(result);
+        }else {
+            result =lung.getYin(lungmass/visceramass * Config.VISCERA_CONSTANT.get()).setLung(result);
+        }
+        if(spleen.isYang()){
+            result =spleen.getYang(spleenmass/visceramass * Config.VISCERA_CONSTANT.get()).setSpleen(result);
+        }else {
+            result =spleen.getYin(spleenmass/visceramass * Config.VISCERA_CONSTANT.get()).setSpleen(result);
         }
 
         return result;

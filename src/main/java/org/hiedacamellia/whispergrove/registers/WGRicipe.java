@@ -6,24 +6,24 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
-import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessRecipe;
-import org.hiedacamellia.whispergrove.core.recipe.RightClickBlockRecipe;
+import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipe;
+import org.hiedacamellia.whispergrove.core.recipe.simpleherbprocess.SimpleHerbProcessRecipe;
 
 public class WGRicipe {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES =
             DeferredRegister.create(Registries.RECIPE_TYPE, WhisperGrove.MODID);
 
-    public static final DeferredHolder<RecipeType<?>,RecipeType<RightClickBlockRecipe>> RIGHT_CLICK_BLOCK =
+    public static final DeferredHolder<RecipeType<?>,RecipeType<SimpleHerbProcessRecipe>> SIMPLE_HERB_PROCESS =
             RECIPE_TYPES.register(
-                    "right_click_block",
+                    "simple_herb_process",
                     // We need the qualifying generic here due to generics being generics.
-                    () -> RecipeType.<RightClickBlockRecipe>simple(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "right_click_block"))
+                    () -> RecipeType.<SimpleHerbProcessRecipe>simple(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "simple_herb_process"))
             );
 
-    public static final DeferredHolder<RecipeType<?>,RecipeType<GeneralHerbProcessRecipe>> GENERAL_HERB_PROCESS =
+    public static final DeferredHolder<RecipeType<?>,RecipeType<GeneralPrescriptProcessRecipe>> GENERAL_PRESCRIPT_PROCESS =
             RECIPE_TYPES.register(
-                    "general_herb_process",
-                    () -> RecipeType.<GeneralHerbProcessRecipe>simple(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "general_herb_process"))
+                    "general_prescript_process",
+                    () -> RecipeType.<GeneralPrescriptProcessRecipe>simple(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "general_prescript_process"))
             );
 
 }

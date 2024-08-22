@@ -1,4 +1,4 @@
-package org.hiedacamellia.whispergrove.core.recipe.generalherbprocess;
+package org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
@@ -13,7 +13,7 @@ import org.hiedacamellia.whispergrove.core.entry.BaseRicipeBuilder;
 
 import java.util.List;
 
-public class GeneralHerbProcessRecipeBuilder extends BaseRicipeBuilder {
+public class GeneralPrescriptProcessRecipeBuilder extends BaseRicipeBuilder {
     private BlockState inputState;
     private List<Ingredient> inputItems;
     private int processtime;
@@ -22,7 +22,7 @@ public class GeneralHerbProcessRecipeBuilder extends BaseRicipeBuilder {
     // Since we have exactly one of each input, we pass them to the constructor.
     // Builders for recipe serializers that have ingredient lists of some sort would usually
     // initialize an empty list and have #addIngredient or similar methods instead.
-    public GeneralHerbProcessRecipeBuilder(ItemStack result, BlockState inputState, int processtime, boolean ordered, List<Ingredient> inputItems) {
+    public GeneralPrescriptProcessRecipeBuilder(ItemStack result, BlockState inputState, int processtime, boolean ordered, List<Ingredient> inputItems) {
         super(result);
         this.inputState = inputState;
         this.inputItems = inputItems;
@@ -40,7 +40,7 @@ public class GeneralHerbProcessRecipeBuilder extends BaseRicipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
         // Our factory parameters are the result, the block state, and the ingredient.
-        GeneralHerbProcessRecipe recipe = new GeneralHerbProcessRecipe(this.inputState, this.inputItems, this.processtime, this.ordered, this.result);
+        GeneralPrescriptProcessRecipe recipe = new GeneralPrescriptProcessRecipe(this.inputState, this.inputItems, this.processtime, this.ordered, this.result);
         // Pass the id, the recipe, and the recipe advancement into the RecipeOutput.
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));
     }
