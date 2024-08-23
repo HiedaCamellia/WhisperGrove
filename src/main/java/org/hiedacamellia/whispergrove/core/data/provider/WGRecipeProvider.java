@@ -13,6 +13,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipeBuilder;
+import org.hiedacamellia.whispergrove.core.recipe.simpleherbprocess.SimpleHerbProcessRicipeBuilder;
+import org.hiedacamellia.whispergrove.registers.WGBlock;
+import org.hiedacamellia.whispergrove.registers.WGItem;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
@@ -75,5 +78,15 @@ public class WGRecipeProvider extends RecipeProvider {
                 )
                 .unlockedBy("has_lilac", has(Blocks.LILAC))
                 .save(output, "dried_lilac_smelting");
+
+        new SimpleHerbProcessRicipeBuilder(
+                new ItemStack(WGItem.GYPSUM_RUBRUM.get()),//产物
+                WGBlock.ROLLER.get().defaultBlockState(),//工作台方块
+                100,//运转时间
+                Ingredient.of(Items.CALCITE)//输入物品
+        )
+                .unlockedBy("has_calcite", has(Items.CALCITE))
+                .save(output);
+
     }
 }
