@@ -107,7 +107,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.whispergrove.bone_fragment","Bone Fragment");
         add("tooltip.whispergrove.bone_fragment","");
 
-        add("item.whispergrove.roller","Roller");
+        add("block.whispergrove.roller","Roller");
         add("tooltip.whispergrove.roller","");
 
 

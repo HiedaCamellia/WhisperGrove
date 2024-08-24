@@ -107,7 +107,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("item.whispergrove.bone_fragment","骨头碎片");
             add("tooltip.whispergrove.bone_fragment","");
 
-            add("item.whispergrove.roller","药碾");
+            add("block.whispergrove.roller","药碾");
             add("tooltip.whispergrove.roller","");
 
 
