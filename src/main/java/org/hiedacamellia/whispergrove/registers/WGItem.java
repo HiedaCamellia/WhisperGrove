@@ -167,7 +167,7 @@ public class WGItem {
 
     //熟附片 Roasted Prepared Common Monkshood Daughter Root
     //shu fu pian
-    public static final DeferredItem<BaseItem> SHU_FU_PIAN = ITEMS.register("roasted_monkshood", () -> new BaseItemBuilder().build());
+//    public static final DeferredItem<BaseItem> SHU_FU_PIAN = ITEMS.register("roasted_monkshood", () -> new BaseItemBuilder().build());
 
     //骨头碎片 bone fragment
     //bone fragment
