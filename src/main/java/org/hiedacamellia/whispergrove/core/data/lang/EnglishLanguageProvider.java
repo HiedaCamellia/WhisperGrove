@@ -127,13 +127,20 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("block.whispergrove.springing","Springing");
         add("tooltip.whispergrove.springing","");
 
-        add("config.whispergrove.title","Whisper Grove Config");
-        add("config.whispergrove.comfirm","Comfirm");
-        add("config.whispergrove.debug","Debug");
-        add("config.whispergrove.debug.desc","Set to true to enable debug info");
-        add("config.whispergrove.disease_mild","Get the ratio of yin and yang points of mild disease");
-        add("config.whispergrove.disease_moderate","Get the ratio of yin and yang points of moderate disease");
-        add("config.whispergrove.disease_critical","Get the ratio of yin and yang points of Critical disease");
-        add("config.whispergrove.viscera_constant","The multiply of changed points of viscera");
+        add("whispergrove.configuration.title","Whisper Grove Config");
+        add("whispergrove.configuration.debug","Debug");
+        add("whispergrove.configuration.disease_mild","mild disease");
+        add("whispergrove.configuration.disease_moderate","moderate disease");
+        add("whispergrove.configuration.disease_critical","Critical disease");
+        add("whispergrove.configuration.viscera_constant","The viscera constant value");
+        add("whispergrove.configuration.ecliptic_compact", "Ecliptic Compact");
+        add("whispergrove.configuration.debug.tooltip","Set to true to enable debug info");
+        add("whispergrove.configuration.disease_mild.tooltip","Get the ratio of yin and yang points of mild disease");
+        add("whispergrove.configuration.disease_moderate.tooltip","Get the ratio of yin and yang points of moderate disease");
+        add("whispergrove.configuration.disease_critical.tooltip","Get the ratio of yin and yang points of Critical disease(Deprecated)");
+        add("whispergrove.configuration.viscera_constant.tooltip","The multiply of changed points of viscera");
+        add("whispergrove.configuration.ecliptic_compact.tooltip", "Set to true to enable the compact of the Ecliptic");
+        add("whispergrove.configuration.section.whispergrove.common.toml", "Common Config");
+        add("whispergrove.configuration.section.whispergrove.common.toml.title", "Whisper Grove Common Config");
     }
 }

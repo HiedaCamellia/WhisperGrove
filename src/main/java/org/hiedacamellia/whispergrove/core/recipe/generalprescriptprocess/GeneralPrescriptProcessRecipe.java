@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.hiedacamellia.whispergrove.core.config.Config;
+import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
@@ -154,29 +154,29 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
         double visceramass = heartmass+kidneymass+livermass+lungmass+spleenmass;
 
         if(heart.isYang()){
-            result = heart.getYang(heartmass/visceramass * Config.VISCERA_CONSTANT.get()).setHeart(result);
+            result = heart.getYang(heartmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setHeart(result);
         }else {
-            result =heart.getYin(heartmass/visceramass * Config.VISCERA_CONSTANT.get()).setHeart(result);
+            result =heart.getYin(heartmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setHeart(result);
         }
         if(kidney.isYang()){
-            result =kidney.getYang(kidneymass/visceramass * Config.VISCERA_CONSTANT.get()).setKidney(result);
+            result =kidney.getYang(kidneymass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setKidney(result);
         }else {
-            result =kidney.getYin(kidneymass/visceramass * Config.VISCERA_CONSTANT.get()).setKidney(result);
+            result =kidney.getYin(kidneymass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setKidney(result);
         }
         if(liver.isYang()){
-            result =liver.getYang(livermass/visceramass * Config.VISCERA_CONSTANT.get()).setLiver(result);
+            result =liver.getYang(livermass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLiver(result);
         }else {
-            result =liver.getYin(livermass/visceramass * Config.VISCERA_CONSTANT.get()).setLiver(result);
+            result =liver.getYin(livermass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLiver(result);
         }
         if(lung.isYang()){
-            result =lung.getYang(lungmass/visceramass * Config.VISCERA_CONSTANT.get()).setLung(result);
+            result =lung.getYang(lungmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLung(result);
         }else {
-            result =lung.getYin(lungmass/visceramass * Config.VISCERA_CONSTANT.get()).setLung(result);
+            result =lung.getYin(lungmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLung(result);
         }
         if(spleen.isYang()){
-            result =spleen.getYang(spleenmass/visceramass * Config.VISCERA_CONSTANT.get()).setSpleen(result);
+            result =spleen.getYang(spleenmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setSpleen(result);
         }else {
-            result =spleen.getYin(spleenmass/visceramass * Config.VISCERA_CONSTANT.get()).setSpleen(result);
+            result =spleen.getYin(spleenmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setSpleen(result);
         }
 
         return result;

@@ -5,21 +5,18 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import org.hiedacamellia.whispergrove.core.config.Config;
+import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.registers.*;
-import org.hiedacamellia.whispergrove.core.config.ScreenProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Locale;
-import java.util.function.Supplier;
 
 @Mod(WhisperGrove.MODID)
 public class WhisperGrove {
 
     public static final String MODID = "whispergrove";
-    public static final Logger LOGGER = LoggerFactory.getLogger(WhisperGrove.MODID);
 
     public WhisperGrove(IEventBus modEventBus, ModContainer modContainer) {
         WGBlock.BLOCKS.register(modEventBus);
@@ -33,8 +30,9 @@ public class WhisperGrove {
         WGRicipe.RECIPE_TYPES.register(modEventBus);
         WGRicipeSerializer.RECIPE_SERIALIZERS.register(modEventBus);
         WGBlockEntity.BLOCK_ENTITIES.register(modEventBus);
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (Supplier<IConfigScreenFactory>) ScreenProvider::new);
+        modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
+        if(FMLLoader.getDist().isClient())
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
     public static ResourceLocation prefix(String name) {

@@ -57,19 +57,19 @@ public class WGPlayerEvent {
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.getEntity().hasData(WGAttachment.HEART)) {
-            event.getEntity().setData(WGAttachment.HEART, new Heart(100.0, 100.0,0.0));
+            event.getEntity().setData(WGAttachment.HEART, new Heart(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.KIDNEY)) {
-            event.getEntity().setData(WGAttachment.KIDNEY, new Kidney(100.0, 100.0,0.0));
+            event.getEntity().setData(WGAttachment.KIDNEY, new Kidney(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.LUNG)) {
-            event.getEntity().setData(WGAttachment.LUNG, new Lung(100.0, 100.0,0.0));
+            event.getEntity().setData(WGAttachment.LUNG, new Lung(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.LIVER)) {
-            event.getEntity().setData(WGAttachment.LIVER, new Liver(100.0, 100.0,0.0));
+            event.getEntity().setData(WGAttachment.LIVER, new Liver(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.SPLEEN)) {
-            event.getEntity().setData(WGAttachment.SPLEEN, new Spleen(100.0, 100.0,0.0));
+            event.getEntity().setData(WGAttachment.SPLEEN, new Spleen(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.REFRESH)) {
             event.getEntity().setData(WGAttachment.REFRESH, new Refresh(0));

@@ -2,7 +2,7 @@ package org.hiedacamellia.whispergrove.core.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class Config {
+public class CommonConfig {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
@@ -21,9 +21,10 @@ public class Config {
             .comment("获得中度疾病的阴阳点数比例")
             .defineInRange("disease_moderate", 1.6,1.0,Double.MAX_VALUE);
 
+    @Deprecated
     public static final ModConfigSpec.DoubleValue DISEASE_CRITICAL = BUILDER
-            .comment("Get the ratio of yin and yang points of Critical disease")
-            .comment("获得重度疾病的阴阳点数比例")
+            .comment("Get the ratio of yin and yang points of Critical disease(Deprecated)")
+            .comment("获得重度疾病的阴阳点数比例(弃用)")
             .defineInRange("disease_critical", 2.0,1.0,Double.MAX_VALUE);
 
     public static final ModConfigSpec.DoubleValue VISCERA_CONSTANT = BUILDER
@@ -32,7 +33,7 @@ public class Config {
             .defineInRange("viscera_constant", 1.0,0,Double.MAX_VALUE);
 
     public static final ModConfigSpec.BooleanValue ECLIPTIC_COMPACT = BUILDER
-            .comment("Set to true to enable the compact of the solar term")
+            .comment("Set to true to enable the compact of the Ecliptic")
             .comment("设置为true以启用节气的联动")
             .define("ecliptic_compact", true);
 

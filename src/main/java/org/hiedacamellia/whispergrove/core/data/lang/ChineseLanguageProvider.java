@@ -128,13 +128,23 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("tooltip.whispergrove.springing","");
 
 
-            add("config.whispergrove.title","浅草轻语 配置");
-            add("config.whispergrove.comfirm","确认");
-            add("config.whispergrove.debug","调试");
-            add("config.whispergrove.debug.desc","是否开启调试模式");
-            add("config.whispergrove.disease_mild","轻度疾病的阴阳点数比例");
-            add("config.whispergrove.disease_moderate","中度疾病的阴阳点数比例");
-            add("config.whispergrove.disease_critical","重度疾病的阴阳点数比例");
-            add("config.whispergrove.viscera_constant","脏腑变化点数的倍数");
+            add("whispergrove.configuration.title","浅草轻语 配置");
+            add("whispergrove.configuration.debug","调试");
+            add("whispergrove.configuration.disease_mild","轻度疾病");
+            add("whispergrove.configuration.disease_moderate","中度疾病");
+            add("whispergrove.configuration.disease_critical","重度疾病");
+            add("whispergrove.configuration.viscera_constant","脏腑变化常数");
+            add("whispergrove.configuration.ecliptic_compact", "节气联动");
+            add("whispergrove.configuration.debug.tooltip","设置为true以启用调试信息");
+            add("whispergrove.configuration.disease_mild.tooltip","获得轻度疾病的阴阳点数比例");
+            add("whispergrove.configuration.disease_moderate.tooltip","获得中度疾病的阴阳点数比例");
+            add("whispergrove.configuration.disease_critical.tooltip","获得重度疾病的阴阳点数比例(弃用)");
+            add("whispergrove.configuration.viscera_constant.tooltip","脏腑变化点数的倍数");
+            add("whispergrove.configuration.ecliptic_compact.tooltip", "设置为true以启用节气的联动");
+            add("whispergrove.configuration.section.whispergrove.common.toml", "通用配置");
+            add("whispergrove.configuration.section.whispergrove.common.toml.title", "浅草轻语 通用配置");
+
+            add("neoforge.configuration.uitext.undo","撤销");
+            add("neoforge.configuration.uitext.reset","重置");
         }
 }
