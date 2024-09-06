@@ -9,6 +9,7 @@ import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
+import org.hiedacamellia.whispergrove.core.event.WGEvent;
 import org.hiedacamellia.whispergrove.registers.*;
 
 import java.util.Locale;
@@ -19,6 +20,8 @@ public class WhisperGrove {
     public static final String MODID = "whispergrove";
 
     public WhisperGrove(IEventBus modEventBus, ModContainer modContainer) {
+        modEventBus.addListener(WGEvent::onCommonSetup);
+
         WGBlock.BLOCKS.register(modEventBus);
         WGItem.ITEMS.register(modEventBus);
         WGBlockItem.ITEMS.register(modEventBus);
