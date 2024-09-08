@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(FoodData.class)
 public class FoodDataMixin implements FoodDataAccessor {
@@ -46,72 +48,14 @@ public class FoodDataMixin implements FoodDataAccessor {
         return this.FOOD_EFFICIENCY;
     }
 
-
-    /**
-     * @author HiedaCamellia
-     * @reason 添加最大饱食度限制
-     */
-    @Overwrite
-    private void add(int foodLevel, float saturationLevel){
-        this.foodLevel = (int) Mth.clamp(this.FOOD_EFFICIENCY*foodLevel + this.foodLevel, 0, MAX_FOOD_LEVEL);
-        this.saturationLevel = Mth.clamp(this.FOOD_EFFICIENCY*saturationLevel + this.saturationLevel, 0.0F, (float)this.foodLevel);
+    @ModifyConstant(method = {"add","needsFood","tick"},constant = @Constant(intValue = 20))
+    private int modifyMaxFoodLevel(int maxFoodLevel) {
+        return MAX_FOOD_LEVEL;
     }
 
-    /**
-     * @author HiedaCamellia
-     * @reason 添加最大饱食度限制
-     */
-    @Overwrite
-    public boolean needsFood() {
-        return this.foodLevel < MAX_FOOD_LEVEL;
-    }
-
-    /**
-     * @author HiedaCamellia
-     * @reason 添加最大饱食度限制
-     */
-    @Overwrite
-    public void tick(Player player) {
-        Difficulty difficulty = player.level().getDifficulty();
-        this.lastFoodLevel = this.foodLevel;
-        if (this.exhaustionLevel > 4.0F) {
-            this.exhaustionLevel -= 4.0F;
-            if (this.saturationLevel > 0.0F) {
-                this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
-            } else if (difficulty != Difficulty.PEACEFUL) {
-                this.foodLevel = Math.max(this.foodLevel - 1, 0);
-            }
-        }
-
-        boolean flag = player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION);
-        if (flag && this.saturationLevel > 0.0F && player.isHurt() && this.foodLevel >= MAX_FOOD_LEVEL) {
-            ++this.tickTimer;
-            if (this.tickTimer >= 10) {
-                float f = Math.min(this.saturationLevel, 6.0F);
-                player.heal(f / 6.0F);
-                ((FoodData)(Object)this).addExhaustion(f);
-                this.tickTimer = 0;
-            }
-        } else if (flag && this.foodLevel >= MAX_FOOD_LEVEL*0.9 && player.isHurt()) {
-            ++this.tickTimer;
-            if (this.tickTimer >= 80) {
-                player.heal(1.0F);
-                ((FoodData)(Object)this).addExhaustion(6.0F);
-                this.tickTimer = 0;
-            }
-        } else if (this.foodLevel <= 0) {
-            ++this.tickTimer;
-            if (this.tickTimer >= 80) {
-                if (player.getHealth() > player.getMaxHealth()/2 || difficulty == Difficulty.HARD || player.getHealth() > 1.0F && difficulty == Difficulty.NORMAL) {
-                    player.hurt(player.damageSources().starve(), 1.0F);
-                }
-
-                this.tickTimer = 0;
-            }
-        } else {
-            this.tickTimer = 0;
-        }
-
+    @ModifyConstant(method = {"tick"},constant = @Constant(intValue = 18))
+    private double modifyFoodLevel(int FoodLevel) {
+        return MAX_FOOD_LEVEL*0.9;
     }
 
 
