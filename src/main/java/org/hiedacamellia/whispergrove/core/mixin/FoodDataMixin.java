@@ -92,7 +92,7 @@ public class FoodDataMixin implements FoodDataAccessor {
                 ((FoodData)(Object)this).addExhaustion(f);
                 this.tickTimer = 0;
             }
-        } else if (flag && this.foodLevel >= 18 && player.isHurt()) {
+        } else if (flag && this.foodLevel >= MAX_FOOD_LEVEL*0.9 && player.isHurt()) {
             ++this.tickTimer;
             if (this.tickTimer >= 80) {
                 player.heal(1.0F);
@@ -102,7 +102,7 @@ public class FoodDataMixin implements FoodDataAccessor {
         } else if (this.foodLevel <= 0) {
             ++this.tickTimer;
             if (this.tickTimer >= 80) {
-                if (player.getHealth() > 10.0F || difficulty == Difficulty.HARD || player.getHealth() > 1.0F && difficulty == Difficulty.NORMAL) {
+                if (player.getHealth() > player.getMaxHealth()/2 || difficulty == Difficulty.HARD || player.getHealth() > 1.0F && difficulty == Difficulty.NORMAL) {
                     player.hurt(player.damageSources().starve(), 1.0F);
                 }
 
