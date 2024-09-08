@@ -2,11 +2,19 @@ package org.hiedacamellia.whispergrove.content.viscera;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Abilities;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.attachment.AttachmentInternals;
+import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.core.codec.record.Heart;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
+
+import java.util.Objects;
 
 public class HeartEvent {
 
@@ -18,11 +26,8 @@ public class HeartEvent {
         Heart heart = player.getData(WGAttachment.HEART);
         double diff = heart.yang() / heart.yin();
 
-        float score = (float) ((heart.yang()+ heart.yin())/100.0);
-
-        player.setHealth(score);
-
-
+        AttributeInstance attributeInstance = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH));
+        attributeInstance.addOrReplacePermanentModifier(new AttributeModifier(WhisperGrove.prefix("heart"), ((heart.yang()+ heart.yin())/100-20), AttributeModifier.Operation.ADD_VALUE));
 
         player.removeEffect(WGEffect.HEART_HYPERACTIVITY);
         player.removeEffect(WGEffect.HEART_DETERIORATED);

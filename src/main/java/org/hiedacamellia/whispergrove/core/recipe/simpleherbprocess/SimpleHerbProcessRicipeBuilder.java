@@ -26,7 +26,7 @@ public class SimpleHerbProcessRicipeBuilder extends BaseRicipeBuilder {
         this.processtime = processtime;
     }
 
-    // Saves a recipe using the given RecipeOutput and id. This method is defined in the RecipeBuilder interface.
+    // Saves a recipe using the given RecipeOutput and id. This method is defined in the RecipeBuilder interfaces.
     @Override
     public void save(RecipeOutput output, ResourceLocation id) {
         // Build the advancement.

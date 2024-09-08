@@ -2,12 +2,18 @@ package org.hiedacamellia.whispergrove.content.viscera;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.core.codec.record.Lung;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
 
+@EventBusSubscriber(modid = WhisperGrove.MODID)
 public class LungEvent {
 
     public static void Check(Player player) {
@@ -36,6 +42,15 @@ public class LungEvent {
         if (diff <= 1/ CommonConfig.DISEASE_MILD.get()) {
             player.addEffect(new MobEffectInstance(WGEffect.LUNG_DETERIORATED, 300 , 0));
             return;
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerHeal(LivingHealEvent event) {
+        LivingEntity entity = event.getEntity();
+        if(entity instanceof Player player) {
+            Lung lung = player.getData(WGAttachment.LUNG);
+            event.setAmount((float) (event.getAmount() * (lung.yin() + lung.yang()) / 2000));
         }
     }
 

@@ -59,10 +59,10 @@ public class WGCommands {
                                             if (visceraType != null) {
                                                 Viscera data = player.getData(visceraType);
                                                 if (yinYang.equals("yin")) {
-                                                    player.setData(visceraType, new Viscera(key, value, data.yang()));
+                                                    player.setData(visceraType, new Viscera(key, value, data.yang(), data.ping()));
                                                     sendSuccess(player, SET_SUCCESS, data);
                                                 } else if (yinYang.equals("yang")) {
-                                                    player.setData(visceraType, new Viscera(key, data.yin(), value));
+                                                    player.setData(visceraType, new Viscera(key, data.yin(), value, data.ping()));
                                                     sendSuccess(player, SET_SUCCESS, data);
                                                 } else {
                                                     sendFail(player, SET_FAILED, yinYang);
@@ -80,7 +80,7 @@ public class WGCommands {
                                     AttachmentType<?> type = NeoForgeRegistries.ATTACHMENT_TYPES.get(key);
                                     AttachmentType<Viscera> visceraType = (AttachmentType<Viscera>) type;
                                     if (visceraType != null) {
-                                        player.setData(visceraType, new Viscera(key, 100.0D, 100.0D));
+                                        player.setData(visceraType, new Viscera(key, 1000.0D, 1000.0D, 0.0D));
                                         sendSuccess(player, RESET_SUCCESS);
                                     } else {
                                         sendFail(player, RESET_FAILED);

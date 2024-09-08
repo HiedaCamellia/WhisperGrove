@@ -2,11 +2,17 @@ package org.hiedacamellia.whispergrove.content.viscera;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.core.codec.record.Kidney;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
+
+import java.util.Objects;
 
 public class KidneyEvent {
 
@@ -17,6 +23,9 @@ public class KidneyEvent {
 
         Kidney kidney = player.getData(WGAttachment.KIDNEY);
         double diff = kidney.yang() / kidney.yin();
+
+        AttributeInstance attributeInstance = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.ATTACK_DAMAGE));
+        attributeInstance.addOrReplacePermanentModifier(new AttributeModifier(WhisperGrove.prefix("kidney"), (kidney.yang() + kidney.yin())/2000, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         player.removeEffect(WGEffect.KIDNEY_HYPERACTIVITY);
         player.removeEffect(WGEffect.KIDNEY_DETERIORATED);
