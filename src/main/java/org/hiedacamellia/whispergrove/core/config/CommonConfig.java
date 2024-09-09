@@ -37,6 +37,11 @@ public class CommonConfig {
             .comment("设置为true以启用节气的联动")
             .define("ecliptic_compact", true);
 
+    public static final ModConfigSpec.BooleanValue MIXIN_CONTENT = BUILDER
+            .comment("Set to true to enable mixin content(Disable this option when mixin conflicts occur)")
+            .comment("设置为true以启用Mixin内容（当发生mixin冲突时禁用该选项）")
+            .define("mixin_content", true);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
 }

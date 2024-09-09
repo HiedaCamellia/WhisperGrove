@@ -5,12 +5,15 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
+import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.core.interfaces.FoodDataAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(FoodData.class)
@@ -50,12 +53,30 @@ public class FoodDataMixin implements FoodDataAccessor {
 
     @ModifyConstant(method = {"add","needsFood","tick"},constant = @Constant(intValue = 20))
     private int modifyMaxFoodLevel(int maxFoodLevel) {
-        return MAX_FOOD_LEVEL;
+        if(CommonConfig.MIXIN_CONTENT.get())
+            return MAX_FOOD_LEVEL;
+        return 20;
     }
 
     @ModifyConstant(method = {"tick"},constant = @Constant(intValue = 18))
     private double modifyFoodLevel(int FoodLevel) {
-        return MAX_FOOD_LEVEL*0.9;
+        if(CommonConfig.MIXIN_CONTENT.get())
+            return MAX_FOOD_LEVEL*0.9;
+        return 18;
+    }
+
+    @ModifyArg(method = "add" , at = @At(value = "INVOKE", target = "clamp(III)I"),index = 0)
+    private int modifyArg(int foodLevel) {
+        if(CommonConfig.MIXIN_CONTENT.get())
+            return (int) (foodLevel*FOOD_EFFICIENCY);
+        return foodLevel;
+    }
+
+    @ModifyArg(method = "add" , at = @At(value = "INVOKE", target = "clamp(FFF)F"),index = 0)
+    private float modifyArg(float foodLevel) {
+        if(CommonConfig.MIXIN_CONTENT.get())
+            return (int) (foodLevel*FOOD_EFFICIENCY);
+        return foodLevel;
     }
 
 
