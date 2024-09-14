@@ -59,20 +59,20 @@ public class FoodDataMixin implements FoodDataAccessor {
     }
 
     @ModifyConstant(method = {"tick"},constant = @Constant(intValue = 18))
-    private double modifyFoodLevel(int FoodLevel) {
+    private int modifyFoodLevel(int FoodLevel) {
         if(CommonConfig.MIXIN_CONTENT.get())
-            return MAX_FOOD_LEVEL*0.9;
+            return (int) (MAX_FOOD_LEVEL*0.9);
         return 18;
     }
 
-    @ModifyArg(method = "add" , at = @At(value = "INVOKE", target = "clamp(III)I"),index = 0)
+    @ModifyArg(method = "add" , at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(III)I"),index = 0)
     private int modifyArg(int foodLevel) {
         if(CommonConfig.MIXIN_CONTENT.get())
             return (int) (foodLevel*FOOD_EFFICIENCY);
         return foodLevel;
     }
 
-    @ModifyArg(method = "add" , at = @At(value = "INVOKE", target = "clamp(FFF)F"),index = 0)
+    @ModifyArg(method = "add" , at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F"),index = 0)
     private float modifyArg(float foodLevel) {
         if(CommonConfig.MIXIN_CONTENT.get())
             return (int) (foodLevel*FOOD_EFFICIENCY);

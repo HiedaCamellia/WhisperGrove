@@ -26,23 +26,33 @@ public class KidneyEvent {
 
         AttributeInstance attributeInstance = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.ATTACK_DAMAGE));
         attributeInstance.addOrReplacePermanentModifier(new AttributeModifier(WhisperGrove.prefix("kidney"), (kidney.yang() + kidney.yin())/2000, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        AttributeInstance attackSpeed = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.ATTACK_SPEED));
 
         player.removeEffect(WGEffect.KIDNEY_HYPERACTIVITY);
         player.removeEffect(WGEffect.KIDNEY_DETERIORATED);
 
         if (diff >= CommonConfig.DISEASE_MODERATE.get()) {
+            player.sleepCounter = 0;
+            attributeInstance.addOrUpdateTransientModifier(new AttributeModifier(WhisperGrove.prefix("attack_kidney"), 0.8, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_HYPERACTIVITY, 300 , 1));
             return;
         }
         if (diff >= CommonConfig.DISEASE_MILD.get()) {
+            attributeInstance.removeModifier(WhisperGrove.prefix("attack_kidney"));
+            attackSpeed.addOrUpdateTransientModifier(new AttributeModifier(WhisperGrove.prefix("attack_speed_kidney"), 1.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_HYPERACTIVITY, 300 , 0));
             return;
+        }else {
+            attackSpeed.removeModifier(WhisperGrove.prefix("attack_speed_kidney"));
         }
         if (diff <= 1/ CommonConfig.DISEASE_MODERATE.get()) {
+            player.hurt(player.damageSources().wither(),0.5F);
+            attributeInstance.removeModifier(WhisperGrove.prefix("attack_kidney"));
             player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_DETERIORATED, 300 , 1));
             return;
         }
         if (diff <= 1/ CommonConfig.DISEASE_MILD.get()) {
+            attributeInstance.addOrUpdateTransientModifier(new AttributeModifier(WhisperGrove.prefix("attack_kidney"), 0.8, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             player.addEffect(new MobEffectInstance(WGEffect.KIDNEY_DETERIORATED, 300 , 0));
             return;
         }

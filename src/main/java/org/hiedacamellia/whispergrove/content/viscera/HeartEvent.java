@@ -1,7 +1,9 @@
 package org.hiedacamellia.whispergrove.content.viscera;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -32,19 +34,27 @@ public class HeartEvent {
         player.removeEffect(WGEffect.HEART_HYPERACTIVITY);
         player.removeEffect(WGEffect.HEART_DETERIORATED);
 
+        AttributeInstance speed = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MOVEMENT_SPEED));
+
         if (diff >= CommonConfig.DISEASE_MODERATE.get()) {
+            player.sleepCounter = 0;
+            speed.removeModifier(WhisperGrove.prefix("speed"));
             player.addEffect(new MobEffectInstance(WGEffect.HEART_HYPERACTIVITY, 300 , 1));
             return;
         }
         if (diff >= CommonConfig.DISEASE_MILD.get()) {
+            speed.addOrUpdateTransientModifier(new AttributeModifier(WhisperGrove.prefix("speed"), 1.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             player.addEffect(new MobEffectInstance(WGEffect.HEART_HYPERACTIVITY, 300 , 0));
             return;
         }
         if (diff <= 1/ CommonConfig.DISEASE_MODERATE.get()) {
+            player.hurt(player.damageSources().wither(),0.5F);
+            speed.removeModifier(WhisperGrove.prefix("speed"));
             player.addEffect(new MobEffectInstance(WGEffect.HEART_DETERIORATED, 300 , 1));
             return;
         }
         if (diff <= 1/ CommonConfig.DISEASE_MILD.get()) {
+            speed.addOrUpdateTransientModifier(new AttributeModifier(WhisperGrove.prefix("speed"), 0.75, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             player.addEffect(new MobEffectInstance(WGEffect.HEART_DETERIORATED, 300 , 0));
             return;
         }
