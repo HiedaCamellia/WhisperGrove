@@ -3,12 +3,17 @@ package org.hiedacamellia.whispergrove.registers;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.entry.BaseItem;
 import org.hiedacamellia.whispergrove.core.entry.builder.BaseItemBuilder;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class WGItem {
 
@@ -59,7 +64,7 @@ public class WGItem {
     //wu wei zi
     public static final DeferredItem<BaseItem> SCHISANDRA_CHINENSIS = ITEMS.register("schisandra_chinensis",
             () -> new BaseItemBuilder().properties(new Item.Properties().food(new FoodProperties.Builder()
-                            .nutrition(2).saturationModifier(0.8f).alwaysEdible().build())).build());
+                    .nutrition(2).saturationModifier(0.8f).alwaysEdible().build())).build());
 
     //炙甘草 Roasted Liquorice Root
     //zhi gan cao
@@ -173,4 +178,25 @@ public class WGItem {
     //bone fragment
     public static final DeferredItem<BaseItem> BONE_FRAGMENT = ITEMS.register("bone_fragment", () -> new BaseItemBuilder().build());
 
+    public static final String[] CROP_NAMES = {"rehmannia", "licorice", "milkvetch", "gentian", "ginseng" };
+
+    public static Map<String, DeferredItem<Item>> CROP_SEED_ITEMS = Arrays.stream(CROP_NAMES)
+            .collect(Collectors.toMap(s -> s, s -> ITEMS.register(s + "_seed", () -> new BlockItem(WGBlock.CROP_BLOCKS.get(s).get(), new Item.Properties()))));
+
+    public static Item getGrowCropItem(String name) {
+        switch (name) {
+            case "rehmannia":
+                return REHMANNIA.get();
+            case "licorice":
+                return LICORICE.get();
+            case "milkvetch":
+                return MILKVETCH.get();
+            case "gentian":
+                return GENTIAN.get();
+            case "ginseng":
+                return GINSENG.get();
+            default:
+                throw new IllegalArgumentException("Unknown crop name: " + name);
+        }
+    }
 }
