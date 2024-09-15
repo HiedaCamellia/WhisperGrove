@@ -3,6 +3,7 @@ package org.hiedacamellia.whispergrove.registers;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
@@ -27,6 +28,11 @@ public class WGBlock {
 
     public static final Map<String, DeferredBlock<CropBlock>> CROP_BLOCKS = Stream.of(
             "rehmannia", "licorice", "milkvetch", "gentian", "ginseng").collect(Collectors.toMap(s -> s,
-            s -> BLOCKS.register(s, () -> new CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POTATOES)))));
-
+            s -> BLOCKS.register(s, () -> new CropBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.CROP)
+                    .pushReaction(PushReaction.DESTROY)))));
 }
