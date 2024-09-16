@@ -7,11 +7,11 @@ import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 public class BaseItemBuilder {
 
-    private Heart heart;
-    private Kidney kidney;
-    private Liver liver;
-    private Lung lung;
-    private Spleen spleen;
+    private Heart heart = new Heart(0.0, 0.0,0.0);
+    private Kidney kidney = new Kidney(0.0, 0.0,0.0);
+    private Liver liver = new Liver(0.0, 0.0,0.0);
+    private Lung lung = new Lung(0.0, 0.0,0.0);
+    private Spleen spleen = new Spleen(0.0, 0.0,0.0);
     private Item.Properties properties = new Item.Properties();
 
     public BaseItem build() {

@@ -36,8 +36,9 @@ public class WGBlockStateProvider extends BlockStateProvider {
         stairsBlock(WGBlock.CASSIA_STAIRS.get(), modLoc("block/cassia_planks"));
         simpleBlockItem(WGBlock.CASSIA_STAIRS.get(), models().stairs("cassia_stair", modLoc("block/cassia_planks"), modLoc("block/cassia_planks"), modLoc("block/cassia_planks")));
 
-        simpleBlock(WGBlock.ROLLER.get(), this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "roller")));
-        simpleBlockItem(WGBlock.ROLLER.get(), this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "roller")));
+        simpleBlockWithItem(WGBlock.ROLLER.get(), this.models().getExistingFile(modLoc("roller")));
+        simpleBlockWithItem(WGBlock.CUTTER.get(), this.models().getExistingFile(modLoc("cutter")));
+        simpleBlockWithItem(WGBlock.POT.get(), this.models().getExistingFile(modLoc("pot")));
 
         WGBlock.CROP_BLOCKS.forEach((s, baseCropBlockDeferredBlock) -> registerCropBlockModels(baseCropBlockDeferredBlock.get(), s));
     }

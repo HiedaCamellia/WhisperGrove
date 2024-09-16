@@ -29,14 +29,18 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
 
     @SuppressWarnings("unused")
     public SpringingMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf buf) {
-        this(containerId, inventory, ContainerLevelAccess.NULL);
+        this(containerId, inventory, ContainerLevelAccess.NULL,buf.readBlockPos());
     }
 
-    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access) {
-        this(containerId, inventory, access, new ItemStackHandler(10), new SimpleContainerData(9));
+    public SpringingMenu(int containerId, Inventory inventory, BlockPos pos) {
+        this(containerId, inventory, ContainerLevelAccess.NULL,pos);
     }
 
-    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access, IItemHandler itemHandler, ContainerData containerData) {
+    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access,BlockPos pos) {
+        this(containerId, inventory, access, new ItemStackHandler(10), new SimpleContainerData(9),pos);
+    }
+
+    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access, IItemHandler itemHandler, ContainerData containerData,BlockPos pos) {
         super(WGMenu.SPRINGING.get(), containerId);
         checkContainerSize(inventory, 10);
         this.access = access;

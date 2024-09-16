@@ -25,6 +25,8 @@ public class WGBlock {
             () -> new StairBlock(CASSIA_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
     public static final DeferredBlock<SpringingBlock> SPRINGING = BLOCKS.register("springing", SpringingBlock::new);
     public static final DeferredBlock<RollerBlock> ROLLER = BLOCKS.register("roller", RollerBlock::new);
+    public static final DeferredBlock<CutterBlock> CUTTER = BLOCKS.register("cutter", CutterBlock::new);
+    public static final DeferredBlock<PotBlock> POT = BLOCKS.register("pot", PotBlock::new);
 
     public static final Map<String, DeferredBlock<CropBlock>> CROP_BLOCKS = Stream.of(
             "rehmannia", "licorice", "milkvetch", "gentian", "ginseng").collect(Collectors.toMap(s -> s,

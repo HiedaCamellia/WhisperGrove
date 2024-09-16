@@ -126,6 +126,10 @@ public class EnglishLanguageProvider extends LanguageProvider {
 
         add("block.whispergrove.springing","Springing");
         add("tooltip.whispergrove.springing","");
+        add("block.whispergrove.cutter","Cutter");
+        add("tooltip.whispergrove.cutter","");
+        add("block.whispergrove.pot","Pot");
+        add("tooltip.whispergrove.pot","");
 
         add("whispergrove.configuration.title","Whisper Grove Config");
         add("whispergrove.configuration.debug","Debug");

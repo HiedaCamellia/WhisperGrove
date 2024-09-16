@@ -126,6 +126,10 @@ public class ChineseLanguageProvider extends LanguageProvider {
 
             add("block.whispergrove.springing","药壶");
             add("tooltip.whispergrove.springing","");
+            add("block.whispergrove.cutter","药铡");
+            add("tooltip.whispergrove.cutter","");
+            add("block.whispergrove.pot","大锅");
+            add("tooltip.whispergrove.pot","");
 
 
             add("whispergrove.configuration.title","浅草轻语 配置");
@@ -146,5 +150,14 @@ public class ChineseLanguageProvider extends LanguageProvider {
 
             add("neoforge.configuration.uitext.undo","撤销");
             add("neoforge.configuration.uitext.reset","重置");
+
+            add("tooltip.whispergrove.heart","心经 ");
+            add("tooltip.whispergrove.liver","肝经 ");
+            add("tooltip.whispergrove.lung","肺经 ");
+            add("tooltip.whispergrove.kidney","肾经 ");
+            add("tooltip.whispergrove.spleen","脾经 ");
+            add("tooltip.whispergrove.yin","寒%d");
+            add("tooltip.whispergrove.yang","温%d");
+            add("tooltip.whispergrove.ping","平%d");
         }
 }

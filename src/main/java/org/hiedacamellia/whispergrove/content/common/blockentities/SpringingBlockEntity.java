@@ -6,23 +6,25 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
+import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
+import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessApplier;
 import org.hiedacamellia.whispergrove.registers.WGBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.IntStream;
 
-public class SpringingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class SpringingBlockEntity extends WGTickableBlockEntity {
 
     private final Handler handler = new Handler(10);
     private final ContainerData containerData = new Data();
@@ -43,6 +45,21 @@ public class SpringingBlockEntity extends RandomizableContainerBlockEntity imple
         super.saveAdditional(tag, registries);
         tag.put("inventory", this.handler.serializeNBT(registries));
         ContainerHelper.saveAllItems(tag, this.handler.getStacks(), registries);
+    }
+
+    @Override
+    public void assemble(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        NonNullList<ItemStack> stacks = this.handler.getStacks();
+        stacks.set(9,GeneralPrescriptProcessApplier.result(state, stacks.subList(0,8), level));
+        this.handler.setStacks(stacks);
+    }
+
+    @Override
+    public void tryAssemble(BlockState state, ServerLevel level) {
+        int tick = GeneralPrescriptProcessApplier.getProcesstime(state, this.handler.getStacks().subList(0,8), level);
+        if(tick>0){
+            this.setTickCount(tick);
+        }
     }
 
     @Override
@@ -78,7 +95,7 @@ public class SpringingBlockEntity extends RandomizableContainerBlockEntity imple
     @Override
     protected AbstractContainerMenu createMenu(int i, Inventory inventory) {
         ContainerLevelAccess access = ContainerLevelAccess.create(this.level, this.worldPosition);
-        return new SpringingMenu(i, inventory, access, this.handler, this.containerData);
+        return new SpringingMenu(i, inventory, access, this.handler, this.containerData, this.worldPosition);
     }
 
     @Override

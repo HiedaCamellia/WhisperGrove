@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
+import org.hiedacamellia.whispergrove.registers.WGItem;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
 
@@ -126,6 +127,9 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
 
         List<ItemStack> itemStacks = input.stack();
         ItemStack result = this.result.copy();
+        if(result.isEmpty()){
+            result = WGItem.SOUP.toStack();
+        }
 
         VisceraHolder heart = new VisceraHolder();
         VisceraHolder kidney = new VisceraHolder();

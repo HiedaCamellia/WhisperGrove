@@ -7,15 +7,14 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.hiedacamellia.whispergrove.content.common.blockentities.SpringingBlockEntity;
+import org.hiedacamellia.whispergrove.core.entry.WGTickableBlock;
 
-public class SpringingBlock extends Block implements EntityBlock {
+public class SpringingBlock extends WGTickableBlock {
 
     public SpringingBlock() {
         super(BlockBehaviour.Properties.of());

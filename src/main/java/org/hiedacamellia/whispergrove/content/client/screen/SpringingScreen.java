@@ -2,6 +2,9 @@ package org.hiedacamellia.whispergrove.content.client.screen;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -11,8 +14,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
+import org.hiedacamellia.whispergrove.core.network.PlayerMenuC2SPacket;
+
 
 @OnlyIn(Dist.CLIENT)
 public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
@@ -22,6 +28,7 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
     private final int x, y, z;
     private final BlockPos pos;
     private final Player entity;
+    private Button confirm;
 
     public SpringingScreen(SpringingMenu container, Inventory inventory, Component title) {
         super(container, inventory, title);
@@ -38,6 +45,14 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
     @Override
     public void init() {
         super.init();
+
+        confirm = new ImageButton(leftPos+220,topPos+23,14,14,
+                new WidgetSprites(WhisperGrove.prefix("textures/screens/springing_conform_button.png"),
+                        WhisperGrove.prefix("textures/screens/springing_conform_button_pressed.png")), e->{
+            PacketDistributor.sendToServer(new PlayerMenuC2SPacket(pos,0));
+        });
+
+        this.addRenderableWidget(confirm);
     }
 
     @Override
