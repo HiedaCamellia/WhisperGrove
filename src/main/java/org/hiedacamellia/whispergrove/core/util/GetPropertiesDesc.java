@@ -25,13 +25,16 @@ public class GetPropertiesDesc {
         components.add(getComponent(Component.translatable("tooltip.whispergrove.kidney"), kidney.yin(), kidney.yang(), kidney.ping()));
         Spleen spleen = itemStack.getOrDefault(WGDataComponent.SPLEEN, new Spleen(0.0, 0.0, 0.0));
         components.add(getComponent(Component.translatable("tooltip.whispergrove.spleen"), spleen.yin(), spleen.yang(), spleen.ping()));
+
+        List<Component> rlist = new ArrayList<>();
+
         components.forEach(e->{
-            if(e.equals(Component.empty())){
-                components.remove(e);
+            if(!e.equals(Component.empty())){
+                rlist.add(e);
             }
         });
 
-        return components;
+        return rlist;
     }
 
     private static Component getComponent(Component c, double yin, double yang, double ping) {

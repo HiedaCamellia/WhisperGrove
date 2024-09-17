@@ -47,6 +47,10 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         this.containerData = containerData;
         this.entity = inventory.player;
         this.world = inventory.player.level();
+        this.x = pos.getX();
+        this.y = pos.getY();
+        this.z = pos.getZ();
+        this.pos = pos;
         for (int ni = 0 ; ni < 3; ++ni) {
             for (int nj = 0; nj < 3; ++nj) {
                 this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 97 + nj * 18, 24 + ni * 18)));
