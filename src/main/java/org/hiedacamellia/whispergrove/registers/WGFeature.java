@@ -41,9 +41,9 @@ public class WGFeature {
 
     public static final ResourceKey<PlacedFeature> CASSIA_TREE_PLACED_KEY = ResourceKey.create(
             Registries.PLACED_FEATURE, // The registry this key is for
-            WhisperGrove.prefix("cassia_tree_place") // The registry name
+            WhisperGrove.prefix("cassia_tree") // The registry name
     );
-    public static final PlacedFeature CASSIA_TREE_PLACED = new PlacedFeature(DeferredHolder.create(CASSIA_TREE_KEY),
+    public static final PlacedFeature CASSIA_TREE_PLACED = new PlacedFeature(Holder.direct(CASSIA_TREE),
             List.of(HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
                     InSquarePlacement.spread(),
                     CountPlacement.of(4),
