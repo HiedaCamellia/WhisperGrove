@@ -44,7 +44,7 @@ public class GeneralPrescriptProcessApplier {
         return optional
                 .map(RecipeHolder::value)
                 .map(e -> e.assemble(input, level.registryAccess()))
-                .orElse(WGItem.SOUP.toStack());
+                .orElse(ItemStack.EMPTY);
 
     }
 

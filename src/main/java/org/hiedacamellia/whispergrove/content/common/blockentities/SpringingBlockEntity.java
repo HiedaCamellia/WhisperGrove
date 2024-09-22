@@ -21,6 +21,7 @@ import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessApplier;
+import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipe;
 import org.hiedacamellia.whispergrove.registers.WGBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -54,14 +55,19 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
         NonNullList<ItemStack> stacks = this.handler.getStacks();
         Debug.getLogger().debug("Assembling");
         Debug.getLogger().debug("stacks: "+stacks);
-        stacks.set(9,GeneralPrescriptProcessApplier.result(state, stacks.subList(0,8), level));
-        Debug.getLogger().debug("set: "+stacks.get(9));
-        stacks.forEach(itemStack -> {
-            int index = stacks.indexOf(itemStack);
-            if(index!=9)
-                stacks.set(index,ItemStack.EMPTY);
-        });
-        this.handler.setStacks(stacks);
+        ItemStack result = GeneralPrescriptProcessApplier.result(state, stacks.subList(0,8), level);
+        if(result.isEmpty())
+            result = GeneralPrescriptProcessRecipe.ass(stacks.subList(0,8),ItemStack.EMPTY);
+        if(result!=null) {
+            stacks.set(9, result);
+            Debug.getLogger().debug("set: " + stacks.get(9));
+            stacks.forEach(itemStack -> {
+                int index = stacks.indexOf(itemStack);
+                if (index != 9)
+                    stacks.set(index, ItemStack.EMPTY);
+            });
+            this.handler.setStacks(stacks);
+        }
     }
 
     @Override

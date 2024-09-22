@@ -14,6 +14,7 @@ import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
 import org.hiedacamellia.whispergrove.registers.WGItem;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,7 +116,7 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
     // Return an UNMODIFIABLE version of your result here. The result of this method is mainly intended
     // for the recipe book, and commonly used by JEI and other recipe viewers as well.
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider registries) {
+    public @NotNull ItemStack getResultItem(HolderLookup.Provider registries) {
         return this.result;
     }
 
@@ -123,10 +124,14 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
     // IMPORTANT: Always call .copy() if you use an existing result! If you don't, things can and will break,
     // as the result exists once per recipe, but the assembled stack is created each time the recipe is crafted.
     @Override
-    public ItemStack assemble(GeneralPrescriptProcessInput input, HolderLookup.Provider registries) {
-
-        List<ItemStack> itemStacks = input.stack();
+    public @NotNull ItemStack assemble(GeneralPrescriptProcessInput input, HolderLookup.Provider registries) {
         ItemStack result = this.result.copy();
+        return ass(input.stack(),result);
+    }
+
+    public static ItemStack ass(List<ItemStack> input,ItemStack aresult) {
+
+        ItemStack result = aresult;
         if(result.isEmpty()){
             result = WGItem.SOUP.toStack();
         }
@@ -137,7 +142,7 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
         VisceraHolder lung = new VisceraHolder();
         VisceraHolder spleen = new VisceraHolder();
 
-        for(ItemStack itemStack:itemStacks){
+        for(ItemStack itemStack: input){
             heart = heart.updateHeart(itemStack);
             kidney = kidney.updateKidney(itemStack);
             liver = liver.updateLiver(itemStack);
@@ -185,7 +190,6 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
 
         return result;
     }
-
 
     // This example outlines the most important methods. There is a number of other methods to override.
     // Check the class definition of Recipe to view them all.
