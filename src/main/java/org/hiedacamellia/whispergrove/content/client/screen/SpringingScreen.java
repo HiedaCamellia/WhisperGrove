@@ -18,6 +18,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
+import org.hiedacamellia.whispergrove.core.entry.gui.WGImageButton;
 import org.hiedacamellia.whispergrove.core.network.PlayerMenuC2SPacket;
 
 
@@ -47,7 +48,7 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
     public void init() {
         super.init();
 
-        confirm = new ImageButton(leftPos+220,topPos+23,14,14,
+        confirm = new WGImageButton(leftPos+220,topPos+23,14,14,
                 new WidgetSprites(WhisperGrove.prefix("textures/screens/springing_conform_button.png"),
                         WhisperGrove.prefix("textures/screens/springing_conform_button_pressed.png")), e->{
             PacketDistributor.sendToServer(new PlayerMenuC2SPacket(pos,0));
