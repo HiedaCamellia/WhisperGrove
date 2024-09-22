@@ -26,20 +26,18 @@ public record PlayerMenuC2SPacket(BlockPos pos,int rtype) implements CustomPacke
         return TYPE;
     }
 
-    @SuppressWarnings("unchecked")
     public static void handleData(PlayerMenuC2SPacket packet, IPayloadContext context) {
         context.enqueueWork(() -> {
             Level level = context.player().level();
-            if(level instanceof ServerLevel serverLevel){
-                if (packet.rtype() == 0) {
-                    BlockState blockState = serverLevel.getBlockState(packet.pos());
-                    BlockEntity blockEntity = serverLevel.getBlockEntity(packet.pos());
-                    if(blockEntity instanceof WGTickableBlockEntity wgTickableBlockEntity){
-                        wgTickableBlockEntity.tryAssemble(blockState, serverLevel);
-                    }
+            if (packet.rtype() == 0) {
+                BlockState blockState = level.getBlockState(packet.pos());
+                BlockEntity blockEntity = level.getBlockEntity(packet.pos());
+                if (blockEntity instanceof WGTickableBlockEntity wgTickableBlockEntity) {
+                    wgTickableBlockEntity.tryAssemble(blockState, level);
+                    level.scheduleTick(packet.pos(), blockState.getBlock(), 1);
                 }
-
             }
+
         });
     }
 }

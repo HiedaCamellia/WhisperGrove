@@ -14,9 +14,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
+import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessApplier;
 import org.hiedacamellia.whispergrove.registers.WGBlockEntity;
@@ -48,15 +50,24 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
     }
 
     @Override
-    public void assemble(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void assemble(BlockState state, Level level, BlockPos pos, RandomSource random) {
         NonNullList<ItemStack> stacks = this.handler.getStacks();
+        Debug.getLogger().debug("Assembling");
+        Debug.getLogger().debug("stacks: "+stacks);
         stacks.set(9,GeneralPrescriptProcessApplier.result(state, stacks.subList(0,8), level));
+        Debug.getLogger().debug("set: "+stacks.get(9));
+        stacks.forEach(itemStack -> {
+            int index = stacks.indexOf(itemStack);
+            if(index!=9)
+                stacks.set(index,ItemStack.EMPTY);
+        });
         this.handler.setStacks(stacks);
     }
 
     @Override
-    public void tryAssemble(BlockState state, ServerLevel level) {
+    public void tryAssemble(BlockState state, Level level) {
         int tick = GeneralPrescriptProcessApplier.getProcesstime(state, this.handler.getStacks().subList(0,8), level);
+        //Debug.getLogger().debug("tick: "+tick);
         if(tick>0){
             this.setTickCount(tick);
         }
@@ -124,7 +135,7 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
 
     }
 
-    private class Data implements ContainerData {
+    private static class Data implements ContainerData {
 
         @Override
         public int get(int index) {

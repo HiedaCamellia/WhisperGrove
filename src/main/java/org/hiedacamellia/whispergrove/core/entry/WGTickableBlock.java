@@ -3,6 +3,7 @@ package org.hiedacamellia.whispergrove.core.entry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -18,6 +19,8 @@ public abstract class WGTickableBlock extends Block implements EntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if(blockEntity instanceof WGTickableBlockEntity tickableBlockEntity){
             tickableBlockEntity.tick(state, level, pos, random);
+            if(tickableBlockEntity.getTickCount()>0)
+                level.scheduleTick(pos, state.getBlock(), 1);
         }
     }
 

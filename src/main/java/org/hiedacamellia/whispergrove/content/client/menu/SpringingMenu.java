@@ -22,9 +22,10 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
     public final Level world;
     public final Player entity;
     public int x, y, z;
+    public int p;
     public BlockPos pos;
     private final ContainerLevelAccess access;
-    private final ContainerData containerData;
+    public final ContainerData containerData;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
     @SuppressWarnings("unused")
@@ -50,6 +51,7 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         this.x = pos.getX();
         this.y = pos.getY();
         this.z = pos.getZ();
+        this.p = containerData.get(1);
         this.pos = pos;
         for (int ni = 0 ; ni < 3; ++ni) {
             for (int nj = 0; nj < 3; ++nj) {
@@ -57,7 +59,10 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
             }
         }
 
-        this.customSlots.put(9, this.addSlot(new SlotItemHandler(itemHandler, 9,  209, 42)));
+        this.customSlots.put(9, this.addSlot(new SlotItemHandler(itemHandler, 9,  209, 42){
+            @Override
+            public boolean mayPlace(ItemStack stack) {return false;}
+        }));
         for (int si = 0; si < 3; ++si) {
             for (int sj = 0; sj < 9; ++sj) {
                 this.addSlot(new Slot(inventory, sj + (si + 1) * 9, 84 + sj * 18, 100 + si * 18));

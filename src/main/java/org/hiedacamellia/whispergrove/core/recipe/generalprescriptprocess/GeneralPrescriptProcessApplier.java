@@ -7,6 +7,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.hiedacamellia.whispergrove.core.debug.Debug;
+import org.hiedacamellia.whispergrove.registers.WGItem;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 
 import java.util.List;
@@ -42,7 +44,7 @@ public class GeneralPrescriptProcessApplier {
         return optional
                 .map(RecipeHolder::value)
                 .map(e -> e.assemble(input, level.registryAccess()))
-                .orElse(ItemStack.EMPTY);
+                .orElse(WGItem.SOUP.toStack());
 
     }
 
@@ -59,10 +61,9 @@ public class GeneralPrescriptProcessApplier {
         }
 
         if(isAllEmpty){
+            Debug.getLogger().debug("All empty");
             return 0;
         }
-
-
 
         GeneralPrescriptProcessInput input = new GeneralPrescriptProcessInput(blockState, itemStacks);
 
