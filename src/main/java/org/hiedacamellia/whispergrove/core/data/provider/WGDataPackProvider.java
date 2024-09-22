@@ -50,7 +50,7 @@ public class WGDataPackProvider extends DatapackBuiltinEntriesProvider {
                                             // The feature(s) to generate within the biomes
                                             HolderSet.direct(placedFeatures.getOrThrow(WGFeature.CASSIA_TREE_PLACED_KEY)),
                                             // The generation step
-                                            GenerationStep.Decoration.LOCAL_MODIFICATIONS
+                                            GenerationStep.Decoration.SURFACE_STRUCTURES
                                     )
                             );
                         }),
