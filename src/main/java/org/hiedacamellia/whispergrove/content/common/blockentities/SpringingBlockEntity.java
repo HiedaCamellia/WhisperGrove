@@ -58,23 +58,33 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
         NonNullList<ItemStack> stacks = this.handler.getStacks();
         Debug.getLogger().debug("Assembling");
         Debug.getLogger().debug("stacks: "+stacks);
-        ItemStack result = GeneralPrescriptProcessApplier.result(state, stacks.subList(0,8), level);
+        ItemStack result = GeneralPrescriptProcessApplier.result(state, new ArrayList<>(stacks.subList(0,8)), level);
         if(result.isEmpty()) {
             Debug.getLogger().debug("result: "+result);
             List<ItemStack> inputs = new ArrayList<>(stacks.subList(0, 8));
             inputs.removeAll(List.of(ItemStack.EMPTY));
+            //inputs.forEach(itemStack -> itemStack.setCount(1));
             Debug.getLogger().debug("inputs: "+inputs);
             result = GeneralPrescriptProcessRecipe.ass(inputs, WGItem.SOUP.toStack());
             Debug.getLogger().debug("real_result: "+result);
         }
-        if(result!=null) {
+        if (result != null) {
             stacks.set(9, result);
+            Debug.getLogger().debug("stacks: "+stacks);
             Debug.getLogger().debug("set: " + stacks.get(9));
-            stacks.forEach(itemStack -> {
-                int index = stacks.indexOf(itemStack);
-                if (index != 9)
-                    stacks.set(index, ItemStack.EMPTY);
-            });
+            Debug.getLogger().debug("stacks: "+stacks);
+            for (int i = 0; i < 9; i++) {
+                ItemStack stack = stacks.get(i).copy();
+                if (!stack.isEmpty()) {
+                    Debug.getLogger().debug("stack: "+stack);
+                    Debug.getLogger().debug("c: "+stack.getCount());
+                    stack.setCount(stack.getCount()-1);
+                    stacks.set(i,stack);
+                    Debug.getLogger().debug("nc: "+stack.getCount());
+                    Debug.getLogger().debug("nstack: "+stack);
+                }
+            }
+            Debug.getLogger().debug("out_stacks: "+stacks);
             this.handler.setStacks(stacks);
         }
     }
