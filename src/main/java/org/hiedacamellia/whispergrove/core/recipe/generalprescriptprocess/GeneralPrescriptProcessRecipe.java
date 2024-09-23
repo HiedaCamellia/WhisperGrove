@@ -9,8 +9,10 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.api.viscera.VisceraHolder;
+import org.hiedacamellia.whispergrove.core.util.ItemStackHolder;
 import org.hiedacamellia.whispergrove.registers.WGItem;
 import org.hiedacamellia.whispergrove.registers.WGRicipe;
 import org.hiedacamellia.whispergrove.registers.WGRicipeSerializer;
@@ -131,9 +133,10 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
 
     public static ItemStack ass(List<ItemStack> input,ItemStack aresult) {
 
-        ItemStack result = aresult;
-        if(result.isEmpty()){
-            result = WGItem.SOUP.toStack();
+        ItemStackHolder holder = new ItemStackHolder(aresult);
+
+        if(holder.isEmpty()){
+            holder.setItemStack(WGItem.SOUP.toStack());
         }
 
         VisceraHolder heart = new VisceraHolder();
@@ -163,32 +166,32 @@ public class GeneralPrescriptProcessRecipe implements Recipe<GeneralPrescriptPro
         double visceramass = heartmass+kidneymass+livermass+lungmass+spleenmass;
 
         if(heart.isYang()){
-            result = heart.getYang(heartmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setHeart(result);
+            holder.setHeart(heart.getYang(heartmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }else {
-            result =heart.getYin(heartmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setHeart(result);
+            holder.setHeart(heart.getYin(heartmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }
         if(kidney.isYang()){
-            result =kidney.getYang(kidneymass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setKidney(result);
+            holder.setKidney(kidney.getYang(kidneymass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }else {
-            result =kidney.getYin(kidneymass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setKidney(result);
+            holder.setKidney(kidney.getYin(kidneymass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }
         if(liver.isYang()){
-            result =liver.getYang(livermass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLiver(result);
+            holder.setLiver(liver.getYang(livermass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }else {
-            result =liver.getYin(livermass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLiver(result);
+            holder.setLiver(liver.getYin(livermass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }
         if(lung.isYang()){
-            result =lung.getYang(lungmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLung(result);
+            holder.setLung(lung.getYang(lungmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }else {
-            result =lung.getYin(lungmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setLung(result);
+            holder.setLung(lung.getYin(lungmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }
         if(spleen.isYang()){
-            result =spleen.getYang(spleenmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setSpleen(result);
+            holder.setSpleen(spleen.getYang(spleenmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }else {
-            result =spleen.getYin(spleenmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()).setSpleen(result);
+            holder.setSpleen(spleen.getYin(spleenmass/visceramass * CommonConfig.VISCERA_CONSTANT.get()));
         }
 
-        return result;
+        return holder.getItemStack();
     }
 
     // This example outlines the most important methods. There is a number of other methods to override.

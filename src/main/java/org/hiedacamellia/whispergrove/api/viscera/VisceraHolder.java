@@ -164,7 +164,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return new VisceraHolder(heart.yin(), heart.yang(),heart.ping());
     }
 
-    private Heart toHeart(){
+    public Heart toHeart(){
         return new Heart(yin, yang,ping);
     }
 
@@ -172,7 +172,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return new VisceraHolder(kidney.yin(), kidney.yang(),kidney.ping());
     }
 
-    private Kidney toKidney(){
+    public Kidney toKidney(){
         return new Kidney(yin, yang,ping);
     }
 
@@ -180,7 +180,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return new VisceraHolder(liver.yin(), liver.yang(),liver.ping());
     }
 
-    private Liver toLiver(){
+    public Liver toLiver(){
         return new Liver(yin, yang,ping);
     }
 
@@ -188,7 +188,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return new VisceraHolder(lung.yin(), lung.yang(),lung.ping());
     }
 
-    private Lung toLung(){
+    public Lung toLung(){
         return new Lung(yin, yang,ping);
     }
 
@@ -196,7 +196,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return new VisceraHolder(spleen.yin(), spleen.yang(),spleen.ping());
     }
 
-    private Spleen toSpleen(){
+    public Spleen toSpleen(){
         return new Spleen(yin, yang,ping);
     }
 

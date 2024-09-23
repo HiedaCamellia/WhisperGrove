@@ -40,7 +40,7 @@ public class GetPropertiesDesc {
     private static Component getComponent(Component c, double yin, double yang, double ping) {
         Component component = c.copy();
         if (yin != 0) {
-            component = component.copy().append(Component.translatable("tooltip.whispergrove.yin", (int) yin)).withStyle(ChatFormatting.BLUE);
+            component = component.copy().append(Component.translatable("tooltip.whispergrove.yin", (int) yin).withStyle(ChatFormatting.BLUE));
         } else if (yang != 0) {
             component = component.copy().append(Component.translatable("tooltip.whispergrove.yang", (int) yang).withStyle(ChatFormatting.RED));
         } else if(ping!= 0){

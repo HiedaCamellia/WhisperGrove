@@ -23,8 +23,11 @@ import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessApplier;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipe;
 import org.hiedacamellia.whispergrove.registers.WGBlockEntity;
+import org.hiedacamellia.whispergrove.registers.WGItem;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class SpringingBlockEntity extends WGTickableBlockEntity {
@@ -56,8 +59,14 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
         Debug.getLogger().debug("Assembling");
         Debug.getLogger().debug("stacks: "+stacks);
         ItemStack result = GeneralPrescriptProcessApplier.result(state, stacks.subList(0,8), level);
-        if(result.isEmpty())
-            result = GeneralPrescriptProcessRecipe.ass(stacks.subList(0,8),ItemStack.EMPTY);
+        if(result.isEmpty()) {
+            Debug.getLogger().debug("result: "+result);
+            List<ItemStack> inputs = new ArrayList<>(stacks.subList(0, 8));
+            inputs.removeAll(List.of(ItemStack.EMPTY));
+            Debug.getLogger().debug("inputs: "+inputs);
+            result = GeneralPrescriptProcessRecipe.ass(inputs, WGItem.SOUP.toStack());
+            Debug.getLogger().debug("real_result: "+result);
+        }
         if(result!=null) {
             stacks.set(9, result);
             Debug.getLogger().debug("set: " + stacks.get(9));
