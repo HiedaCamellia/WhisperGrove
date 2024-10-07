@@ -107,8 +107,6 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("item.whispergrove.bone_fragment","骨头碎片");
             add("tooltip.whispergrove.bone_fragment","");
 
-            add("block.whispergrove.roller","药碾");
-            add("tooltip.whispergrove.roller","");
 
 
             add("block.whispergrove.cassia_log","肉桂原木");
@@ -124,6 +122,12 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("block.whispergrove.cassia_stairs","肉桂楼梯");
             add("tooltip.whispergrove.cassia_stairs","");
 
+            add("item.whispergrove.soup","未命名药汤");
+            add("tooltip.whispergrove.soup","");
+
+
+            add("block.whispergrove.roller","药碾");
+            add("tooltip.whispergrove.roller","");
             add("block.whispergrove.springing","药壶");
             add("tooltip.whispergrove.springing","");
             add("block.whispergrove.cutter","药铡");

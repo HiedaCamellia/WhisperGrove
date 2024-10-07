@@ -13,12 +13,13 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 
-public record PlayerMenuC2SPacket(BlockPos pos,int rtype) implements CustomPacketPayload {
+public record PlayerMenuC2SPacket(BlockPos pos,int rtype,String name) implements CustomPacketPayload {
 
     public static final Type<PlayerMenuC2SPacket> TYPE = new Type<>(WhisperGrove.prefix("network.menu"));
     public static final StreamCodec<ByteBuf, PlayerMenuC2SPacket> STREAM_CODEC = StreamCodec.composite(
             BlockPos.STREAM_CODEC, PlayerMenuC2SPacket::pos,
             ByteBufCodecs.INT, PlayerMenuC2SPacket::rtype,
+            ByteBufCodecs.STRING_UTF8, PlayerMenuC2SPacket::name,
             PlayerMenuC2SPacket::new);
 
     @Override
@@ -33,7 +34,7 @@ public record PlayerMenuC2SPacket(BlockPos pos,int rtype) implements CustomPacke
                 BlockState blockState = level.getBlockState(packet.pos());
                 BlockEntity blockEntity = level.getBlockEntity(packet.pos());
                 if (blockEntity instanceof WGTickableBlockEntity wgTickableBlockEntity) {
-                    wgTickableBlockEntity.tryAssemble(blockState, level);
+                    wgTickableBlockEntity.tryAssemble(blockState, level,packet.name());
                     level.scheduleTick(packet.pos(), blockState.getBlock(), 1);
                 }
             }

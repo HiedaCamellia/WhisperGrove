@@ -1,11 +1,9 @@
 package org.hiedacamellia.whispergrove.content.client.screen;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
+import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -35,6 +33,7 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
     private final Player entity;
     public final ContainerData containerData;
     private Button confirm;
+    private EditBox name;
 
     public SpringingScreen(SpringingMenu container, Inventory inventory, Component title) {
         super(container, inventory, title);
@@ -55,11 +54,14 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
         confirm = new WGImageButton(leftPos + 220, topPos + 23, 14, 14,
                 new WidgetSprites(WhisperGrove.prefix("textures/screens/springing_conform_button.png"),
                         WhisperGrove.prefix("textures/screens/springing_conform_button_pressed.png")), e -> {
-            PacketDistributor.sendToServer(new PlayerMenuC2SPacket(pos, 0));
+            PacketDistributor.sendToServer(new PlayerMenuC2SPacket(pos, 0, name.getValue()));
             containerData.set(1, 400);
         });
 
+        name = new EditBox(font, leftPos + 157, topPos + 23, 55, 14, Component.nullToEmpty("Name"));
+
         this.addRenderableWidget(confirm);
+        this.addRenderableWidget(name);
     }
 
     @Override
@@ -85,8 +87,12 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (keyCode == 256) {
             this.minecraft.player.closeContainer();
+            return true;
+        }
+        if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey) && name.isFocused()) {
             return true;
         }
 

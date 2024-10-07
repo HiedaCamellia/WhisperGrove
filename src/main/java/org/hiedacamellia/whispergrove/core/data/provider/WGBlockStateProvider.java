@@ -39,6 +39,7 @@ public class WGBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(WGBlock.ROLLER.get(), this.models().getExistingFile(modLoc("roller")));
         simpleBlockWithItem(WGBlock.CUTTER.get(), this.models().getExistingFile(modLoc("cutter")));
         simpleBlockWithItem(WGBlock.POT.get(), this.models().getExistingFile(modLoc("pot")));
+        simpleBlockWithItem(WGBlock.SPRINGING.get(), this.models().getExistingFile(modLoc("springing")));
 
         WGBlock.CROP_BLOCKS.forEach((s, baseCropBlockDeferredBlock) -> registerCropBlockModels(baseCropBlockDeferredBlock.get(), s));
     }

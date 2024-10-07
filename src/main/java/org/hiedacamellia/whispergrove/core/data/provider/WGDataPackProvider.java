@@ -55,7 +55,7 @@ public class WGDataPackProvider extends DatapackBuiltinEntriesProvider {
                                             GenerationStep.Decoration.SURFACE_STRUCTURES
                                     )
                             );
-                            bootstrap.register(WGBiomeModifier.CASSIA_TREE,
+                            bootstrap.register(WGBiomeModifier.WG_MED,
                                     new BiomeModifiers.AddFeaturesBiomeModifier(
                                             HolderSet.direct(List.of(biomes.getOrThrow(Biomes.DARK_FOREST),biomes.getOrThrow(Biomes.FOREST),biomes.getOrThrow(Biomes.BIRCH_FOREST))),
                                             HolderSet.direct(placedFeatures.getOrThrow(WGFeature.WG_MED_PLACED_KEY)),

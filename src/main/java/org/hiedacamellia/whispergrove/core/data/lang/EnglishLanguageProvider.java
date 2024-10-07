@@ -107,8 +107,6 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.whispergrove.bone_fragment","Bone Fragment");
         add("tooltip.whispergrove.bone_fragment","");
 
-        add("block.whispergrove.roller","Roller");
-        add("tooltip.whispergrove.roller","");
 
 
         add("block.whispergrove.cassia_log","Cassia Log");
@@ -124,6 +122,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("block.whispergrove.cassia_stairs","Cassia Stairs");
         add("tooltip.whispergrove.cassia_stairs","");
 
+        add("item.whispergrove.soup","Unnamed Medicinal soup");
+        add("tooltip.whispergrove.soup","");
+
+        add("block.whispergrove.roller","Roller");
+        add("tooltip.whispergrove.roller","");
         add("block.whispergrove.springing","Springing");
         add("tooltip.whispergrove.springing","");
         add("block.whispergrove.cutter","Cutter");

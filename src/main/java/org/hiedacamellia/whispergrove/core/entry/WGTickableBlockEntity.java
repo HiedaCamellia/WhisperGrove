@@ -14,6 +14,7 @@ import org.hiedacamellia.whispergrove.core.debug.Debug;
 public abstract class WGTickableBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 
     private int tickCount;
+    private String name;
 
     protected WGTickableBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -37,7 +38,7 @@ public abstract class WGTickableBlockEntity extends RandomizableContainerBlockEn
             return;
         if(tickCount==1){
             Debug.getLogger().debug("Assemble");
-            assemble(state, level, pos, random);
+            assemble(state, level, pos, random,getSoupName());
         }
         if(tickCount>=1) {
             //Debug.getLogger().debug("tick: "+tickCount);
@@ -53,7 +54,15 @@ public abstract class WGTickableBlockEntity extends RandomizableContainerBlockEn
         return tickCount;
     }
 
-    public abstract void assemble(BlockState state,Level level, BlockPos pos, RandomSource random);
+    public void setSoupName(String name) {
+        this.name = name;
+    }
 
-    public abstract void tryAssemble(BlockState state, Level level);
+    public String getSoupName() {
+        return name;
+    }
+
+    public abstract void assemble(BlockState state,Level level, BlockPos pos, RandomSource random,String name);
+
+    public abstract void tryAssemble(BlockState state, Level level,String name);
 }

@@ -1,9 +1,11 @@
 package org.hiedacamellia.whispergrove.content.common.blockentities;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -54,47 +56,52 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
     }
 
     @Override
-    public void assemble(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void assemble(BlockState state, Level level, BlockPos pos, RandomSource random,String name) {
         NonNullList<ItemStack> stacks = this.handler.getStacks();
         Debug.getLogger().debug("Assembling");
-        Debug.getLogger().debug("stacks: "+stacks);
+//        Debug.getLogger().debug("stacks: "+stacks);
         ItemStack result = GeneralPrescriptProcessApplier.result(state, new ArrayList<>(stacks.subList(0,8)), level);
         if(result.isEmpty()) {
-            Debug.getLogger().debug("result: "+result);
+//            Debug.getLogger().debug("result: "+result);
             List<ItemStack> inputs = new ArrayList<>(stacks.subList(0, 8));
             inputs.removeAll(List.of(ItemStack.EMPTY));
             //inputs.forEach(itemStack -> itemStack.setCount(1));
-            Debug.getLogger().debug("inputs: "+inputs);
+//            Debug.getLogger().debug("inputs: "+inputs);
             result = GeneralPrescriptProcessRecipe.ass(inputs, WGItem.SOUP.toStack());
-            Debug.getLogger().debug("real_result: "+result);
+//            Debug.getLogger().debug("real_result: "+result);
+        }
+        if(!name.isEmpty()) {
+            result.set(DataComponents.CUSTOM_NAME, Component.literal(name).withStyle(ChatFormatting.WHITE,ChatFormatting.UNDERLINE));
+//            Debug.getLogger().debug("name:"+name);
         }
         if (result != null) {
             stacks.set(9, result);
-            Debug.getLogger().debug("stacks: "+stacks);
-            Debug.getLogger().debug("set: " + stacks.get(9));
-            Debug.getLogger().debug("stacks: "+stacks);
+//            Debug.getLogger().debug("stacks: "+stacks);
+//            Debug.getLogger().debug("set: " + stacks.get(9));
+//            Debug.getLogger().debug("stacks: "+stacks);
             for (int i = 0; i < 9; i++) {
                 ItemStack stack = stacks.get(i).copy();
                 if (!stack.isEmpty()) {
-                    Debug.getLogger().debug("stack: "+stack);
-                    Debug.getLogger().debug("c: "+stack.getCount());
+//                    Debug.getLogger().debug("stack: "+stack);
+//                    Debug.getLogger().debug("c: "+stack.getCount());
                     stack.setCount(stack.getCount()-1);
                     stacks.set(i,stack);
-                    Debug.getLogger().debug("nc: "+stack.getCount());
-                    Debug.getLogger().debug("nstack: "+stack);
+//                    Debug.getLogger().debug("nc: "+stack.getCount());
+//                    Debug.getLogger().debug("nstack: "+stack);
                 }
             }
-            Debug.getLogger().debug("out_stacks: "+stacks);
+//            Debug.getLogger().debug("out_stacks: "+stacks);
             this.handler.setStacks(stacks);
         }
     }
 
     @Override
-    public void tryAssemble(BlockState state, Level level) {
+    public void tryAssemble(BlockState state, Level level,String name) {
         int tick = GeneralPrescriptProcessApplier.getProcesstime(state, this.handler.getStacks().subList(0,8), level);
         //Debug.getLogger().debug("tick: "+tick);
         if(tick>0){
             this.setTickCount(tick);
+            this.setSoupName(name);
         }
     }
 
