@@ -19,6 +19,7 @@ public abstract class WGTickableBlockEntity extends RandomizableContainerBlockEn
     protected WGTickableBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         tickCount = 0;
+        name = "";
     }
 
     @Override

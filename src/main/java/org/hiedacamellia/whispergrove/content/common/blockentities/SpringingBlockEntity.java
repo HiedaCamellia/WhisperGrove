@@ -19,9 +19,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.whispergrove.content.client.menu.SpringingMenu;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
+import org.hiedacamellia.whispergrove.core.network.PlayerMenuS2SPacket;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessApplier;
 import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipe;
 import org.hiedacamellia.whispergrove.registers.WGBlockEntity;
@@ -57,6 +59,9 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
 
     @Override
     public void assemble(BlockState state, Level level, BlockPos pos, RandomSource random,String name) {
+        if(level.isClientSide())
+            return;
+
         NonNullList<ItemStack> stacks = this.handler.getStacks();
         Debug.getLogger().debug("Assembling");
 //        Debug.getLogger().debug("stacks: "+stacks);
@@ -97,11 +102,15 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
 
     @Override
     public void tryAssemble(BlockState state, Level level,String name) {
+
         int tick = GeneralPrescriptProcessApplier.getProcesstime(state, this.handler.getStacks().subList(0,8), level);
-        //Debug.getLogger().debug("tick: "+tick);
+        Debug.getLogger().debug("tick: "+tick);
         if(tick>0){
             this.setTickCount(tick);
-            this.setSoupName(name);
+            if(name!=null)
+                this.setSoupName(name);
+            else
+                this.setSoupName("");
         }
     }
 
@@ -137,6 +146,8 @@ public class SpringingBlockEntity extends WGTickableBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int i, Inventory inventory) {
+        PacketDistributor.sendToAllPlayers(new PlayerMenuS2SPacket(this.worldPosition, getTickCount()));
+
         ContainerLevelAccess access = ContainerLevelAccess.create(this.level, this.worldPosition);
         return new SpringingMenu(i, inventory, access, this.handler, this.containerData, this.worldPosition);
     }

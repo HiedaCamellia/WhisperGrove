@@ -2,6 +2,8 @@ package org.hiedacamellia.whispergrove.content.client.menu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -10,6 +12,9 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.whispergrove.core.debug.Debug;
+import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 import org.hiedacamellia.whispergrove.registers.WGBlock;
 import org.hiedacamellia.whispergrove.registers.WGMenu;
 
@@ -22,7 +27,6 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
     public final Level world;
     public final Player entity;
     public int x, y, z;
-    public int p;
     public BlockPos pos;
     private final ContainerLevelAccess access;
     public final ContainerData containerData;
@@ -51,7 +55,13 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         this.x = pos.getX();
         this.y = pos.getY();
         this.z = pos.getZ();
-        this.p = containerData.get(1);
+        if(world.getBlockEntity(pos) instanceof WGTickableBlockEntity blockEntity){
+//            Debug.getLogger().debug("Tick:{}", blockEntity.getTickCount());
+            containerData.set(1, blockEntity.getTickCount());
+        }else {
+            containerData.set(1, 0);
+        }
+
         this.pos = pos;
         for (int ni = 0 ; ni < 3; ++ni) {
             for (int nj = 0; nj < 3; ++nj) {
@@ -74,6 +84,7 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         }
 
         this.addDataSlots(containerData);
+
     }
 
     @Override

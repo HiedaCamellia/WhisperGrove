@@ -6,11 +6,13 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 
 public record PlayerMenuC2SPacket(BlockPos pos,int rtype,String name) implements CustomPacketPayload {
@@ -29,16 +31,25 @@ public record PlayerMenuC2SPacket(BlockPos pos,int rtype,String name) implements
 
     public static void handleData(PlayerMenuC2SPacket packet, IPayloadContext context) {
         context.enqueueWork(() -> {
-            Level level = context.player().level();
-            if (packet.rtype() == 0) {
-                BlockState blockState = level.getBlockState(packet.pos());
-                BlockEntity blockEntity = level.getBlockEntity(packet.pos());
-                if (blockEntity instanceof WGTickableBlockEntity wgTickableBlockEntity) {
-                    wgTickableBlockEntity.tryAssemble(blockState, level,packet.name());
-                    level.scheduleTick(packet.pos(), blockState.getBlock(), 1);
-                }
+            Player player = context.player();
+            Level level = player.level();
+            if (level instanceof ServerLevel serverLevel) {
+                action(serverLevel,packet.pos(), packet.rtype(), packet.name());
             }
 
         });
+    }
+
+    public static void action(Level level, BlockPos pos, int rtype, String name) {
+        if (rtype == 0) {
+            if(!level.isClientSide()) {
+                BlockState blockState = level.getBlockState(pos);
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof WGTickableBlockEntity wgTickableBlockEntity) {
+                    wgTickableBlockEntity.tryAssemble(blockState, level, name);
+                    level.scheduleTick(pos, blockState.getBlock(), 1);
+                }
+            }
+        }
     }
 }
