@@ -65,7 +65,12 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         this.pos = pos;
         for (int ni = 0 ; ni < 3; ++ni) {
             for (int nj = 0; nj < 3; ++nj) {
-                this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 97 + nj * 18, 24 + ni * 18)));
+                this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 97 + nj * 18, 24 + ni * 18){
+                    @Override
+                    public boolean mayPickup(Player playerIn) {return containerData.get(1) == 0;}
+                    @Override
+                    public boolean mayPlace(ItemStack stack) {return containerData.get(1) == 0;}
+                }));
             }
         }
 

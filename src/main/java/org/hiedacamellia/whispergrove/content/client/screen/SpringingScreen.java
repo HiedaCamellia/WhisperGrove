@@ -58,7 +58,7 @@ public class SpringingScreen extends AbstractContainerScreen<SpringingMenu> {
             containerData.set(1, 400);
         });
 
-        name = new EditBox(font, leftPos + 157, topPos + 23, 55, 14, Component.nullToEmpty("Name"));
+        name = new EditBox(font, leftPos + 157, topPos + 23, 56, 15, Component.nullToEmpty("Name"));
 
         this.addRenderableWidget(confirm);
         this.addRenderableWidget(name);
