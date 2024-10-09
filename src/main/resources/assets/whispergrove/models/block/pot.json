@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "texture",
-		"particle": "texture"
+		"0": "whispergrove:block/pot",
+		"particle": "whispergrove:block/pot"
 	},
 	"elements": [
 		{
