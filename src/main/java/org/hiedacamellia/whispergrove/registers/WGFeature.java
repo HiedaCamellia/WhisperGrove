@@ -77,9 +77,12 @@ public class WGFeature {
     );
 
     public static final PlacedFeature WG_MED_PLACED = new PlacedFeature(Holder.direct(WG_MED),
-            List.of(HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+            List.of(HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE),
                     InSquarePlacement.spread(),
+                    CountPlacement.of(1),
                     BiomeFilter.biome(),
-                    RarityFilter.onAverageOnceEvery(20)
+                    SurfaceWaterDepthFilter.forMaxDepth(0),
+                    PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING),
+                    RarityFilter.onAverageOnceEvery(10)
             ));
 }

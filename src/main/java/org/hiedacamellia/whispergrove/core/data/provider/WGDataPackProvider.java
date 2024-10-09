@@ -55,13 +55,13 @@ public class WGDataPackProvider extends DatapackBuiltinEntriesProvider {
                                             GenerationStep.Decoration.SURFACE_STRUCTURES
                                     )
                             );
-                            bootstrap.register(WGBiomeModifier.WG_MED,
-                                    new BiomeModifiers.AddFeaturesBiomeModifier(
-                                            HolderSet.direct(List.of(biomes.getOrThrow(Biomes.DARK_FOREST),biomes.getOrThrow(Biomes.FOREST),biomes.getOrThrow(Biomes.BIRCH_FOREST))),
-                                            HolderSet.direct(placedFeatures.getOrThrow(WGFeature.WG_MED_PLACED_KEY)),
-                                            GenerationStep.Decoration.VEGETAL_DECORATION
-                                    )
-                            );
+//                            bootstrap.register(WGBiomeModifier.WG_MED,
+//                                    new BiomeModifiers.AddFeaturesBiomeModifier(
+//                                            HolderSet.direct(List.of(biomes.getOrThrow(Biomes.DARK_FOREST),biomes.getOrThrow(Biomes.FOREST),biomes.getOrThrow(Biomes.BIRCH_FOREST))),
+//                                            HolderSet.direct(placedFeatures.getOrThrow(WGFeature.WG_MED_PLACED_KEY)),
+//                                            GenerationStep.Decoration.VEGETAL_DECORATION
+//                                    )
+//                            );
                         }),
                 Set.of(WhisperGrove.MODID));
     }
