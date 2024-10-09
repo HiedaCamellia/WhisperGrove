@@ -15,22 +15,14 @@ import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.jetbrains.annotations.NotNull;
 
 //心
-public record Heart(Double yin, Double yang) implements CustomPacketPayload {
+public record Heart(Double yin, Double yang,Double ping) implements CustomPacketPayload {
 
     public void sync(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new Heart(this.yin, this.yang));
+            PacketDistributor.sendToPlayer(serverPlayer, new Heart(this.yin, this.yang, this.ping));
     }
 
     public static final CustomPacketPayload.Type<Heart> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "heart"));
-
-    public static final StreamCodec<ByteBuf, Heart> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.DOUBLE,
-            Heart::yin,
-            ByteBufCodecs.DOUBLE,
-            Heart::yang,
-            Heart::new
-    );
 
     @Override
     public CustomPacketPayload.@NotNull Type<? extends CustomPacketPayload> type() {

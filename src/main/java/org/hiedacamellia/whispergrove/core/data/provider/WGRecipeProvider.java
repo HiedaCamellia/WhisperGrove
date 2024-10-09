@@ -12,7 +12,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
-import org.hiedacamellia.whispergrove.core.recipe.generalherbprocess.GeneralHerbProcessRecipeBuilder;
+import org.hiedacamellia.whispergrove.core.recipe.generalprescriptprocess.GeneralPrescriptProcessRecipeBuilder;
+import org.hiedacamellia.whispergrove.core.recipe.simpleherbprocess.SimpleHerbProcessRicipeBuilder;
+import org.hiedacamellia.whispergrove.registers.WGBlock;
 import org.hiedacamellia.whispergrove.registers.WGItem;
 
 import java.util.Arrays;
@@ -37,25 +39,15 @@ public class WGRecipeProvider extends RecipeProvider {
 //                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
 //                .save(output);
 
-        new GeneralHerbProcessRecipeBuilder(
-                new ItemStack(Items.DIAMOND),//产物
-                Blocks.DIRT.defaultBlockState(),//工作台方块
-                100,//运转时间
-                false,//是否有序
-                Arrays.asList(Ingredient.of(Items.IRON_INGOT),Ingredient.of(Items.APPLE))//输入物品
-        )
-                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
-                .save(output);
-
-//        SimpleCookingRecipeBuilder.smelting(
-//                        Ingredient.of(Items.KELP),//输入
-//                        RecipeCategory.FOOD,//配方类型
-//                        Items.DIAMOND,//产物，也可以是ItemStack
-//                        0.1f,//经验值
-//                        200//烹饪时间
-//                )
-//                .unlockedBy("has_kelp", has(Blocks.KELP))
-//                .save(output, "dried_kelp_smelting");
+//        new GeneralPrescriptProcessRecipeBuilder(
+//                new ItemStack(Items.DIAMOND),//产物
+//                Blocks.DIRT.defaultBlockState(),//工作台方块
+//                100,//运转时间
+//                false,//是否有序
+//                Arrays.asList(Ingredient.of(Items.IRON_INGOT),Ingredient.of(Items.APPLE))//输入物品
+//        )
+//                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+//                .save(output);
 
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CUTTLEBONE),//输入
@@ -64,17 +56,36 @@ public class WGRecipeProvider extends RecipeProvider {
                         0.1f,//经验值
                         200//烹饪时间
                 )
-                .unlockedBy("has_kelp", has(Blocks.KELP))
-                .save(output, "mo_yu_smelting");
+                .unlockedBy("has_cuttlebone", has(CUTTLEBONE))
+                .save(output, "cuttlebone_smelting");
 
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(Items.LILAC),//输入
+                        Ingredient.of(Items.BONE),//输入
                         RecipeCategory.MISC,//配方类型
-                        new ItemStack(CLOVE.asItem()),//产物，也可以是ItemStack
+                        new ItemStack((Holder<Item>) CALCINED_DRAGON_BONE),//产物，也可以是ItemStack
                         0.1f,//经验值
-                        100//烹饪时间
+                        250//烹饪时间
                 )
-                .unlockedBy("has_lilac", has(Blocks.LILAC))
-                .save(output, "dried_lilac_smelting");
+                .unlockedBy("has_lilac", has(Items.BONE))
+                .save(output, "bone_smelting");
+
+        new SimpleHerbProcessRicipeBuilder(
+                new ItemStack(WGItem.GYPSUM_RUBRUM.get()),//产物
+                WGBlock.ROLLER.get().defaultBlockState(),//工作台方块
+                100,//运转时间
+                Ingredient.of(Items.CALCITE)//输入物品
+        )
+                .unlockedBy("has_calcite", has(Items.CALCITE))
+                .save(output);
+
+        new SimpleHerbProcessRicipeBuilder(
+                new ItemStack(WGItem.ACTINOLITE.get()),//产物
+                WGBlock.ROLLER.get().defaultBlockState(),//工作台方块
+                100,//运转时间
+                Ingredient.of(Items.DIORITE)//输入物品
+        )
+                .unlockedBy("has_diorite", has(Items.DIORITE))
+                .save(output);
+
     }
 }

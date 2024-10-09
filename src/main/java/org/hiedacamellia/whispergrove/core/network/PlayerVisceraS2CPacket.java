@@ -11,13 +11,14 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.common.components.Viscera;
 
-public record PlayerVisceraS2CPacket(ResourceLocation name, Double yin, Double yang) implements CustomPacketPayload {
+public record PlayerVisceraS2CPacket(ResourceLocation name, Double yin, Double yang,Double ping) implements CustomPacketPayload {
 
     public static final Type<PlayerVisceraS2CPacket> TYPE = new Type<>(WhisperGrove.prefix("network.viscera"));
     public static final StreamCodec<ByteBuf, PlayerVisceraS2CPacket> STREAM_CODEC = StreamCodec.composite(
             ResourceLocation.STREAM_CODEC, PlayerVisceraS2CPacket::name,
             ByteBufCodecs.DOUBLE, PlayerVisceraS2CPacket::yin,
             ByteBufCodecs.DOUBLE, PlayerVisceraS2CPacket::yang,
+            ByteBufCodecs.DOUBLE, PlayerVisceraS2CPacket::ping,
             PlayerVisceraS2CPacket::new);
 
     @Override
@@ -30,7 +31,7 @@ public record PlayerVisceraS2CPacket(ResourceLocation name, Double yin, Double y
         context.enqueueWork(() -> {
             AttachmentType<Viscera> type = (AttachmentType<Viscera>) NeoForgeRegistries.ATTACHMENT_TYPES.get(packet.name);
             if (type != null) {
-                context.player().setData(type, new Viscera(packet.name, packet.yin, packet.yang));
+                context.player().setData(type, new Viscera(packet.name, packet.yin, packet.yang, packet.ping));
             }
         });
     }

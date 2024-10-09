@@ -7,11 +7,11 @@ import org.hiedacamellia.whispergrove.registers.WGDataComponent;
 
 public class BaseItemBuilder {
 
-    private Heart heart;
-    private Kidney kidney;
-    private Liver liver;
-    private Lung lung;
-    private Spleen spleen;
+    private Heart heart = new Heart(0.0, 0.0,0.0);
+    private Kidney kidney = new Kidney(0.0, 0.0,0.0);
+    private Liver liver = new Liver(0.0, 0.0,0.0);
+    private Lung lung = new Lung(0.0, 0.0,0.0);
+    private Spleen spleen = new Spleen(0.0, 0.0,0.0);
     private Item.Properties properties = new Item.Properties();
 
     public BaseItem build() {
@@ -23,28 +23,28 @@ public class BaseItemBuilder {
         return new BaseItem(this.properties);
     }
 
-    public BaseItemBuilder heart(double yin, double yang) {
-        this.heart = new Heart(yin, yang);
+    public BaseItemBuilder heart(double yin, double yang,double ping) {
+        this.heart = new Heart(yin, yang,ping);
         return this;
     }
 
-    public BaseItemBuilder kidney(double yin, double yang) {
-        this.kidney = new Kidney(yin, yang);
+    public BaseItemBuilder kidney(double yin, double yang,double ping) {
+        this.kidney = new Kidney(yin, yang,ping);
         return this;
     }
 
-    public BaseItemBuilder liver(double yin, double yang) {
-        this.liver = new Liver(yin, yang);
+    public BaseItemBuilder liver(double yin, double yang,double ping) {
+        this.liver = new Liver(yin, yang,ping);
         return this;
     }
 
-    public BaseItemBuilder lung(double yin, double yang) {
-        this.lung = new Lung(yin, yang);
+    public BaseItemBuilder lung(double yin, double yang,double ping) {
+        this.lung = new Lung(yin, yang,ping);
         return this;
     }
 
-    public BaseItemBuilder spleen(double yin, double yang) {
-        this.spleen = new Spleen(yin, yang);
+    public BaseItemBuilder spleen(double yin, double yang,double ping) {
+        this.spleen = new Spleen(yin, yang,ping);
         return this;
     }
 

@@ -2,6 +2,8 @@ package org.hiedacamellia.whispergrove.content.client.menu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -10,6 +12,9 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.whispergrove.core.debug.Debug;
+import org.hiedacamellia.whispergrove.core.entry.WGTickableBlockEntity;
 import org.hiedacamellia.whispergrove.registers.WGBlock;
 import org.hiedacamellia.whispergrove.registers.WGMenu;
 
@@ -24,32 +29,55 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
     public int x, y, z;
     public BlockPos pos;
     private final ContainerLevelAccess access;
-    private final ContainerData containerData;
+    public final ContainerData containerData;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
     @SuppressWarnings("unused")
     public SpringingMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf buf) {
-        this(containerId, inventory, ContainerLevelAccess.NULL);
+        this(containerId, inventory, ContainerLevelAccess.NULL,buf.readBlockPos());
     }
 
-    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access) {
-        this(containerId, inventory, access, new ItemStackHandler(10), new SimpleContainerData(9));
+    public SpringingMenu(int containerId, Inventory inventory, BlockPos pos) {
+        this(containerId, inventory, ContainerLevelAccess.NULL,pos);
     }
 
-    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access, IItemHandler itemHandler, ContainerData containerData) {
+    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access,BlockPos pos) {
+        this(containerId, inventory, access, new ItemStackHandler(10), new SimpleContainerData(9),pos);
+    }
+
+    public SpringingMenu(int containerId, Inventory inventory, ContainerLevelAccess access, IItemHandler itemHandler, ContainerData containerData,BlockPos pos) {
         super(WGMenu.SPRINGING.get(), containerId);
         checkContainerSize(inventory, 10);
         this.access = access;
         this.containerData = containerData;
         this.entity = inventory.player;
         this.world = inventory.player.level();
+        this.x = pos.getX();
+        this.y = pos.getY();
+        this.z = pos.getZ();
+        if(world.getBlockEntity(pos) instanceof WGTickableBlockEntity blockEntity){
+//            Debug.getLogger().debug("Tick:{}", blockEntity.getTickCount());
+            containerData.set(1, blockEntity.getTickCount());
+        }else {
+            containerData.set(1, 0);
+        }
+
+        this.pos = pos;
         for (int ni = 0 ; ni < 3; ++ni) {
             for (int nj = 0; nj < 3; ++nj) {
-                this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 97 + nj * 18, 24 + ni * 18)));
+                this.customSlots.put(ni * 3 + nj, this.addSlot(new SlotItemHandler(itemHandler, ni * 3 + nj, 97 + nj * 18, 24 + ni * 18){
+                    @Override
+                    public boolean mayPickup(Player playerIn) {return containerData.get(1) == 0;}
+                    @Override
+                    public boolean mayPlace(ItemStack stack) {return containerData.get(1) == 0;}
+                }));
             }
         }
 
-        this.customSlots.put(9, this.addSlot(new SlotItemHandler(itemHandler, 9,  209, 42)));
+        this.customSlots.put(9, this.addSlot(new SlotItemHandler(itemHandler, 9,  209, 42){
+            @Override
+            public boolean mayPlace(ItemStack stack) {return false;}
+        }));
         for (int si = 0; si < 3; ++si) {
             for (int sj = 0; sj < 9; ++sj) {
                 this.addSlot(new Slot(inventory, sj + (si + 1) * 9, 84 + sj * 18, 100 + si * 18));
@@ -61,6 +89,7 @@ public class SpringingMenu extends AbstractContainerMenu implements Supplier<Map
         }
 
         this.addDataSlots(containerData);
+
     }
 
     @Override

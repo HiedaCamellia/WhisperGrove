@@ -17,27 +17,27 @@ public class WGAttachment {
 
     //Heart
     public static final Supplier<AttachmentType<Heart>> HEART = ATTACHMENTS.register(
-            "heart", () -> AttachmentType.builder(() -> new Heart(100.0, 100.0)).serialize(WGCodec.HEART_CODEC).build()
+            "heart", () -> AttachmentType.builder(() -> new Heart(1000.0, 1000.0,0.0)).serialize(WGCodec.HEART_CODEC).build()
     );
 
     //Kidney
     public static final Supplier<AttachmentType<Kidney>> KIDNEY = ATTACHMENTS.register(
-            "kidney", () -> AttachmentType.builder(() -> new Kidney(100.0, 100.0)).serialize(WGCodec.KIDNEY_CODEC).build()
+            "kidney", () -> AttachmentType.builder(() -> new Kidney(1000.0, 1000.0,0.0)).serialize(WGCodec.KIDNEY_CODEC).build()
     );
 
     //Liver
     public static final Supplier<AttachmentType<Liver>> LIVER = ATTACHMENTS.register(
-            "liver", () -> AttachmentType.builder(() -> new Liver(100.0, 100.0)).serialize(WGCodec.LIVER_CODEC).build()
+            "liver", () -> AttachmentType.builder(() -> new Liver(1000.0, 1000.0,0.0)).serialize(WGCodec.LIVER_CODEC).build()
     );
 
     //Lung
     public static final Supplier<AttachmentType<Lung>> LUNG = ATTACHMENTS.register(
-            "lung", () -> AttachmentType.builder(() -> new Lung(100.0, 100.0)).serialize(WGCodec.LUNG_CODEC).build()
+            "lung", () -> AttachmentType.builder(() -> new Lung(1000.0, 1000.0,0.0)).serialize(WGCodec.LUNG_CODEC).build()
     );
 
     //Spleen
     public static final Supplier<AttachmentType<Spleen>> SPLEEN = ATTACHMENTS.register(
-            "spleen", () -> AttachmentType.builder(() -> new Spleen(100.0, 100.0)).serialize(WGCodec.SPLEEN_CODEC).build()
+            "spleen", () -> AttachmentType.builder(() -> new Spleen(1000.0, 1000.0,0.0)).serialize(WGCodec.SPLEEN_CODEC).build()
     );
 
     public static final Supplier<AttachmentType<Refresh>> REFRESH = ATTACHMENTS.register(
@@ -49,7 +49,7 @@ public class WGAttachment {
     );
 
     private static DeferredHolder<AttachmentType<?>, AttachmentType<Viscera>> registerViscera(String name) {
-        Viscera viscera = new Viscera(WhisperGrove.prefix(name), 100.0D, 100.0D);
+        Viscera viscera = new Viscera(WhisperGrove.prefix(name), 1000.0D, 1000.0D, 0.0D);
         return ATTACHMENTS.register(name, () -> AttachmentType.builder(() -> viscera).serialize(Viscera.CODEC).build());
     }
 

@@ -14,6 +14,9 @@ public class WGTab {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WG_TAB = TABS.register("whispergrove", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.whispergrove")).withTabsBefore(CreativeModeTabs.COMBAT).icon(WGItem.BAMBOO_LEAF::toStack)
-            .displayItems((parameters, output) -> WGItem.ITEMS.getEntries().forEach(holder -> output.accept(holder.get()))).build());
+            .displayItems((parameters, output) -> {
+                WGBlockItem.ITEMS.getEntries().forEach(holder -> output.accept(holder.get()));
+                WGItem.ITEMS.getEntries().forEach(holder -> output.accept(holder.get()));
+            }).build());
 
 }

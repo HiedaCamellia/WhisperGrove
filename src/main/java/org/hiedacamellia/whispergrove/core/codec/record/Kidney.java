@@ -2,6 +2,7 @@ package org.hiedacamellia.whispergrove.core.codec.record;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
@@ -14,22 +15,13 @@ import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.jetbrains.annotations.NotNull;
 
 //肾
-public record Kidney(Double yin, Double yang)implements CustomPacketPayload {
+public record Kidney(Double yin, Double yang,Double ping)implements CustomPacketPayload {
     public void sync(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new Kidney(this.yin, this.yang));
+            PacketDistributor.sendToPlayer(serverPlayer, new Kidney(this.yin, this.yang, this.ping));
     }
 
     public static final CustomPacketPayload.Type<Kidney> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "kidney"));
-
-    public static final StreamCodec<ByteBuf, Kidney> STREAM_CODEC = StreamCodec.of((ByteBuf buffer, Kidney message) -> {
-        buffer.writeDouble(message.yin);
-        buffer.writeDouble(message.yang);
-    }, (ByteBuf buffer) -> {
-        double yin = buffer.readDouble();
-        double yang = buffer.readDouble();
-        return new Kidney(yin, yang);
-    });
 
     @Override
     public CustomPacketPayload.@NotNull Type<? extends CustomPacketPayload> type() {

@@ -3,6 +3,7 @@
   "package": "org.hiedacamellia.whispergrove.core.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "FoodDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1

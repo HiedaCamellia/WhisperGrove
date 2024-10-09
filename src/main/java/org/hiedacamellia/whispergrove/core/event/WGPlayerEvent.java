@@ -1,9 +1,12 @@
 package org.hiedacamellia.whispergrove.core.event;
 
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.hiedacamellia.whispergrove.WhisperGrove;
@@ -14,11 +17,11 @@ import org.hiedacamellia.whispergrove.registers.WGAttachment;
 
 @EventBusSubscriber(modid = WhisperGrove.MODID)
 public class WGPlayerEvent {
-
-    @SubscribeEvent
-    public static void registerCommands(RegisterCommandsEvent event) {
-        new WGCommands(event.getDispatcher(), event.getBuildContext());
-    }
+//
+//    @SubscribeEvent
+//    public static void registerCommands(RegisterCommandsEvent event) {
+//        new WGCommands(event.getDispatcher(), event.getBuildContext());
+//    }
 
     @SubscribeEvent
     public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
@@ -57,19 +60,19 @@ public class WGPlayerEvent {
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.getEntity().hasData(WGAttachment.HEART)) {
-            event.getEntity().setData(WGAttachment.HEART, new Heart(100.0, 100.0));
+            event.getEntity().setData(WGAttachment.HEART, new Heart(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.KIDNEY)) {
-            event.getEntity().setData(WGAttachment.KIDNEY, new Kidney(100.0, 100.0));
+            event.getEntity().setData(WGAttachment.KIDNEY, new Kidney(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.LUNG)) {
-            event.getEntity().setData(WGAttachment.LUNG, new Lung(100.0, 100.0));
+            event.getEntity().setData(WGAttachment.LUNG, new Lung(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.LIVER)) {
-            event.getEntity().setData(WGAttachment.LIVER, new Liver(100.0, 100.0));
+            event.getEntity().setData(WGAttachment.LIVER, new Liver(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.SPLEEN)) {
-            event.getEntity().setData(WGAttachment.SPLEEN, new Spleen(100.0, 100.0));
+            event.getEntity().setData(WGAttachment.SPLEEN, new Spleen(1000.0, 1000.0,0.0));
         }
         if (!event.getEntity().hasData(WGAttachment.REFRESH)) {
             event.getEntity().setData(WGAttachment.REFRESH, new Refresh(0));
@@ -97,6 +100,8 @@ public class WGPlayerEvent {
         }
         player.setData(WGAttachment.REFRESH, new Refresh(tick));
     }
+
+
 
 }
 
