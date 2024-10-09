@@ -2,6 +2,7 @@ package org.hiedacamellia.whispergrove.core.data.provider;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -20,8 +21,10 @@ public class WGItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         getKnownItems().forEach(item -> {
-            String path = BuiltInRegistries.ITEM.getKey(item).getPath();
-            this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
+            if (!(item instanceof BlockItem)) {
+                String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+                this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
+            }
         });
     }
 
