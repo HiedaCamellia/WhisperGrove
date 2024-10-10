@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "whispergrove:block/milkvetch_stage0"
+  }
+}

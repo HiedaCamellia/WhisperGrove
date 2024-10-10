@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "whispergrove:block/gentian_stage0"
+  }
+}

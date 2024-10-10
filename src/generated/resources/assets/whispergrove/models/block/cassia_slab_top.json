@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "whispergrove:block/cassia_planks",
+    "side": "whispergrove:block/cassia_planks",
+    "top": "whispergrove:block/cassia_planks"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "whispergrove:general_prescript_process",
+  "ingredient": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "ordered": false,
+  "processtime": 100,
+  "result": {
+    "count": 1,
+    "id": "minecraft:diamond"
+  },
+  "state": {
+    "Name": "minecraft:dirt"
+  }
+}

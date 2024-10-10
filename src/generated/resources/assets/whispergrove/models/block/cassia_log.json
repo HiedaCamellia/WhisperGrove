@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "end": "whispergrove:block/cassia_log_top",
+    "side": "whispergrove:block/cassia_log",
+    "top": "whispergrove:block/cassia_log_top"
+  }
+}

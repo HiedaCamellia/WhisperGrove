@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:birch_forest"
+  ],
+  "features": "whispergrove:wg_med",
+  "step": "vegetal_decoration"
+}
