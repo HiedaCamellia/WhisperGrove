@@ -76,9 +76,9 @@ public class LiverEvent {
             DamageSource damageSource = event.getSource();
             if(entity instanceof Player player) {
                 Liver liver = player.getData(WGAttachment.LIVER);
-                float damage = (float) (event.getNewDamage() / (liver.yin() + liver.yang()) / 2000);
+                float damage = (float) (event.getNewDamage() / ((liver.yin() + liver.yang()) / 2000));
                 if(damageSource.is(NeoForgeMod.POISON_DAMAGE))
-                    damage = (float) (damage / (liver.yin() + liver.yang()) / 2000);
+                    damage = (float) (damage / ((liver.yin() + liver.yang()) / 2000));
 
                 event.setNewDamage(damage);
             }
