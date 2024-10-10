@@ -40,7 +40,12 @@ public class CommonConfig {
     public static final ModConfigSpec.BooleanValue MIXIN_CONTENT = BUILDER
             .comment("Set to true to enable mixin content(Disable this option when mixin conflicts occur)")
             .comment("设置为true以启用Mixin内容（当发生mixin冲突时禁用该选项）")
-            .define("mixin_content", true);
+            .define("mixin_content", false);
+
+    public static final ModConfigSpec.BooleanValue LIVER_CONTENT = BUILDER
+            .comment("Set to true to enable liver content(Disable this option when conflicts occur)")
+            .comment("设置为true以启用肝相关内容（当发生冲突时禁用该选项）")
+            .define("mixin_content", false);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
