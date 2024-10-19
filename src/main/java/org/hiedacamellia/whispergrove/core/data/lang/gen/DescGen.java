@@ -33,6 +33,7 @@ public class DescGen {
                 }
             }
             values.add(vis + " " + normal_desc_en);
+            values.add(vis);
         }
         for (int i = 0; i < keys.size(); i++) {
             desc.put(keys.get(i), values.get(i));
@@ -52,6 +53,7 @@ public class DescGen {
                 }
             }
             values.add(vis + " " + normal_desc_zh);
+            values.add(vis);
         }
         for (int i = 0; i < keys.size(); i++) {
             desc.put(keys.get(i), values.get(i));
@@ -65,10 +67,11 @@ public class DescGen {
         for (String vis : viscera) {
             for (String dis : diseases) {
                 for (int level : levels) {
-                    keys.add("desc.whispergrove." + vis + "_" + dis + ".level." + level);
+                    keys.add("desc.whispergrove." + vis + "." + dis + ".level." + level);
                 }
             }
-            keys.add("desc.whispergrove." + vis + "_normal");
+            keys.add("desc.whispergrove." + vis + ".normal");
+            keys.add("viscera.whispergrove." + vis);
         }
         return keys;
     }

@@ -20,6 +20,11 @@ public record Lung(Double yin, Double yang,Double ping)implements CustomPacketPa
         if (player instanceof ServerPlayer serverPlayer)
             PacketDistributor.sendToPlayer(serverPlayer, new Lung(this.yin, this.yang, this.ping));
     }
+    public static final StreamCodec<ByteBuf, Lung> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.DOUBLE, Lung::yin,
+            ByteBufCodecs.DOUBLE, Lung::yang,
+            ByteBufCodecs.DOUBLE, Lung::ping,
+            Lung::new);
 
     public static final CustomPacketPayload.Type<Lung> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "lung"));
 

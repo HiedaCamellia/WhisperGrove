@@ -22,6 +22,8 @@ import org.hiedacamellia.whispergrove.core.codec.record.Liver;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @EventBusSubscriber(modid = WhisperGrove.MODID)
@@ -85,29 +87,42 @@ public class LiverEvent {
         }
     }
 
-    public String getdesc(Player player) {
+    public static Component getdesc(Player player) {
         if (!player.hasData(WGAttachment.LIVER)) {
-            return "";
+            return Component.empty();
         }
         Liver liver = player.getData(WGAttachment.LIVER);
-        double diff = liver.yang() - liver.yin();
-        if (diff >= 60.0) {
+        double diff = liver.yang() / liver.yin();
+        if (diff >= CommonConfig.DISEASE_MODERATE.get()) {
 
-            return Component.translatable("desc.whispergrove.liver.hyperactivity.level.2").getString();
+            return Component.translatable("desc.whispergrove.liver.hyperactivity.level.2");
         }
-        if (diff >= 30.0) {
+        if (diff >= CommonConfig.DISEASE_MILD.get()) {
 
-            return Component.translatable("desc.whispergrove.liver.hyperactivity.level.1").getString();
+            return Component.translatable("desc.whispergrove.liver.hyperactivity.level.1");
         }
-        if (diff <= -60.0) {
+        if (diff <= 1/ CommonConfig.DISEASE_MODERATE.get()) {
 
-            return Component.translatable("desc.whispergrove.liver.deteriorated.level.2").getString();
+            return Component.translatable("desc.whispergrove.liver.deteriorated.level.2");
         }
-        if (diff <= -30.0) {
+        if (diff <= 1/ CommonConfig.DISEASE_MILD.get()) {
 
-            return Component.translatable("desc.whispergrove.liver.deteriorated.level.1").getString();
+            return Component.translatable("desc.whispergrove.liver.deteriorated.level.1");
         }
 
-        return Component.translatable("desc.whispergrove.liver.normal").getString();
+        return Component.translatable("desc.whispergrove.liver.normal");
+    }
+    public static List<Component> getHover(Player player) {
+        if (!player.hasData(WGAttachment.LIVER)) {
+            return List.of();
+        }
+        Liver liver = player.getData(WGAttachment.LIVER);
+
+        List<Component> raw = new ArrayList<>();
+
+        raw.add(Component.translatable("viscera.whispergrove.hover.yin", liver.yin()));
+        raw.add(Component.translatable("viscera.whispergrove.hover.yang", liver.yang()));
+
+        return raw;
     }
 }

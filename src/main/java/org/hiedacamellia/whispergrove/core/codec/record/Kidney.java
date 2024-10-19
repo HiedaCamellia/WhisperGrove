@@ -20,6 +20,11 @@ public record Kidney(Double yin, Double yang,Double ping)implements CustomPacket
         if (player instanceof ServerPlayer serverPlayer)
             PacketDistributor.sendToPlayer(serverPlayer, new Kidney(this.yin, this.yang, this.ping));
     }
+    public static final StreamCodec<ByteBuf, Kidney> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.DOUBLE, Kidney::yin,
+            ByteBufCodecs.DOUBLE, Kidney::yang,
+            ByteBufCodecs.DOUBLE, Kidney::ping,
+            Kidney::new);
 
     public static final CustomPacketPayload.Type<Kidney> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "kidney"));
 

@@ -61,7 +61,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return update(VisceraHolder.getSpleen(itemStack));
     }
 
-    public VisceraHolder getHeart(Player player){
+    public static VisceraHolder getHeart(Player player){
         if(player.hasData(WGAttachment.HEART)){
             return fromHeart(player.getData(WGAttachment.HEART));
         }
@@ -72,7 +72,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return fromHeart(itemStack.getOrDefault(WGDataComponent.HEART.get(), new Heart(0.0, 0.0,0.0)));
     }
 
-    public VisceraHolder getKidney(Player player){
+    public static VisceraHolder getKidney(Player player){
         if(player.hasData(WGAttachment.KIDNEY)){
             return fromKidney(player.getData(WGAttachment.KIDNEY));
         }
@@ -83,7 +83,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return fromKidney(itemStack.getOrDefault(WGDataComponent.KIDNEY.get(), new Kidney(0.0, 0.0,0.0)));
     }
 
-    public VisceraHolder getLiver(Player player){
+    public static VisceraHolder getLiver(Player player){
         if(player.hasData(WGAttachment.LIVER)){
             return fromLiver(player.getData(WGAttachment.LIVER));
         }
@@ -94,7 +94,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return fromLiver(itemStack.getOrDefault(WGDataComponent.LIVER.get(), new Liver(0.0, 0.0,0.0)));
     }
 
-    public VisceraHolder getLung(Player player){
+    public static VisceraHolder getLung(Player player){
         if(player.hasData(WGAttachment.LUNG)){
             return fromLung(player.getData(WGAttachment.LUNG));
         }
@@ -105,7 +105,7 @@ public record VisceraHolder(double yin, double yang,double ping) {
         return fromLung(itemStack.getOrDefault(WGDataComponent.LUNG.get(), new Lung(0.0, 0.0,0.0)));
     }
 
-    public VisceraHolder getSpleen(Player player){
+    public static VisceraHolder getSpleen(Player player){
         if(player.hasData(WGAttachment.SPLEEN)){
             return fromSpleen(player.getData(WGAttachment.SPLEEN));
         }

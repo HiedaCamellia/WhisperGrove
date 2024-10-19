@@ -1,5 +1,6 @@
 package org.hiedacamellia.whispergrove.core.event;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -9,6 +10,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.content.viscera.*;
 import org.hiedacamellia.whispergrove.core.codec.record.*;
@@ -77,6 +79,20 @@ public class WGPlayerEvent {
         if (!event.getEntity().hasData(WGAttachment.REFRESH)) {
             event.getEntity().setData(WGAttachment.REFRESH, new Refresh(0));
         }
+
+        if(event.getEntity() instanceof ServerPlayer player){
+            Heart heart = player.getData(WGAttachment.HEART);
+            Kidney kidney = player.getData(WGAttachment.KIDNEY);
+            Lung lung = player.getData(WGAttachment.LUNG);
+            Liver liver = player.getData(WGAttachment.LIVER);
+            Spleen spleen = player.getData(WGAttachment.SPLEEN);
+            heart.sync(player);
+            kidney.sync(player);
+            lung.sync(player);
+            liver.sync(player);
+            spleen.sync(player);
+        }
+
     }
 
     @SubscribeEvent

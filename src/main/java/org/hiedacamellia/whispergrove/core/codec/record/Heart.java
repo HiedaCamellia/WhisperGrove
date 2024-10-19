@@ -22,6 +22,12 @@ public record Heart(Double yin, Double yang,Double ping) implements CustomPacket
             PacketDistributor.sendToPlayer(serverPlayer, new Heart(this.yin, this.yang, this.ping));
     }
 
+    public static final StreamCodec<ByteBuf, Heart> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.DOUBLE, Heart::yin,
+            ByteBufCodecs.DOUBLE, Heart::yang,
+            ByteBufCodecs.DOUBLE, Heart::ping,
+            Heart::new);
+
     public static final CustomPacketPayload.Type<Heart> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "heart"));
 
     @Override

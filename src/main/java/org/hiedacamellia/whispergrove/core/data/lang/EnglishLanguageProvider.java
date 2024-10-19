@@ -19,6 +19,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("tooltip.whispergrove.press_shift","Press Shift to display more information");
         add("itemGroup.whispergrove", "Whisper Grove");
+        add("menu.whispergrove.viscera_tab","Viscera");
         add("network.whispergrove.failed","Failed to handle network data: %s");
         add("cmd.whispergrove.modify.success","Modify Value success: %f");
         add("cmd.whispergrove.modify.failed","Modify Value failed: %s");
@@ -149,5 +150,16 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("whispergrove.configuration.ecliptic_compact.tooltip", "Set to true to enable the compact of the Ecliptic");
         add("whispergrove.configuration.section.whispergrove.common.toml", "Common Config");
         add("whispergrove.configuration.section.whispergrove.common.toml.title", "Whisper Grove Common Config");
+
+        add("tooltip.whispergrove.heart","Heart ");
+        add("tooltip.whispergrove.liver","Liver ");
+        add("tooltip.whispergrove.lung","Lung ");
+        add("tooltip.whispergrove.kidney","Kidney ");
+        add("tooltip.whispergrove.spleen","Spleen ");
+        add("tooltip.whispergrove.yin","Cold %d");
+        add("tooltip.whispergrove.yang","Warm %d");
+        add("tooltip.whispergrove.ping","Balance %d");
+        add("viscera.whispergrove.hover.yin","Yin: %d Points");
+        add("viscera.whispergrove.hover.yang","Yang: %d Points");
     }
 }

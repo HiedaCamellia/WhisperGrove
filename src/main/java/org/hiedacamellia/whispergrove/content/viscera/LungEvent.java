@@ -11,11 +11,14 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.codec.record.Heart;
 import org.hiedacamellia.whispergrove.core.config.CommonConfig;
 import org.hiedacamellia.whispergrove.core.codec.record.Lung;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @EventBusSubscriber(modid = WhisperGrove.MODID)
@@ -72,29 +75,42 @@ public class LungEvent {
         }
     }
 
-    public String getdesc(Player player) {
+    public static Component getdesc(Player player) {
         if (!player.hasData(WGAttachment.LUNG)) {
-            return "";
+            return Component.empty();
         }
         Lung lung = player.getData(WGAttachment.LUNG);
-        double diff = lung.yang() - lung.yin();
-        if (diff >= 60.0) {
+        double diff = lung.yang() / lung.yin();
+        if (diff >= CommonConfig.DISEASE_MODERATE.get()) {
 
-            return Component.translatable("desc.whispergrove.lung.hyperactivity.level.2").getString();
+            return Component.translatable("desc.whispergrove.lung.hyperactivity.level.2");
         }
-        if (diff >= 30.0) {
+        if (diff >= CommonConfig.DISEASE_MILD.get()) {
 
-            return Component.translatable("desc.whispergrove.lung.hyperactivity.level.1").getString();
+            return Component.translatable("desc.whispergrove.lung.hyperactivity.level.1");
         }
-        if (diff <= -60.0) {
+        if (diff <= 1/ CommonConfig.DISEASE_MODERATE.get()) {
 
-            return Component.translatable("desc.whispergrove.lung.deteriorated.level.2").getString();
+            return Component.translatable("desc.whispergrove.lung.deteriorated.level.2");
         }
-        if (diff <= -30.0) {
+        if (diff <= 1/ CommonConfig.DISEASE_MILD.get()) {
 
-            return Component.translatable("desc.whispergrove.lung.deteriorated.level.1").getString();
+            return Component.translatable("desc.whispergrove.lung.deteriorated.level.1");
         }
 
-        return Component.translatable("desc.whispergrove.lung.normal").getString();
+        return Component.translatable("desc.whispergrove.lung.normal");
+    }
+    public static List<Component> getHover(Player player) {
+        if (!player.hasData(WGAttachment.LUNG)) {
+            return List.of();
+        }
+        Lung lung = player.getData(WGAttachment.LUNG);
+
+        List<Component> raw = new ArrayList<>();
+
+        raw.add(Component.translatable("viscera.whispergrove.hover.yin", lung.yin()));
+        raw.add(Component.translatable("viscera.whispergrove.hover.yang", lung.yang()));
+
+        return raw;
     }
 }

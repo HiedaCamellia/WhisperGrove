@@ -19,6 +19,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         protected void addTranslations() {
             add("tooltip.whispergrove.press_shift","按住Shift键以显示更多信息");
             add("itemGroup.whispergrove", "浅草轻语");
+            add("menu.whispergrove.viscera_tab","脏腑");
             add("network.whispergrove.failed","无法处理网络数据: %s");
             add("cmd.whispergrove.modify.success","修改值成功：%f");
             add("cmd.whispergrove.modify.failed","修改值失败：%s");
@@ -163,5 +164,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
             add("tooltip.whispergrove.yin","寒%d");
             add("tooltip.whispergrove.yang","温%d");
             add("tooltip.whispergrove.ping","平%d");
+            add("viscera.whispergrove.hover.yin","阴：%d点数");
+            add("viscera.whispergrove.hover.yang","阳：%d点数");
         }
 }

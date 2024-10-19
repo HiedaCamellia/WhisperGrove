@@ -6,6 +6,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.hiedacamellia.whispergrove.WhisperGrove;
+import org.hiedacamellia.whispergrove.core.codec.record.*;
 import org.hiedacamellia.whispergrove.core.network.PlayerMenuC2SPacket;
 import org.hiedacamellia.whispergrove.core.network.PlayerMenuS2SPacket;
 import org.hiedacamellia.whispergrove.core.network.PlayerVisceraS2CPacket;
@@ -26,6 +27,26 @@ public class WGModBusEvent {
         registrar.playToClient(PlayerMenuS2SPacket.TYPE,
                 PlayerMenuS2SPacket.STREAM_CODEC,
                 PlayerMenuS2SPacket::handleData
+        );
+        registrar.playToClient(Heart.TYPE,
+                Heart.STREAM_CODEC,
+                Heart::handleData
+        );
+        registrar.playToClient(Kidney.TYPE,
+                Kidney.STREAM_CODEC,
+                Kidney::handleData
+        );
+        registrar.playToClient(Lung.TYPE,
+                Lung.STREAM_CODEC,
+                Lung::handleData
+        );
+        registrar.playToClient(Liver.TYPE,
+                Liver.STREAM_CODEC,
+                Liver::handleData
+        );
+        registrar.playToClient(Spleen.TYPE,
+                Spleen.STREAM_CODEC,
+                Spleen::handleData
         );
     }
 

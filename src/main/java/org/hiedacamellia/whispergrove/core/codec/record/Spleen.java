@@ -20,6 +20,11 @@ public record Spleen(Double yin, Double yang,Double ping)implements CustomPacket
         if (player instanceof ServerPlayer serverPlayer)
             PacketDistributor.sendToPlayer(serverPlayer, new Spleen(this.yin, this.yang, this.ping));
     }
+    public static final StreamCodec<ByteBuf, Spleen> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.DOUBLE, Spleen::yin,
+            ByteBufCodecs.DOUBLE, Spleen::yang,
+            ByteBufCodecs.DOUBLE, Spleen::ping,
+            Spleen::new);
 
     public static final CustomPacketPayload.Type<Spleen> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "spleen"));
 

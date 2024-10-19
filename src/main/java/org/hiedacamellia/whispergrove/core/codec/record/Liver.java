@@ -20,6 +20,11 @@ public record Liver(Double yin, Double yang,Double ping)implements CustomPacketP
         if (player instanceof ServerPlayer serverPlayer)
             PacketDistributor.sendToPlayer(serverPlayer, new Liver(this.yin, this.yang, this.ping));
     }
+    public static final StreamCodec<ByteBuf, Liver> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.DOUBLE, Liver::yin,
+            ByteBufCodecs.DOUBLE, Liver::yang,
+            ByteBufCodecs.DOUBLE, Liver::ping,
+            Liver::new);
 
     public static final CustomPacketPayload.Type<Liver> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(WhisperGrove.MODID, "liver"));
 

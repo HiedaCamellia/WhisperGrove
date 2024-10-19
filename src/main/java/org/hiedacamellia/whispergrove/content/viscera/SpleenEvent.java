@@ -17,6 +17,8 @@ import org.hiedacamellia.whispergrove.core.mixin.FoodDataMixin;
 import org.hiedacamellia.whispergrove.registers.WGAttachment;
 import org.hiedacamellia.whispergrove.registers.WGEffect;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SpleenEvent {
@@ -62,29 +64,41 @@ public class SpleenEvent {
         }
     }
 
-    public String getdesc(Player player) {
+    public static Component getdesc(Player player) {
         if (!player.hasData(WGAttachment.SPLEEN)) {
-            return "";
+            return Component.empty();
         }
         Spleen spleen = player.getData(WGAttachment.SPLEEN);
-        double diff = spleen.yang() - spleen.yin();
-        if (diff >= 60.0) {
+        double diff = spleen.yang() / spleen.yin();
+        if (diff >= CommonConfig.DISEASE_MODERATE.get()) {
 
-            return Component.translatable("desc.whispergrove.spleen.hyperactivity.level.2").getString();
+            return Component.translatable("desc.whispergrove.spleen.hyperactivity.level.2");
         }
-        if (diff >= 30.0) {
+        if (diff >= CommonConfig.DISEASE_MILD.get()) {
 
-            return Component.translatable("desc.whispergrove.spleen.hyperactivity.level.1").getString();
+            return Component.translatable("desc.whispergrove.spleen.hyperactivity.level.1");
         }
-        if (diff <= -60.0) {
+        if (diff <= 1/ CommonConfig.DISEASE_MODERATE.get()) {
 
-            return Component.translatable("desc.whispergrove.spleen.deteriorated.level.2").getString();
+            return Component.translatable("desc.whispergrove.spleen.deteriorated.level.2");
         }
-        if (diff <= -30.0) {
+        if (diff <= 1/ CommonConfig.DISEASE_MILD.get()) {
 
-            return Component.translatable("desc.whispergrove.spleen.deteriorated.level.1").getString();
+            return Component.translatable("desc.whispergrove.spleen.deteriorated.level.1");
         }
 
-        return Component.translatable("desc.whispergrove.spleen.normal").getString();
+        return Component.translatable("desc.whispergrove.spleen.normal");
+    }
+    public static List<Component> getHover(Player player) {
+        if (!player.hasData(WGAttachment.SPLEEN)) {
+            return List.of();
+        }
+        Spleen spleen = player.getData(WGAttachment.SPLEEN);
+        List<Component> raw = new ArrayList<>();
+
+        raw.add(Component.translatable("viscera.whispergrove.hover.yin", spleen.yin()));
+        raw.add(Component.translatable("viscera.whispergrove.hover.yang", spleen.yang()));
+
+        return raw;
     }
 }
