@@ -15,7 +15,7 @@ public record GeneralPrescriptProcessInput(BlockState state, List<ItemStack> sta
 
     @Override
     public int size() {
-        return 10;
+        return 9;
     }
 
 }
