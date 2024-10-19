@@ -8,6 +8,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.whispergrove.WhisperGrove;
@@ -26,7 +28,4 @@ public class WGTab {
                 WGItem.ITEMS.getEntries().forEach(holder -> output.accept(holder.get()));
             }).build());
 
-    public static Val<TabToken<InvTabData, VisceraTab>> TAB_VISCERA = TAB_REG.reg("viscera_tab",
-            () -> L2Tabs.GROUP.registerTab(() -> VisceraTab::new,
-                    Component.translatable("menu.whispergrove.viscera_tab")));
 }

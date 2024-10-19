@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import org.hiedacamellia.whispergrove.core.debug.Debug;
+import org.hiedacamellia.whispergrove.registers.WGClientTab;
 import org.hiedacamellia.whispergrove.registers.WGTab;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class VisceraScreen extends BaseTextScreen {
     @Override
     public void init() {
         super.init();
-        new TabManager<>(this, new InvTabData()).init(this::addRenderableWidget, WGTab.TAB_VISCERA.get());
+        new TabManager<>(this, new InvTabData()).init(this::addRenderableWidget, WGClientTab.TAB_VISCERA.get());
     }
 
 
