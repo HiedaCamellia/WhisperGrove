@@ -27,7 +27,7 @@ public class KidneyEvent {
         double diff = kidney.yang() / kidney.yin();
 
         AttributeInstance attributeInstance = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.ATTACK_DAMAGE));
-        attributeInstance.addOrReplacePermanentModifier(new AttributeModifier(WhisperGrove.prefix("kidney"), (kidney.yang() + kidney.yin())/2000, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeInstance.addOrReplacePermanentModifier(new AttributeModifier(WhisperGrove.prefix("kidney"), (kidney.yang() + kidney.yin())/2000 - 1.0, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         AttributeInstance attackSpeed = Objects.requireNonNull(player.getAttributes().getInstance(Attributes.ATTACK_SPEED));
 
         player.removeEffect(WGEffect.KIDNEY_HYPERACTIVITY);
