@@ -1,7 +1,11 @@
 package org.hiedacamellia.whispergrove.registers;
 
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -36,5 +40,23 @@ public class WGBlock {
                     .randomTicks()
                     .instabreak()
                     .sound(SoundType.CROP)
-                    .pushReaction(PushReaction.DESTROY)))));
+                    .pushReaction(PushReaction.DESTROY)
+                    .noOcclusion()))));
+
+    public static final Map<String, DeferredBlock<Block>> WILD_CROP_BLOCKS = Stream.of(
+            "rehmannia", "licorice", "milkvetch", "gentian", "ginseng").collect(Collectors.toMap(s -> s+"_wild",
+            s -> BLOCKS.register(s+"_wild", () -> new CropBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    .instabreak()
+                    .sound(SoundType.CROP)
+                    .pushReaction(PushReaction.DESTROY)
+                    .noOcclusion()){
+                        @Override
+                        public boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
+                            return (state.getBlock() instanceof net.minecraft.world.level.block.GrassBlock);
+                        }
+                    }
+            )));
+
 }

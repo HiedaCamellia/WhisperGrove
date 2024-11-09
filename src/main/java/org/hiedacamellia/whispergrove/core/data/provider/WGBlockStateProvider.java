@@ -1,5 +1,6 @@
 package org.hiedacamellia.whispergrove.core.data.provider;
 
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -42,13 +43,17 @@ public class WGBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(WGBlock.SPRINGING.get(), this.models().getExistingFile(modLoc("springing")));
 
         WGBlock.CROP_BLOCKS.forEach((s, baseCropBlockDeferredBlock) -> registerCropBlockModels(baseCropBlockDeferredBlock.get(), s));
+
+        WGBlock.WILD_CROP_BLOCKS.forEach((s, baseCropBlockDeferredBlock) ->
+                simpleBlockWithItem(baseCropBlockDeferredBlock.get(), models().crop(s, modLoc("block/" + s)).renderType("minecraft:translucent")));
+
     }
 
     private void registerCropBlockModels(Block block, String name) {
         getVariantBuilder(block).forAllStates(state -> {
             int age = state.getValue(CropBlock.AGE);
             return ConfiguredModel.builder()
-                    .modelFile(models().crop(getCropBlockModelName(name, age), getCropBlockModelLocation(name, age)))
+                    .modelFile(models().crop(getCropBlockModelName(name, age), getCropBlockModelLocation(name, age)).renderType("minecraft:translucent"))
                     .build();
         });
 

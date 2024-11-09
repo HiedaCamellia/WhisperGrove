@@ -6,6 +6,8 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -49,17 +51,17 @@ public class WGFeature {
 
     public static final ConfiguredFeature<RandomPatchConfiguration, Feature<RandomPatchConfiguration>> WG_MED = new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(
             64, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseThresholdProvider(496156461L,
-            new NormalNoise.NoiseParameters(0, 1.0), 0.005F, -0.8F, 0.33333334F, Blocks.DANDELION.defaultBlockState(),
-            List.of(WGBlock.CROP_BLOCKS.get("rehmannia").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("licorice").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("milkvetch").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("gentian").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("ginseng").get().defaultBlockState()),
-            List.of(WGBlock.CROP_BLOCKS.get("rehmannia").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("licorice").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("milkvetch").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("gentian").get().defaultBlockState(),
-                    WGBlock.CROP_BLOCKS.get("ginseng").get().defaultBlockState()))))));
+            new NormalNoise.NoiseParameters(0, 1.0), 0.005F, -0.8F, 0.33333334F, WGBlock.WILD_CROP_BLOCKS.get("rehmannia_wild").get().defaultBlockState(),
+            List.of(WGBlock.WILD_CROP_BLOCKS.get("rehmannia_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("licorice_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("milkvetch_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("gentian_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("ginseng_wild").get().defaultBlockState()),
+            List.of(WGBlock.WILD_CROP_BLOCKS.get("rehmannia_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("licorice_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("milkvetch_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("gentian_wild").get().defaultBlockState(),
+                    WGBlock.WILD_CROP_BLOCKS.get("ginseng_wild").get().defaultBlockState()))))));
 
     public static final ResourceKey<PlacedFeature> WG_MED_PLACED_KEY = ResourceKey.create(Registries.PLACED_FEATURE, WhisperGrove.prefix("wg_med"));
 

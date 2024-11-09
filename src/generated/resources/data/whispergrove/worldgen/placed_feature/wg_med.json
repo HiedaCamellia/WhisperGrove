@@ -9,36 +9,39 @@
             "to_place": {
               "type": "minecraft:noise_threshold_provider",
               "default_state": {
-                "Name": "minecraft:dandelion"
+                "Name": "whispergrove:rehmannia_wild",
+                "Properties": {
+                  "age": "0"
+                }
               },
               "high_chance": 0.33333334,
               "high_states": [
                 {
-                  "Name": "whispergrove:rehmannia",
+                  "Name": "whispergrove:rehmannia_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:licorice",
+                  "Name": "whispergrove:licorice_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:milkvetch",
+                  "Name": "whispergrove:milkvetch_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:gentian",
+                  "Name": "whispergrove:gentian_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:ginseng",
+                  "Name": "whispergrove:ginseng_wild",
                   "Properties": {
                     "age": "0"
                   }
@@ -46,31 +49,31 @@
               ],
               "low_states": [
                 {
-                  "Name": "whispergrove:rehmannia",
+                  "Name": "whispergrove:rehmannia_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:licorice",
+                  "Name": "whispergrove:licorice_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:milkvetch",
+                  "Name": "whispergrove:milkvetch_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:gentian",
+                  "Name": "whispergrove:gentian_wild",
                   "Properties": {
                     "age": "0"
                   }
                 },
                 {
-                  "Name": "whispergrove:ginseng",
+                  "Name": "whispergrove:ginseng_wild",
                   "Properties": {
                     "age": "0"
                   }
