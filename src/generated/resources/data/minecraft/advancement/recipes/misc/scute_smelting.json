@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bone": {
+    "has_scute": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:bone"
+            "items": "minecraft:turtle_scute"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bone_smelting"
+        "recipe": "minecraft:scute_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bone"
+      "has_scute"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bone_smelting"
+      "minecraft:scute_smelting"
     ]
   }
 }

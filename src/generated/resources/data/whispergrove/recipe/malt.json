@@ -1,0 +1,14 @@
+{
+  "type": "whispergrove:simple_herb_process",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "processtime": 100,
+  "result": {
+    "count": 1,
+    "id": "whispergrove:malt"
+  },
+  "state": {
+    "Name": "whispergrove:cutter"
+  }
+}

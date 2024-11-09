@@ -1,0 +1,14 @@
+{
+  "type": "whispergrove:simple_herb_process",
+  "ingredient": {
+    "item": "whispergrove:ginseng"
+  },
+  "processtime": 100,
+  "result": {
+    "count": 1,
+    "id": "whispergrove:sliced_ginseng"
+  },
+  "state": {
+    "Name": "whispergrove:cutter"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "whispergrove:simple_herb_process",
+  "ingredient": {
+    "item": "minecraft:bamboo"
+  },
+  "processtime": 100,
+  "result": {
+    "count": 1,
+    "id": "whispergrove:bamboo_leaf"
+  },
+  "state": {
+    "Name": "whispergrove:cutter"
+  }
+}

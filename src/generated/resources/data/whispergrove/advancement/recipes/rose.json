@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bone": {
+    "has_rose": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:bone"
+            "items": "minecraft:rose_bush"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bone_smelting"
+        "recipe": "whispergrove:rose"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bone"
+      "has_rose"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bone_smelting"
+      "whispergrove:rose"
     ]
   }
 }

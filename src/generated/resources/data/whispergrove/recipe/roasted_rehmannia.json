@@ -1,0 +1,14 @@
+{
+  "type": "whispergrove:simple_herb_process",
+  "ingredient": {
+    "item": "whispergrove:drying_rehmannia"
+  },
+  "processtime": 100,
+  "result": {
+    "count": 1,
+    "id": "whispergrove:roasted_rehmannia"
+  },
+  "state": {
+    "Name": "whispergrove:pot"
+  }
+}
