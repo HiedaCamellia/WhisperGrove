@@ -1,6 +1,5 @@
 package org.hiedacamellia.whispergrove.registers;
 
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -156,7 +155,7 @@ public class WGItem {
 
     //熟附片 Roasted Prepared Common Monkshood Daughter Root
     //shu fu pian
-    public static final DeferredItem<BaseItem> SHU_FU_PIAN = ITEMS.register("roasted_monkshood", () -> new BaseItemBuilder().heart(0,12,0).kidney(0,12,0).spleen(0,12,0).build());
+    public static final DeferredItem<BaseItem> ROASTED_MONKSHOOD = ITEMS.register("roasted_monkshood", () -> new BaseItemBuilder().heart(0,12,0).kidney(0,12,0).spleen(0,12,0).build());
 
     //骨头碎片 bone fragment
     //bone fragment

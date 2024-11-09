@@ -5,11 +5,12 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.data.lang.gen.DescGen;
 import org.hiedacamellia.whispergrove.core.data.lang.gen.EffectGen;
+import org.hiedacamellia.whispergrove.registers.WGBlockItem;
 import org.hiedacamellia.whispergrove.registers.WGItem;
 
 import java.util.Map;
 
-public class EnglishLanguageProvider extends LanguageProvider {
+public class EnglishLanguageProvider extends CamelliaLanguageProvider {
 
     public EnglishLanguageProvider(PackOutput output) {
         super(output, WhisperGrove.MODID, "en_us");
@@ -40,100 +41,61 @@ public class EnglishLanguageProvider extends LanguageProvider {
             add(entry.getKey(),entry.getValue());
         }
 
-        add(WGItem.MILKVETCH.get(),"Milkvetch");
-        add("tooltip.whispergrove.milkvetch","");
-        add("item.whispergrove.actinolite","Actinolite");
-        add("tooltip.whispergrove.actinolite","");
-        add("item.whispergrove.fluorite","Fluorite");
-        add("tooltip.whispergrove.fluorite","");
-        add("item.whispergrove.cassia_twig","Cassia Twig");
-        add("tooltip.whispergrove.cassia_twig","");
-        add("item.whispergrove.rose","Rose");
-        add("tooltip.whispergrove.rose","");
-        add("item.whispergrove.roasted_rehmannia","Roasted Rehmannia");
-        add("tooltip.whispergrove.roasted_rehmannia","");
-        add("item.whispergrove.roasted_cuttleflsh_bone","Roasted Cuttlefish Bone");
-        add("tooltip.whispergrove.roasted_cuttleflsh_bone","");
-        add("item.whispergrove.monkshood","Monkshood");
-        add("tooltip.whispergrove.monkshood","");
-        add("item.whispergrove.clove","Clove");
-        add("tooltip.whispergrove.clove","");
-        add("item.whispergrove.schisandra_chinensis","Shisandra Chinensis");
-        add("tooltip.whispergrove.schisandra_chinensis","");
-        add("item.whispergrove.prepared_licorice","Prepared Licorice");
-        add("tooltip.whispergrove.prepared_licorice","");
-        add("item.whispergrove.ginseng","Ginseng");
-        add("tooltip.whispergrove.ginseng","");
-        add("item.whispergrove.poria_cocos","Poria Cocos");
-        add("tooltip.whispergrove.poria_cocos","");
-        add("item.whispergrove.malt","Malt");
-        add("tooltip.whispergrove.malt","");
-        add("item.whispergrove.donkey_hide_gelatin","Donkey Hide Gelatin");
-        add("tooltip.whispergrove.donkey_hide_gelatin","");
-        add("item.whispergrove.calcined_dragon_bone","Calcined Dragon Bone");
-        add("tooltip.whispergrove.calcined_dragon_bone","");
-        add("item.whispergrove.albizia_bark","Albizia Bark");
-        add("tooltip.whispergrove.albizia_bark","");
-        add("item.whispergrove.bamboo_leaf","Bamboo leaf");
-        add("tooltip.whispergrove.bamboo_leaf","");
-        add("item.whispergrove.gentian","Gentian");
-        add("tooltip.whispergrove.gentian","");
-        add("item.whispergrove.bamboo_shavings","Bamboo Shavings");
-        add("tooltip.whispergrove.bamboo_shavings","");
-        add("item.whispergrove.gypsum_rubrum","Gypsum Rubrum");
-        add("tooltip.whispergrove.gypsum_rubrum","");
-        add("item.whispergrove.tortoise_plastron_glue","Tortoise Plastron Glue");
-        add("tooltip.whispergrove.tortoise_plastron_glue","");
-        add("item.whispergrove.drying_rehmannia","Drying Rehmannia");
-        add("tooltip.whispergrove.drying_rehmannia","");
-        add("item.whispergrove.drying_licorice","Drying Licorice");
-        add("tooltip.whispergrove.drying_licorice","");
+        addWithTooltip(WGItem.MILKVETCH.get(),"Milkvetch","");
+        addWithTooltip(WGItem.ACTINOLITE.get(),"Actinolite","");
+        addWithTooltip(WGItem.FLUORITE.get(),"Fluorite","");
+        addWithTooltip(WGItem.CASSIA_TWIG.get(),"Cassia Twig","");
+        addWithTooltip(WGItem.ROSE.get(),"Rose","");
+        addWithTooltip(WGItem.ROASTED_REHMANNIA.get(),"Roasted Rehmannia","");
+        addWithTooltip(WGItem.ROASTED_CUTTLEFLSH_BONE.get(),"Roasted Cuttlefish Bone","");
+        addWithTooltip(WGItem.MONKSHOOD.get(),"Monkshood","");
+        addWithTooltip(WGItem.CLOVE.get(),"Clove","");
+        addWithTooltip(WGItem.SCHISANDRA_CHINENSIS.get(),"Shisandra Chinensis","");
+        addWithTooltip(WGItem.PREPARED_LICORICE.get(),"Prepared Licorice","");
+        addWithTooltip(WGItem.GINSENG.get(),"Ginseng","");
+        addWithTooltip(WGItem.PORIA_COCOS.get(),"Poria Cocos","");
+        addWithTooltip(WGItem.MALT.get(),"Malt","");
+        addWithTooltip(WGItem.DONKEY_HIDE_GELATIN.get(),"Donkey Hide Gelatin","");
+        addWithTooltip(WGItem.CALCINED_DRAGON_BONE.get(),"Calcined Dragon Bone","");
+        addWithTooltip(WGItem.ALBIZIA_BARK.get(),"Albizia Bark","");
+        addWithTooltip(WGItem.BAMBOO_LEAF.get(),"Bamboo leaf","");
+        addWithTooltip(WGItem.BAMBOO_SHAVINGS.get(),"Bamboo Shavings","");
+        addWithTooltip(WGItem.GENTIAN.get(),"Gentian","");
+        addWithTooltip(WGItem.GYPSUM_RUBRUM.get(),"Gypsum Rubrum","");
+        addWithTooltip(WGItem.TORTOISE_PLASTRON_GLUE.get(),"Tortoise Plastron Glue","");
+        addWithTooltip(WGItem.DRYING_REHMANNIA.get(),"Drying Rehmannia","");
+        addWithTooltip(WGItem.DRYING_LICORICE.get(),"Drying Licorice","");
+        addWithTooltip(WGItem.ROASTED_MONKSHOOD.get(),"Roasted Monkshood","");
 
-        add("item.whispergrove.sliced_milkvetch","Sliced Milkvetch");
-        add("tooltip.whispergrove.sliced_milkvetch","");
-        add("item.whispergrove.sliced_cassia_twig","Sliced Cassia Twig");
-        add("tooltip.whispergrove.sliced_cassia_twig","");
-        add("item.whispergrove.cassia_twig_bark","Cassia Twig Bark");
-        add("tooltip.whispergrove.cassia_twig_bark","");
-        add("item.whispergrove.rehmannia","Rehmannia");
-        add("tooltip.whispergrove.rehmannia","");
-        add("item.whispergrove.licorice","Licorice");
-        add("tooltip.whispergrove.licorice","");
-        add("item.whispergrove.sliced_ginseng","Sliced Ginseng");
-        add("tooltip.whispergrove.sliced_ginseng","");
-        add("item.whispergrove.sliced_gentian","Sliced Gentian");
-        add("tooltip.whispergrove.sliced_gentian","");
-        add("item.whispergrove.cuttlebone","Cuttlebone");
-        add("tooltip.whispergrove.cuttlebone","");
-        add("item.whispergrove.bone_fragment","Bone Fragment");
-        add("tooltip.whispergrove.bone_fragment","");
+        addWithTooltip(WGItem.SLICED_MILKVETCH.get(),"Sliced Milkvetch","");
+        addWithTooltip(WGItem.SLICED_CASSIA_TWIG.get(),"Sliced Cassia Twig","");
+        addWithTooltip(WGItem.CASSIA_TWIG_BARK.get(),"Cassia Twig Bark","");
+        addWithTooltip(WGItem.REHMANNIA.get(),"Rehmannia","");
+        addWithTooltip(WGItem.LICORICE.get(),"Licorice","");
+        addWithTooltip(WGItem.SLICED_GINSENG.get(),"Sliced Ginseng","");
+        addWithTooltip(WGItem.SLICED_GENTIAN.get(),"Sliced Gentian","");
+        addWithTooltip(WGItem.CUTTLEBONE.get(),"Cuttlebone","");
+        addWithTooltip(WGItem.BONE_FRAGMENT.get(),"Bone Fragment","");
 
+        addWithTooltip(WGItem.CROP_SEED_ITEMS.get("rehmannia").get(),"Rehmannia Seed","");
+        addWithTooltip(WGItem.CROP_SEED_ITEMS.get("licorice").get(),"Licorice Seed","");
+        addWithTooltip(WGItem.CROP_SEED_ITEMS.get("milkvetch").get(),"Milkvetch Seed","");
+        addWithTooltip(WGItem.CROP_SEED_ITEMS.get("gentian").get(),"Gentian Seed","");
+        addWithTooltip(WGItem.CROP_SEED_ITEMS.get("ginseng").get(),"Ginseng Seed","");
 
+        addWithTooltip(WGBlockItem.CASSIA_LEAVES.get(),"Cassia Leaves","");
+        addWithTooltip(WGBlockItem.CASSIA_LOG.get(),"Cassia Log","");
+        addWithTooltip(WGBlockItem.CASSIA_STRIPPED_LOG.get(),"Cassia Stripped Log","");
+        addWithTooltip(WGBlockItem.CASSIA_PLANKS.get(),"Cassia Planks","");
+        addWithTooltip(WGBlockItem.CASSIA_SLAB.get(),"Cassia Slab","");
+        addWithTooltip(WGBlockItem.CASSIA_STAIRS.get(),"Cassia Stairs","");
 
-        add("block.whispergrove.cassia_log","Cassia Log");
-        add("tooltip.whispergrove.cassia_log","");
-        add("block.whispergrove.cassia_stripped_log","Cassia Stripped Log");
-        add("tooltip.whispergrove.cassia_stripped_log","");
-        add("block.whispergrove.cassia_leaves","Cassia Leaves");
-        add("tooltip.whispergrove.cassia_leaves","");
-        add("block.whispergrove.cassia_planks","Cassia Planks");
-        add("tooltip.whispergrove.cassia_planks","");
-        add("block.whispergrove.cassia_slab","Cassia_Slab");
-        add("tooltip.whispergrove.cassia_slab","");
-        add("block.whispergrove.cassia_stairs","Cassia Stairs");
-        add("tooltip.whispergrove.cassia_stairs","");
+        addWithTooltip(WGBlockItem.ROLLER.get(),"Roller","");
+        addWithTooltip(WGBlockItem.CUTTER.get(),"Cutter","");
+        addWithTooltip(WGBlockItem.POT.get(),"Pot","");
+        addWithTooltip(WGBlockItem.SPRINGING.get(),"Springing","");
 
-        add("item.whispergrove.soup","Unnamed Medicinal soup");
-        add("tooltip.whispergrove.soup","");
-
-        add("block.whispergrove.roller","Roller");
-        add("tooltip.whispergrove.roller","");
-        add("block.whispergrove.springing","Springing");
-        add("tooltip.whispergrove.springing","");
-        add("block.whispergrove.cutter","Cutter");
-        add("tooltip.whispergrove.cutter","");
-        add("block.whispergrove.pot","Pot");
-        add("tooltip.whispergrove.pot","");
+        addWithTooltip(WGItem.SOUP.get(),"Unnamed Medicinal soup","");
 
         add("whispergrove.configuration.title","Whisper Grove Config");
         add("whispergrove.configuration.debug","Debug");

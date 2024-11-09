@@ -5,11 +5,13 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.data.lang.gen.DescGen;
 import org.hiedacamellia.whispergrove.core.data.lang.gen.EffectGen;
+import org.hiedacamellia.whispergrove.registers.WGBlock;
+import org.hiedacamellia.whispergrove.registers.WGBlockItem;
 import org.hiedacamellia.whispergrove.registers.WGItem;
 
 import java.util.Map;
 
-public class ChineseLanguageProvider extends LanguageProvider {
+public class ChineseLanguageProvider extends CamelliaLanguageProvider {
 
         public ChineseLanguageProvider(PackOutput output) {
             super(output, WhisperGrove.MODID, "zh_cn");
@@ -40,102 +42,61 @@ public class ChineseLanguageProvider extends LanguageProvider {
                 add(entry.getKey(),entry.getValue());
             }
 
-            add(WGItem.MILKVETCH.get(),"黄芪");
-            add("tooltip.whispergrove.milkvetch","");
-            add("item.whispergrove.actinolite","阳起石");
-            add("tooltip.whispergrove.actinolite","");
-            add("item.whispergrove.fluorite","紫石英");
-            add("tooltip.whispergrove.fluorite","");
-            add("item.whispergrove.cassia_twig","桂枝");
-            add("tooltip.whispergrove.cassia_twig","");
-            add("item.whispergrove.rose","干玫瑰");
-            add("tooltip.whispergrove.rose","");
-            add("item.whispergrove.roasted_rehmannia","熟地黄");
-            add("tooltip.whispergrove.roasted_rehmannia","");
-            add("item.whispergrove.roasted_cuttleflsh_bone","海螵蛸");
-            add("tooltip.whispergrove.roasted_cuttleflsh_bone","");
-            add("item.whispergrove.monkshood","附子");
-            add("tooltip.whispergrove.monkshood","");
-            add("item.whispergrove.clove","炒丁香");
-            add("tooltip.whispergrove.clove","");
-            add("item.whispergrove.schisandra_chinensis","五味子");
-            add("tooltip.whispergrove.schisandra_chinensis","");
-            add("item.whispergrove.prepared_licorice","炙甘草");
-            add("tooltip.whispergrove.prepared_licorice","");
-            add("item.whispergrove.ginseng","人参");
-            add("tooltip.whispergrove.ginseng","");
-            add("item.whispergrove.poria_cocos","茯苓");
-            add("tooltip.whispergrove.poria_cocos","");
-            add("item.whispergrove.malt","麦芽");
-            add("tooltip.whispergrove.malt","");
-            add("item.whispergrove.donkey_hide_gelatin","阿胶");
-            add("tooltip.whispergrove.donkey_hide_gelatin","");
-            add("item.whispergrove.calcined_dragon_bone","煅龙骨");
-            add("tooltip.whispergrove.calcined_dragon_bone","");
-            add("item.whispergrove.albizia_bark","合欢皮");
-            add("tooltip.whispergrove.albizia_bark","");
-            add("item.whispergrove.bamboo_leaf","竹叶");
-            add("tooltip.whispergrove.bamboo_leaf","");
-            add("item.whispergrove.gentian","龙胆草");
-            add("tooltip.whispergrove.gentian","");
-            add("item.whispergrove.bamboo_shavings","竹茹");
-            add("tooltip.whispergrove.bamboo_shavings","");
-            add("item.whispergrove.gypsum_rubrum","寒水石");
-            add("tooltip.whispergrove.gypsum_rubrum","");
-            add("item.whispergrove.tortoise_plastron_glue","龟板胶");
-            add("tooltip.whispergrove.tortoise_plastron_glue","");
-            add("item.whispergrove.drying_rehmannia","生地黄");
-            add("tooltip.whispergrove.drying_rehmannia","");
-            add("item.whispergrove.drying_licorice","生甘草");
-            add("tooltip.whispergrove.drying_licorice","");
+            addWithTooltip(WGItem.MILKVETCH.get(),"黄芪","");
+            addWithTooltip(WGItem.ACTINOLITE.get(),"阳起石","");
+            addWithTooltip(WGItem.FLUORITE.get(),"紫石英","");
+            addWithTooltip(WGItem.CASSIA_TWIG.get(),"桂枝","");
+            addWithTooltip(WGItem.ROSE.get(),"干玫瑰","");
+            addWithTooltip(WGItem.ROASTED_REHMANNIA.get(),"熟地黄","");
+            addWithTooltip(WGItem.ROASTED_CUTTLEFLSH_BONE.get(),"海螵蛸","");
+            addWithTooltip(WGItem.MONKSHOOD.get(),"附子","");
+            addWithTooltip(WGItem.CLOVE.get(),"炒丁香","");
+            addWithTooltip(WGItem.SCHISANDRA_CHINENSIS.get(),"五味子","");
+            addWithTooltip(WGItem.PREPARED_LICORICE.get(),"炙甘草","");
+            addWithTooltip(WGItem.GINSENG.get(),"人参","");
+            addWithTooltip(WGItem.PORIA_COCOS.get(),"茯苓","");
+            addWithTooltip(WGItem.MALT.get(),"麦芽","");
+            addWithTooltip(WGItem.DONKEY_HIDE_GELATIN.get(),"阿胶","");
+            addWithTooltip(WGItem.CALCINED_DRAGON_BONE.get(),"煅龙骨","");
+            addWithTooltip(WGItem.ALBIZIA_BARK.get(),"合欢皮","");
+            addWithTooltip(WGItem.BAMBOO_LEAF.get(),"竹叶","");
+            addWithTooltip(WGItem.BAMBOO_SHAVINGS.get(),"竹茹","");
+            addWithTooltip(WGItem.GENTIAN.get(),"龙胆草","");
+            addWithTooltip(WGItem.GYPSUM_RUBRUM.get(),"寒水石","");
+            addWithTooltip(WGItem.TORTOISE_PLASTRON_GLUE.get(),"龟板胶","");
+            addWithTooltip(WGItem.DRYING_REHMANNIA.get(),"生地黄","");
+            addWithTooltip(WGItem.DRYING_LICORICE.get(),"生甘草","");
+            addWithTooltip(WGItem.ROASTED_MONKSHOOD.get(),"熟附片","");
 
-            add("item.whispergrove.sliced_milkvetch","黄芪切片");
-            add("tooltip.whispergrove.sliced_milkvetch","");
-            add("item.whispergrove.sliced_cassia_twig","桂枝切片");
-            add("tooltip.whispergrove.sliced_cassia_twig","");
-            add("item.whispergrove.cassia_twig_bark","桂枝皮");
-            add("tooltip.whispergrove.cassia_twig_bark","");
-            add("item.whispergrove.rehmannia","地黄");
-            add("tooltip.whispergrove.rehmannia","");
-            add("item.whispergrove.licorice","甘草");
-            add("tooltip.whispergrove.licorice","");
-            add("item.whispergrove.sliced_ginseng","人参切片");
-            add("tooltip.whispergrove.sliced_ginseng","");
-            add("item.whispergrove.sliced_gentian","龙胆草切片");
-            add("tooltip.whispergrove.sliced_gentian","");
-            add("item.whispergrove.cuttlebone","墨鱼骨");
-            add("tooltip.whispergrove.cuttlebone","");
-            add("item.whispergrove.bone_fragment","骨头碎片");
-            add("tooltip.whispergrove.bone_fragment","");
+            addWithTooltip(WGItem.SLICED_MILKVETCH.get(),"黄芪切片","");
+            addWithTooltip(WGItem.SLICED_CASSIA_TWIG.get(),"桂枝切片","");
+            addWithTooltip(WGItem.CASSIA_TWIG_BARK.get(),"桂枝皮","");
+            addWithTooltip(WGItem.REHMANNIA.get(),"地黄","");
+            addWithTooltip(WGItem.LICORICE.get(),"甘草","");
+            addWithTooltip(WGItem.SLICED_GINSENG.get(),"人参切片","");
+            addWithTooltip(WGItem.SLICED_GENTIAN.get(),"龙胆草切片","");
+            addWithTooltip(WGItem.CUTTLEBONE.get(),"墨鱼骨","");
+            addWithTooltip(WGItem.BONE_FRAGMENT.get(),"骨头碎片","");
 
+            addWithTooltip(WGItem.CROP_SEED_ITEMS.get("rehmannia").get(),"地黄种子","");
+            addWithTooltip(WGItem.CROP_SEED_ITEMS.get("licorice").get(),"甘草种子","");
+            addWithTooltip(WGItem.CROP_SEED_ITEMS.get("milkvetch").get(),"黄芪种子","");
+            addWithTooltip(WGItem.CROP_SEED_ITEMS.get("gentian").get(),"龙胆草","");
+            addWithTooltip(WGItem.CROP_SEED_ITEMS.get("ginseng").get(),"人参种子","");
 
+            addWithTooltip(WGBlockItem.CASSIA_LEAVES.get(),"肉桂树叶","");
+            addWithTooltip(WGBlockItem.CASSIA_LOG.get(),"肉桂原木","");
+            addWithTooltip(WGBlockItem.CASSIA_STRIPPED_LOG.get(),"去皮肉桂原木","");
+            addWithTooltip(WGBlockItem.CASSIA_PLANKS.get(),"肉桂木板","");
+            addWithTooltip(WGBlockItem.CASSIA_SLAB.get(),"肉桂台阶","");
+            addWithTooltip(WGBlockItem.CASSIA_STAIRS.get(),"肉桂楼梯","");
 
-            add("block.whispergrove.cassia_log","肉桂原木");
-            add("tooltip.whispergrove.cassia_log","");
-            add("block.whispergrove.cassia_stripped_log","去皮肉桂原木");
-            add("tooltip.whispergrove.cassia_stripped_log","");
-            add("block.whispergrove.cassia_leaves","肉桂树叶");
-            add("tooltip.whispergrove.cassia_leaves","");
-            add("block.whispergrove.cassia_planks","肉桂木板");
-            add("tooltip.whispergrove.cassia_planks","");
-            add("block.whispergrove.cassia_slab","肉桂台阶");
-            add("tooltip.whispergrove.cassia_slab","");
-            add("block.whispergrove.cassia_stairs","肉桂楼梯");
-            add("tooltip.whispergrove.cassia_stairs","");
+            addWithTooltip(WGBlockItem.ROLLER.get(),"药碾","");
+            addWithTooltip(WGBlockItem.CUTTER.get(),"药铡","");
+            addWithTooltip(WGBlockItem.POT.get(),"大锅","");
+            addWithTooltip(WGBlockItem.SPRINGING.get(),"药壶","");
 
-            add("item.whispergrove.soup","未命名药汤");
-            add("tooltip.whispergrove.soup","");
-
-
-            add("block.whispergrove.roller","药碾");
-            add("tooltip.whispergrove.roller","");
-            add("block.whispergrove.springing","药壶");
-            add("tooltip.whispergrove.springing","");
-            add("block.whispergrove.cutter","药铡");
-            add("tooltip.whispergrove.cutter","");
-            add("block.whispergrove.pot","大锅");
-            add("tooltip.whispergrove.pot","");
-
+            addWithTooltip(WGItem.SOUP.get(),"未命名药汤","");
 
             add("whispergrove.configuration.title","浅草轻语 配置");
             add("whispergrove.configuration.debug","调试");

@@ -31,7 +31,7 @@ public class WGItemEvent {
                 toolTip.add(component.withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
             } else {
                 toolTip.addAll(GetPropertiesDesc.fromItemStack(itemStack));
-                toolTip.add(Component.translatable("tooltip.whispergrove." + key.getPath()));
+                toolTip.add(Component.translatable(item.getDescriptionId()+".desc"));
             }
         }
     }

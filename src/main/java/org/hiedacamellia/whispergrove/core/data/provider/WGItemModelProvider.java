@@ -26,6 +26,12 @@ public class WGItemModelProvider extends ItemModelProvider {
                 this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
             }
         });
+
+        WGItem.CROP_SEED_ITEMS.forEach((s, item) -> {
+            this.singleTexture(item.getId().getPath(), this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + BuiltInRegistries.ITEM.getKey(item.get()).getPath()));
+        });
+
+
     }
 
     private static Iterable<Item> getKnownItems() {

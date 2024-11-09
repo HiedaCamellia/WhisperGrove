@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "whispergrove:block/springing"
+		"1": "whispergrove:block/springing",
+		"particle": "whispergrove:block/springing"
 	},
 	"elements": [
 		{
