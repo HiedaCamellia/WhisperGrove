@@ -14,10 +14,10 @@ import org.hiedacamellia.whispergrove.registers.WGEffect;
 
 import java.util.Objects;
 
-@EventBusSubscriber({ Dist.CLIENT })
+//@EventBusSubscriber({ Dist.CLIENT })
 public class BloodOverlay {
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
+//    @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void eventHandler(RenderGuiEvent.Pre event) {
 
         GuiGraphics guiGraphics = event.getGuiGraphics();
