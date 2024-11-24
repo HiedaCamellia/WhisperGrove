@@ -10,9 +10,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import org.hiedacamellia.whispergrove.core.debug.Debug;
 import org.hiedacamellia.whispergrove.registers.WGClientTab;
-import org.hiedacamellia.whispergrove.registers.WGTab;
 
 import java.util.List;
 import java.util.Optional;
