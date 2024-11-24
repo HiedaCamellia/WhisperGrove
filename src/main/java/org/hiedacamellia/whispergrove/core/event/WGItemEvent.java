@@ -14,6 +14,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.hiedacamellia.whispergrove.WhisperGrove;
 import org.hiedacamellia.whispergrove.core.util.GetPropertiesDesc;
 
+import java.util.Arrays;
 import java.util.List;
 
 @EventBusSubscriber(modid = WhisperGrove.MODID)
@@ -31,7 +32,10 @@ public class WGItemEvent {
                 toolTip.add(component.withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
             } else {
                 toolTip.addAll(GetPropertiesDesc.fromItemStack(itemStack));
-                toolTip.add(Component.translatable(item.getDescriptionId()+".desc"));
+                if(Component.translatableWithFallback(item.getDescriptionId() + ".desc","null").getString().equals("null")){
+                    return;
+                }
+                toolTip.addAll(Arrays.stream(Component.translatable(item.getDescriptionId()+".desc").getString().split("§n")).map(Component::literal).toList());
             }
         }
     }
