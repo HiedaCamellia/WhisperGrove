@@ -10,6 +10,8 @@ public record GeneralPrescriptProcessInput(BlockState state, List<ItemStack> sta
 
     @Override
     public ItemStack getItem(int slot) {
+        if(slot>=stack().size())
+            return ItemStack.EMPTY;
         return this.stack().get(slot);
     }
 
