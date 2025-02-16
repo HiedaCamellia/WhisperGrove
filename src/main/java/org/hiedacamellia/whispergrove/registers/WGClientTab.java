@@ -16,4 +16,8 @@ public class WGClientTab {
     public static Val<TabToken<InvTabData, VisceraTab>> TAB_VISCERA = TAB_REG.reg("viscera_tab",
             () -> L2Tabs.GROUP.registerTab(() -> VisceraTab::new,
                     Component.translatable("menu.whispergrove.viscera_tab")));
+
+    public static void init(){
+
+    }
 }

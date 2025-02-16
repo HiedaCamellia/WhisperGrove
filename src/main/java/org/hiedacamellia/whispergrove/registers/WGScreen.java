@@ -13,8 +13,7 @@ public class WGScreen {
 
     @SubscribeEvent
     public static void clientLoad(RegisterMenuScreensEvent event) {
-        if(ModList.get().isLoaded("l2tabs"))
-            event.register(WGMenu.SPRINGING.get(), SpringingScreen::new);
+        event.register(WGMenu.SPRINGING.get(), SpringingScreen::new);
     }
 
 }
